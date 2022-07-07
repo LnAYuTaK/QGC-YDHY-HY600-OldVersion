@@ -1,0 +1,16 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=${prefix}/include/orc-0.4
+toolsdir=${exec_prefix}/bin
+
+
+Name: orc-0.4
+Description: Library of Optimized Inner Loops Runtime Compiler
+Version: 0.4.28
+Libs: -L${libdir} -lorc-0.4
+Libs.private: -lm  
+Cflags: -I${includedir}
+
+orcc=${toolsdir}/orcc
+

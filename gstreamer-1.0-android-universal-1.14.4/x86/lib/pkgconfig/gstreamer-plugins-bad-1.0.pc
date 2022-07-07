@@ -1,0 +1,13 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86/lib
+includedir=${prefix}/include/gstreamer-1.0
+pluginsdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86/lib/gstreamer-1.0
+
+
+Name: GStreamer Bad Plugin libraries
+Description: Streaming media framework, bad plugins libraries
+Requires: gstreamer-1.0
+Version: 1.14.4
+Libs: -L${libdir}
+Cflags: -I${includedir}

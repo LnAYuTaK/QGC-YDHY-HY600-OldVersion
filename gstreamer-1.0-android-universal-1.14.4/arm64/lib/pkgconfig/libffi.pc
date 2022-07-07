@@ -1,0 +1,11 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64/lib
+toolexeclibdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64/lib
+includedir=${libdir}/libffi-3.99999/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.99999
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86/lib
+includedir=${prefix}/include
+
+gmodule_supported=true
+
+Name: GModule
+Description: Dynamic module loader for GLib
+Requires: glib-2.0
+Version: 2.54.3
+Libs: -L${libdir} -lgmodule-2.0 -pthread
+Libs.private: 
+Cflags: -pthread

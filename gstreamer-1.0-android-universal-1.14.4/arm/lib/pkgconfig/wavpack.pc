@@ -1,0 +1,13 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=${prefix}/include
+
+Name: wavpack
+Description: wavpack library
+Version: 5.1.0
+Requires:
+Conflicts:
+Libs: -L${libdir} -lwavpack
+Libs.private: -lm
+Cflags: -I${includedir}

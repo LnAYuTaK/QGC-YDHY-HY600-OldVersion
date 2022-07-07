@@ -1,0 +1,5 @@
+gstreamer-1.0-android-universal-1.14.4/arm64/lib/libavcodec.a filter=lfs diff=lfs merge=lfs -text
+gstreamer-1.0-android-universal-1.14.4/x86_64/lib/libavcodec.a filter=lfs diff=lfs merge=lfs -text
+QGC-/.git/objects/pack/pack-9ffdd0f6568f4092d8b435e23c0072d9a3e85a05.pack filter=lfs diff=lfs merge=lfs -text
+QGC-/gstreamer-1.0-android-universal-1.14.4/arm64/lib/libavcodec.a filter=lfs diff=lfs merge=lfs -text
+QGC-/gstreamer-1.0-android-universal-1.14.4/x86_64/lib/libavcodec.a filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,18 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=${prefix}/include
+sysconfdir=${prefix}/etc
+localstatedir=${prefix}/var
+PACKAGE=fontconfig
+confdir=${sysconfdir}/fonts
+cachedir=${localstatedir}/cache/${PACKAGE}
+
+Name: Fontconfig
+Description: Font configuration and customization library
+Version: 2.12.6
+Requires:  freetype2
+Requires.private:  expat
+Libs: -L${libdir} -lfontconfig
+Libs.private: -L/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib -lexpat -L/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib -lfreetype  
+Cflags: -I${includedir}  -I/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/include/freetype2 -I/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/include/libpng16  

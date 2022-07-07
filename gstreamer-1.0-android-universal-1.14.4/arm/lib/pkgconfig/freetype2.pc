@@ -1,0 +1,14 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+exec_prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/include
+
+Name: FreeType 2
+URL: https://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 22.0.16
+Requires:
+Requires.private: zlib, libpng
+Libs: -L${libdir} -lfreetype
+Libs.private: -lbz2
+Cflags: -I${includedir}/freetype2

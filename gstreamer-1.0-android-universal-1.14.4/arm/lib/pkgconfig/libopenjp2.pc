@@ -1,0 +1,14 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+bindir=${prefix}/bin
+mandir=${prefix}/
+docdir=${prefix}/
+libdir=${prefix}//home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=${prefix}/include/openjpeg-2.3
+
+Name: openjp2
+Description: JPEG2000 library (Part 1 and 2)
+URL: http://www.openjpeg.org/
+Version: 2.3.0
+Libs: -L${libdir} -lopenjp2
+Libs.private: -lm
+Cflags: -I${includedir}

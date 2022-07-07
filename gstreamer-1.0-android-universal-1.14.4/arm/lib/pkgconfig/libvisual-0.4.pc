@@ -1,0 +1,12 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib
+includedir=${prefix}/include/libvisual-0.4
+pluginsbasedir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm/lib/libvisual-0.4
+
+Name: libvisual
+Version: 0.4.0
+Description: an audio visualisation abstraction library.
+Requires: 
+Libs: -L${libdir} -lm -ldl  -lvisual-0.4
+Cflags: -I${includedir} 

@@ -1,0 +1,12 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86/lib
+includedir=${prefix}/include
+
+Name: GObject
+Description: GLib Type, Object, Parameter and Signal Library
+Requires: glib-2.0
+Version: 2.54.3
+Libs: -L${libdir} -lgobject-2.0
+Libs.private: -L/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/x86/lib -lffi
+Cflags:

@@ -1,0 +1,14 @@
+prefix=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64
+exec_prefix=${prefix}
+libdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64/lib
+includedir=${prefix}/include/gstreamer-1.0
+pluginsdir=/home/nirbheek/projects/repositories/gst/cerbero.git/build/dist/android_universal/arm64/lib/gstreamer-1.0
+
+Name: GStreamer Base Plugins Libraries
+Description: Streaming media framework, base plugins libraries
+Requires: gstreamer-1.0 
+Version: 1.14.4
+Libs: -L${libdir}
+Cflags: -I${includedir}
+
+libraries=allocators app audio fft pbutils riff rtp rtsp sdp tag video gl
