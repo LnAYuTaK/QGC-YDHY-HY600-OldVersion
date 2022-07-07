@@ -1,0 +1,33 @@
+﻿<RCC>
+    <qresource prefix="/">
+        <file>images/back.png</file>
+        <file>images/bg1.png</file>
+        <file>images/bg2.png</file>
+        <file>images/email.png</file>
+        <file>images/go.png</file>
+        <file>images/icon_my on.png</file>
+        <file>images/login_background.png</file>
+        <file>images/login_background_02.png</file>
+        <file>images/login_background_03.png</file>
+        <file>images/menu.png</file>
+        <file>images/password.png</file>
+        <file>images/password_01.png</file>
+        <file>images/phoneNumber.png</file>
+        <file>images/register.png</file>
+        <file>images/user.png</file>
+        <file>images/user_02.png</file>
+        <file>images/user_03.png</file>
+        <file>Login.qml</file>
+        <file>LoginForm.ui.qml</file>
+        <file>main.qml</file>
+        <file>Register.qml</file>
+        <file>RegisterForm.ui.qml</file>
+        <file>images/TIM截图20181126135125.png</file>
+        <file>images/TIM截图20181126135133.png</file>
+        <file>images/TIM截图20181126135143.png</file>
+        <file>images/TIM截图20181126135155.png</file>
+        <file>RegisterFormVerify.ui.qml</file>
+        <file>RegisterVerify.qml</file>
+        <file>images/verify.png</file>
+    </qresource>
+</RCC>

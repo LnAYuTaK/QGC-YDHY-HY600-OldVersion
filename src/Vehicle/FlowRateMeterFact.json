@@ -1,0 +1,15 @@
+﻿[
+{
+    "name":             "SprayState",
+    "shortDescription": "SprayState",
+    "type":             "uint8",
+    "decimalPlaces":    1
+},
+{
+    "name":             "FlowRate",
+    "shortDescription": "FlowRate",
+    "type":             "double",
+    "decimalPlaces":    3,
+    "units":            "M/s"
+}
+]

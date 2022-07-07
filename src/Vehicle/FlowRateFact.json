@@ -1,0 +1,9 @@
+﻿[
+{
+    "name":             "FlowRate",
+    "shortDescription": "FlowRate",
+    "type":             "double",
+    "decimalPlaces":    3,
+    "units":            "M/s"
+}
+]
