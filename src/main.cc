@@ -385,7 +385,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    qDebug()<<Setting::getInstance()->getvalue("/NetConfig/ip").toString();
+    qDebug()<<Setting::getSetting()->getvalue("/NetConfig/ip").toString();
 //    QQuickWidget *view = new QQuickWidget;
 //    view->setSource(QUrl::fromLocalFile("qrc��/UserLogin.qml"));
 //    view->show();

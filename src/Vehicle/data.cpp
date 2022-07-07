@@ -100,7 +100,7 @@ QString Data::make_mavlink_pakage(){
     }
     QString checksum_hex =  QString("%1").arg(checksum,4,16,QLatin1Char('0'));//value?int???char?????
     QString FirmwareVersion=Firmware;
-    QString SoftwareVersion=Setting::getInstance()->getvalue("APP/version").toString();
+    QString SoftwareVersion=Setting::getSetting()->getvalue("APP/version").toString();
 
     return "EB90"+pack+FirmwareVersion+ SoftwareVersion+checksum_hex;
 }
@@ -179,8 +179,8 @@ void Data::data_save_local(QString savestr,QString path){
 void Data::data_save(QString sendmsg){
     //202203Add ???????tcp????
     QTcpSocket *mSocket = new QTcpSocket();
-    QString IP= Setting::getInstance()->getvalue("NetConfig/ip").toString();
-    quint16 Port = Setting::getInstance()->getvalue("NetConfig/port").toInt();
+    QString IP= Setting::getSetting()->getvalue("NetConfig/ip").toString();
+    quint16 Port = Setting::getSetting()->getvalue("NetConfig/port").toInt();
     mSocket->connectToHost(IP,Port);
     QByteArray sendMessage = sendmsg.toLocal8Bit();
     qint16 SendBufSize = mSocket->write(sendMessage);

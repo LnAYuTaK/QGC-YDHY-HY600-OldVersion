@@ -14,7 +14,7 @@ Setting::~Setting()
     Q_ASSERT(s_instance != nullptr);
 }
 
-Setting* Setting::getInstance()
+Setting* Setting::getSetting()
 {
     QFile file(CONFIGPATH);
     if(file.exists()){
