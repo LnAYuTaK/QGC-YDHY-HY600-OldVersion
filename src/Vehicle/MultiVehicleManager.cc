@@ -99,16 +99,6 @@ void MultiVehicleManager::_vehicleHeartbeatInfo(LinkInterface* link, int vehicle
     if (_vehicles.count() > 0 && !qgcApp()->toolbox()->corePlugin()->options()->multiVehicleEnabled()) {
         return;
     }
-    Vehicle* activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
-        if (activeVehicle && activeVehicle->connectionLost()) {
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_RAW_SENSORS, 2);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTENDED_STATUS, 2);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_RC_CHANNELS, 2);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_POSITION, 3);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA1, 10);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA2, 10);
-            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA3, 3);
-        }
     if (_ignoreVehicleIds.contains(vehicleId) || getVehicleById(vehicleId) || vehicleId == 0) {
         return;
     }
@@ -298,6 +288,16 @@ void MultiVehicleManager::_setActiveVehiclePhase2(void)
     //-- Keep track of current vehicle's coordinates
     if(_activeVehicle) {
         disconnect(_activeVehicle, &Vehicle::coordinateChanged, this, &MultiVehicleManager::_coordinateChanged);
+    }
+    Vehicle* activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
+        if (activeVehicle && activeVehicle->connectionLost()) {
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_RAW_SENSORS, 2);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTENDED_STATUS, 2);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_RC_CHANNELS, 2);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_POSITION, 3);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA1, 10);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA2, 10);
+            activeVehicle->requestDataStream(MAV_DATA_STREAM_EXTRA3, 3);
     }
     if(_vehicleBeingSetActive) {
         connect(_vehicleBeingSetActive, &Vehicle::coordinateChanged, this, &MultiVehicleManager::_coordinateChanged);

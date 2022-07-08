@@ -9834,12 +9834,12 @@ Click the Next button to upload calibration to board. Click Cancel if you don&ap
 <context>
     <name>MultiVehicleManager</name>
     <message>
-        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="136"/>
+        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="126"/>
         <source>Warning: A vehicle is using the same system id as %1: %2</source>
         <translation>경고: 기체가 %1:%2와(과) 같은 Id를 사용합니다</translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="154"/>
+        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="144"/>
         <source>Connected to Vehicle %1</source>
         <translation>기체 %1에 연결되었습니다</translation>
     </message>
@@ -13496,12 +13496,12 @@ enum 스트링/변수 갯수가 %3에서 불일치합니다. 스트링:변수 %1
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cc" line="255"/>
+        <location filename="../src/main.cc" line="245"/>
         <source>Error</source>
         <translation type="unfinished">오류</translation>
     </message>
     <message>
-        <location filename="../src/main.cc" line="256"/>
+        <location filename="../src/main.cc" line="246"/>
         <source>A second instance of %1 is already running. Please close the other instance and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14705,27 +14705,27 @@ Click Ok to start calibration.</source>
 <context>
     <name>SerialLink</name>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="91"/>
+        <location filename="../src/comm/SerialLink.cc" line="92"/>
         <source>Could not send data - link %1 is disconnected!</source>
         <translation>데이터를 보낼 수 없습니다 - 링크 %1이(가) 연결되어 있지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="141"/>
+        <location filename="../src/comm/SerialLink.cc" line="142"/>
         <source>Error connecting: Could not create port. %1</source>
         <translation>연결 오류: 포트를 생성할 수 없습니다. %1</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="233"/>
+        <location filename="../src/comm/SerialLink.cc" line="234"/>
         <source>Error opening port: %1</source>
         <translation>포트 열기 오류: %1</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="271"/>
+        <location filename="../src/comm/SerialLink.cc" line="272"/>
         <source>Could not read data - link %1 is disconnected!</source>
         <translation>데이터를 읽을 수 없습니다- 링크 %1이(가) 연결되어 있지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="376"/>
+        <location filename="../src/comm/SerialLink.cc" line="377"/>
         <source>Link Error</source>
         <translation>링크오류</translation>
     </message>
@@ -14835,21 +14835,13 @@ Click Ok to start calibration.</source>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="128"/>
-        <source>%1 当前不支持您的车型设置. </source>
-        <translation type="unfinished"></translation>
+        <source>%1 does not currently support setup of your vehicle type. </source>
+        <translation>%1은(는) 현재 기체종류를 지원하지 않습니다 </translation>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="146"/>
-        <source>连接车辆后，将显示车辆设置和信息.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 does not currently support setup of your vehicle type. </source>
-        <translation type="vanished">%1은(는) 현재 기체종류를 지원하지 않습니다 </translation>
-    </message>
-    <message>
         <source>Vehicle settings and info will display after connecting your vehicle.</source>
-        <translation type="vanished">기체 정보 및 설정은 기체와 연결된 후 표시됩니다</translation>
+        <translation>기체 정보 및 설정은 기체와 연결된 후 표시됩니다</translation>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="167"/>

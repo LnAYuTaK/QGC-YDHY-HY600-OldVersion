@@ -14,8 +14,7 @@
 //202203Add  增加tcp支持
 #include <QTcpSocket>
 //202276Add   本地配置属性统一放到Config/Config.ini  方便测试或者配置
-# include "setting.h"
-
+#include "setting.h"
 class Data : public QObject
 {
     Q_OBJECT

@@ -9817,12 +9817,12 @@ Click the Next button to upload calibration to board. Click Cancel if you don&ap
 <context>
     <name>MultiVehicleManager</name>
     <message>
-        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="136"/>
+        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="126"/>
         <source>Warning: A vehicle is using the same system id as %1: %2</source>
         <translation>Uyarı: Bir araç şununla aynı id ye sahip %1: %2</translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="154"/>
+        <location filename="../src/Vehicle/MultiVehicleManager.cc" line="144"/>
         <source>Connected to Vehicle %1</source>
         <translation>Araca bağlandı %1</translation>
     </message>
@@ -13454,12 +13454,12 @@ sudo apt-get remove modemmanager</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cc" line="255"/>
+        <location filename="../src/main.cc" line="245"/>
         <source>Error</source>
         <translation type="unfinished">Hata</translation>
     </message>
     <message>
-        <location filename="../src/main.cc" line="256"/>
+        <location filename="../src/main.cc" line="246"/>
         <source>A second instance of %1 is already running. Please close the other instance and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14648,27 +14648,27 @@ Click Ok to start calibration.</source>
 <context>
     <name>SerialLink</name>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="91"/>
+        <location filename="../src/comm/SerialLink.cc" line="92"/>
         <source>Could not send data - link %1 is disconnected!</source>
         <translation>Veri gönderilemedi - bağlantı %1 kesildi!</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="141"/>
+        <location filename="../src/comm/SerialLink.cc" line="142"/>
         <source>Error connecting: Could not create port. %1</source>
         <translation>Bağlantı Hatası: Port yaratılamadı.  %1 </translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="233"/>
+        <location filename="../src/comm/SerialLink.cc" line="234"/>
         <source>Error opening port: %1</source>
         <translation>Port açılış hatası: %1 </translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="271"/>
+        <location filename="../src/comm/SerialLink.cc" line="272"/>
         <source>Could not read data - link %1 is disconnected!</source>
         <translation>Veri okunamadı - bağlantı %1 kesildi!</translation>
     </message>
     <message>
-        <location filename="../src/comm/SerialLink.cc" line="376"/>
+        <location filename="../src/comm/SerialLink.cc" line="377"/>
         <source>Link Error</source>
         <translation>Bağlantı hatası</translation>
     </message>
@@ -14778,21 +14778,13 @@ Click Ok to start calibration.</source>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="128"/>
-        <source>%1 当前不支持您的车型设置. </source>
-        <translation type="unfinished"></translation>
+        <source>%1 does not currently support setup of your vehicle type. </source>
+        <translation>%1 şu anda araç türünüzün kurulumunu desteklemiyor.</translation>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="146"/>
-        <source>连接车辆后，将显示车辆设置和信息.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 does not currently support setup of your vehicle type. </source>
-        <translation type="vanished">%1 şu anda araç türünüzün kurulumunu desteklemiyor.</translation>
-    </message>
-    <message>
         <source>Vehicle settings and info will display after connecting your vehicle.</source>
-        <translation type="vanished">Aracınızın bağlantı sonrasında ayar ve bilgileri görüntülenecektir.</translation>
+        <translation>Aracınızın bağlantı sonrasında ayar ve bilgileri görüntülenecektir.</translation>
     </message>
     <message>
         <location filename="../src/VehicleSetup/SetupView.qml" line="167"/>

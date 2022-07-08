@@ -34,15 +34,6 @@
 #include "mysqlhelper.h"
 #include <QQuickWidget>
 
-//2022 7/6锟斤拷锟斤拷   通锟矫的宏定锟斤拷锟洁，锟斤拷锟斤拷锟斤拷
-//#include "Developdefine.h"
-#include "setting.h"
-//预锟斤拷锟斤拷锟斤拷一锟斤拷锟斤拷转锟铰硷拷锟斤拷锟斤拷锟节达拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟铰硷拷实锟街回碉拷
-
-//锟斤拷录锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
-//#include "APPEvent.h"
-
-
 #ifndef __mobile__
     #include "QGCSerialPortInfo.h"
     #include "RunGuard.h"
@@ -228,7 +219,7 @@ bool checkAndroidWritePermission() {
 }
 #endif
 
-// 锟斤拷锟较讹拷锟角匡拷平台锟斤拷锟截达拷锟斤拷
+// 以上都是跨平台相关处理
 //-----------------------------------------------------------------------------
 /**
  * @brief Starts the application
@@ -237,16 +228,15 @@ bool checkAndroidWritePermission() {
  * @param argv Commandline arguments
  * @return exit code, 0 for normal exit and !=0 for error cases
  */
-// 锟斤拷锟斤拷锟斤拷锟斤拷 main
-
+// 进入正题 main
 int main(int argc, char *argv[])
 {
 
 
-// 锟狡讹拷平台锟斤拷锟叫伙拷锟斤拷锟斤拷锟斤拷 锟斤拷通锟斤拷锟斤拷锟斤拷锟节存方式锟斤拷锟斤拷锟叫筹拷锟津互筹拷锟斤拷锟斤拷
-// 锟斤拷锟斤拷锟斤拷锟斤拷锟铰ｏ拷
-// 锟斤拷锟斤拷锟节存：QSharedMemory
-// 锟脚猴拷锟斤拷锟斤拷QSystemSemaphore
+// 移动平台运行互斥管理 ：通过共享内存方式来进行程序互斥操作
+// 相关类如下：
+// 共享内存：QSharedMemory
+// 信号量：QSystemSemaphore
 #ifndef __mobile__
     RunGuard guard("QGroundControlRunGuardKey");
     if (!guard.tryToRun()) {
@@ -262,19 +252,18 @@ int main(int argc, char *argv[])
     //-- Record boot time
     QGC::initTimer();
 
-// 锟斤拷锟斤拷unix平台强锟斤拷写锟斤拷console锟斤拷锟斤拷台
+// 对于unix平台强制写入console控制台
 #ifdef Q_OS_UNIX
     //Force writing to the console on UNIX/BSD devices
     if (!qEnvironmentVariableIsSet("QT_LOGGING_TO_CONSOLE"))
         qputenv("QT_LOGGING_TO_CONSOLE", "1");
 #endif
 
-
-    // 注锟斤拷锟斤拷息锟斤拷锟斤拷锟斤拷锟斤拷
+    // 注册消息处理程序
     // install the message handler
     AppMessages::installHandler();
 
-// MAC系统锟斤拷锟叫碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 NSAppSleepDisabled锟斤拷锟斤拷
+// MAC系统进行的特殊命令输入 NSAppSleepDisabled相关
 #ifdef Q_OS_MAC
 #ifndef __ios__
     // Prevent Apple's app nap from screwing us over
@@ -283,7 +272,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
-// windows系统锟斤拷OpenGLbuglist锟斤拷锟矫猴拷OpenGL锟斤拷锟斤拷锟斤拷锟斤拷
+// windows系统中OpenGLbuglist设置和OpenGL类型设置
 #ifdef Q_OS_WIN
     // Set our own OpenGL buglist
     qputenv("QT_OPENGL_BUGLIST", ":/opengl/resources/opengl/buglist.json");
@@ -301,7 +290,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    // 锟斤拷锟斤拷锟斤拷注锟斤拷一些锟斤拷锟斤拷 枚锟斤拷之锟斤拷锟侥碉拷QML锟斤拷使锟斤拷
+    // 以下是注册一些类型 枚举之类的到QML中使用
     // The following calls to qRegisterMetaType are done to silence debug output which warns
     // that we use these types in signals, and without calling qRegisterMetaType we can't queue
     // these signals. In general we don't queue these signals, but we do what the warning says
@@ -322,21 +311,21 @@ int main(int argc, char *argv[])
 
     // We statically link our own QtLocation plugin
 
-// 去锟斤拷windows锟斤拷锟斤拷 4930 4101
+// 去除windows警告 4930 4101
 #ifdef Q_OS_WIN
     // In Windows, the compiler doesn't see the use of the class created by Q_IMPORT_PLUGIN
 #pragma warning( disable : 4930 4101 )
 #endif
 
-    // 锟斤拷锟诫静态锟斤拷锟斤拷 QGeoServiceProviderFactoryQGC
+    // 引入静态插件 QGeoServiceProviderFactoryQGC
     Q_IMPORT_PLUGIN(QGeoServiceProviderFactoryQGC)
 
-    // 锟角凤拷锟斤拷锟叫碉拷元锟斤拷锟斤拷
-    // 锟斤拷锟斤拷学习锟斤拷ParseCmdLineOptions锟斤拷锟斤拷arg锟斤拷锟斤拷
-    // _CrtSetReportHook锟斤拷锟斤拷hook
+    // 是否运行单元测试
+    // 可以学习下ParseCmdLineOptions解析arg参数
+    // _CrtSetReportHook进行hook
     bool runUnitTests = false;          // Run unit tests
 
-// DEBUG模式锟铰斤拷锟叫碉拷一些锟斤拷锟斤拷锟斤拷锟斤拷
+// DEBUG模式下进行的一些参数设置
 #ifdef QT_DEBUG
     // We parse a small set of command line options here prior to QGCApplication in order to handle the ones
     // which need to be handled before a QApplication object is started.
@@ -373,10 +362,10 @@ int main(int argc, char *argv[])
 #endif
 #endif // QT_DEBUG
 
-//    mySqlhelper::sqlconnect();//锟斤拷锟斤拷mysql锟斤拷锟捷匡拷
+//    mySqlhelper::sqlconnect();//连接mysql数据库
 
-    // QGC App锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟节地凤拷 锟斤拷锟斤拷锟斤拷谈
-    // Q_CHECK_PTR锟斤拷 锟斤拷锟斤拷一锟斤拷指锟斤拷锟较凤拷校锟斤拷 锟杰筹拷锟斤拷
+    // QGC App程序真正的入口地方 后面详谈
+    // Q_CHECK_PTR宏 做了一个指针合法校验 很常用
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QGCApplication* app = new QGCApplication(argc, argv, runUnitTests);
     Q_CHECK_PTR(app);
@@ -385,13 +374,12 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    qDebug()<<Setting::getSetting()->getvalue("/NetConfig/ip").toString();
 //    QQuickWidget *view = new QQuickWidget;
-//    view->setSource(QUrl::fromLocalFile("qrc锟斤拷/UserLogin.qml"));
+//    view->setSource(QUrl::fromLocalFile("qrc：/UserLogin.qml"));
 //    view->show();
-//    SqliteHelper();//锟斤拷锟斤拷sqlite锟斤拷锟捷匡拷
-    //202203注锟斤拷
-    mySqlhelper::sqlconnect();//锟斤拷锟斤拷mysql锟斤拷锟捷匡拷
+//    SqliteHelper();//连接sqlite数据库
+    //202203注释
+    mySqlhelper::sqlconnect();//连接mysql数据库
     Data::Set_userID_value();
 
 //    if (!Data::sql_connect_flag) {
@@ -403,18 +391,18 @@ int main(int argc, char *argv[])
 //        qDebug()<< "SLEEP";
 //    }
 
-//    Data::readtxttosend();//锟斤拷锟斤拷锟斤拷锟斤拷
-//    SendData::get_playback();//锟斤拷锟斤拷锟斤拷锟矫ｏ拷锟剿达拷锟斤拷锟斤拷锟斤拷锟矫凤拷锟叫硷拷录锟斤拷示
+//    Data::readtxttosend();//补发数据
+//    SendData::get_playback();//界面调用，此处无需调用飞行记录显示
 
 //    MyTimer mytimer;
 //    mytimer.startTimer(1000);
     //mytimer = new MyTimer();
-// linux系统锟斤拷app图锟斤拷锟斤拷锟斤拷
+// linux系统中app图标设置
 #ifdef Q_OS_LINUX
     QApplication::setWindowIcon(QIcon(":/res/resources/icons/qgroundcontrol.ico"));
 #endif /* Q_OS_LINUX */
 
-    // 锟斤拷止qRegisterMetaType注锟斤拷锟竭筹拷锟阶筹拷锟届常锟斤拷锟斤拷锟斤拷锟斤拷
+    // 防止qRegisterMetaType注册线程抛出异常特殊操作
     // There appears to be a threading issue in qRegisterMetaType which can cause it to throw a qWarning
     // about duplicate type converters. This is caused by a race condition in the Qt code. Still working
     // with them on tracking down the bug. For now we register the type which is giving us problems here
@@ -422,16 +410,16 @@ int main(int argc, char *argv[])
     // on in the code.
     qRegisterMetaType<QList<QPair<QByteArray,QByteArray> > >();
 
-    // QGC app 注锟斤拷C++锟洁到QML元锟斤拷锟斤拷锟叫革拷QML使锟斤拷
+    // QGC app 注册C++类到QML元对象中给QML使用
     app->_initCommon();
-    // 锟斤拷始锟斤拷QGC锟斤拷图锟斤拷锟斤拷
-    // 锟斤拷锟角革拷全锟街猴拷锟斤拷锟斤拷 extern QGCMapEngine* getQGCMapEngine();
+    // 初始化QGC地图引擎
+    // 就是个全局函数： extern QGCMapEngine* getQGCMapEngine();
     //-- Initialize Cache System
     getQGCMapEngine()->init();
 
-    // 锟剿筹拷锟斤拷锟斤拷code锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷main锟斤拷头注锟酵猴拷应
+    // 退出返回code定义和最上面main开头注释呼应
     int exitCode = 0;
-// 锟斤拷元锟斤拷锟皆诧拷锟斤拷锟斤拷锟斤拷
+// 单元测试参数设置
 #ifdef UNITTEST_BUILD
     if (runUnitTests) {
         for (int i=0; i < (stressUnitTests ? 20 : 1); i++) {
@@ -453,11 +441,11 @@ int main(int argc, char *argv[])
     } else
 #endif
 
-    // _initForNormalAppBoot 锟斤拷始锟斤拷MainWindow锟斤拷锟斤拷锟斤拷锟皆硷拷锟斤拷锟斤拷硬锟斤拷锟借备 遥锟斤拷之锟斤拷锟斤拷 锟斤拷锟斤拷同锟斤拷Settings锟斤拷锟斤拷锟侥硷拷
-    // 剩锟铰的讹拷锟斤拷些锟斤拷尾锟斤拷锟斤拷 锟斤拷锟襟返伙拷 exitCode
-    // 锟斤拷锟斤拷锟斤拷细锟斤拷锟斤拷 _initForNormalAppBoot
-    // 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷~
-    // 锟斤拷锟斤拷锟斤拷锟酵匡拷始锟斤拷锟斤拷锟节诧拷原锟斤拷
+    // _initForNormalAppBoot 初始化MainWindow主界面以及相关硬件设备 遥感之类的 最后同步Settings配置文件
+    // 剩下的都是些收尾工作 最后返回 exitCode
+    // 后续详细分析 _initForNormalAppBoot
+    // 整个程序就运行起来了~
+    // 接下来就开始分析内部原理
     {
 
 #ifdef __android__
@@ -473,7 +461,7 @@ int main(int argc, char *argv[])
     //-- Shutdown Cache System
     destroyMapEngine();
 
-    //qDebug() << "After app delete";
+    qDebug() << "After app delete";
 
     return exitCode;
 

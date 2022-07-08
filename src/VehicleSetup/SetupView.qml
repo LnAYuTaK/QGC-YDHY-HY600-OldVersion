@@ -125,8 +125,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.mediumFontPointSize
-                text:                   qsTr("%1 当前不支持您的车型设置. ").arg(QGroundControl.appName) +
-                                        "如果您的车辆已经配置好，您仍然可以飞行."
+                text:                   qsTr("%1 does not currently support setup of your vehicle type. ").arg(QGroundControl.appName) +
+                                        "If your vehicle is already configured you can still Fly."
                 onLinkActivated: Qt.openUrlExternally(link)
             }
         }
@@ -143,8 +143,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.largeFontPointSize
-                text:                   qsTr("连接车辆后，将显示车辆设置和信息.") +
-                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " 点击左侧固件升级您的车辆.")
+                text:                   qsTr("Vehicle settings and info will display after connecting your vehicle.") +
+                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " Click Firmware on the left to upgrade your vehicle.")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }

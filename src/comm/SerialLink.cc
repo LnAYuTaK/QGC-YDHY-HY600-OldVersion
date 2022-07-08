@@ -41,6 +41,7 @@ SerialLink::SerialLink(SharedLinkConfigurationPointer& config, bool isPX4Flow)
         qWarning() << "Internal error";
         return;
     }
+
     qCDebug(SerialLinkLog) << "Create SerialLink " << _serialConfig->portName() << _serialConfig->baud() << _serialConfig->flowControl()
                            << _serialConfig->parity() << _serialConfig->dataBits() << _serialConfig->stopBits();
     qCDebug(SerialLinkLog) << "portName: " << _serialConfig->portName();
