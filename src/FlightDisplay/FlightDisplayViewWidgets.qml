@@ -163,7 +163,7 @@ Item {
             z:                          QGroundControl.zOrderTopMost
             color:                      "black"
             font.pointSize:             ScreenTools.largeFontPointSize
-            text:                       "The vehicle has failed a pre-arm check. In order to arm the vehicle, resolve the failure."
+            text:                       "飞机未通过臂前检查。为了启用飞机，解决故障."
         }
     }
     Column {

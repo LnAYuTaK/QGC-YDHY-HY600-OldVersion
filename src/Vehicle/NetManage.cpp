@@ -1,8 +1,9 @@
 #include "NetManage.h"
 
 NetManage *NetManage::s_instance = nullptr;
-
 NetLayer *NetManage::m_layer =nullptr;
+
+QThread NetManage::WorkThread;
 
 NetManage::NetManage()
 {
@@ -19,17 +20,23 @@ NetManage* NetManage::getManage()
       connect(&WorkThread,&QThread::finished,m_layer,&QObject::deleteLater);
       //绑定SendLogFile信号发送 后续添加任务在这里加信号和处理
       connect(s_instance,&NetManage::SendLogFile,m_layer,&NetLayer::SendBinLogFile);
+
+      //Task one...
+
+      //Task two...
       WorkThread.start();
   }
   return s_instance;
 }
-#ifndef TestSend  //TestSendlogfile
+//my fool function
 void NetManage::SendLogFileEmit()
 {
-    QString file ="file";
-    emit SendLogFile(file);
+    qDebug() << "SendLogfile********";
+    emit SendLogFile();
 }
-#endif
+
+
+
 
 
 

@@ -5,8 +5,24 @@ TcpSocket::TcpSocket(QObject *parent)
 {
     LinkTimer =new QTimer(this);
     mClient =new QTcpSocket();
-    connect(LinkTimer,SIGNAL(timeout()),this,SLOT(CheckLinkState()));
-    LinkTimer->start();
+//    connect(LinkTimer,SIGNAL(timeout()),this,SLOT(CheckLinkState()));
+//    LinkTimer->start();
+}
+
+bool TcpSocket::Connect()
+{
+    if(!SokcetisConnect){
+    mClient->connectToHost(this->IP,this->Port);
+    }
+    else{
+        if(!mClient->waitForConnected(500)){
+          mClient->deleteLater();
+          this->SokcetisConnect=false;
+          return false;
+        }
+    }
+    this->SokcetisConnect=false;
+    return  true;
 }
 
 void TcpSocket::CheckLinkState()
@@ -24,14 +40,14 @@ bool TcpSocket::ReConnect()
    if(!SokcetisConnect){
    mClient->connectToHost(this->IP,this->Port);
    }
-   else
-   {
+   else{
        if(!mClient->waitForConnected(500)){
          mClient->deleteLater();
          this->SokcetisConnect=false;
          return false;
        }
    }
+   this->SokcetisConnect=false;
    return  true;
 }
 

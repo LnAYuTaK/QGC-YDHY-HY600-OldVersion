@@ -18,10 +18,10 @@
 class Data : public QObject
 {
     Q_OBJECT
-
     Q_PROPERTY(double _progressBar READ ProgressBar WRITE progressBar NOTIFY progresschanged)
     Q_PROPERTY(int _Msg READ Msg WRITE msg NOTIFY msgchanged)
     Q_PROPERTY(QString _usertxt READ usertxt WRITE setuser NOTIFY txtchanged)
+
 
     double ProgressBar() const{
         qDebug() << __FILE__ << __func__ << _progressBar;
@@ -79,7 +79,6 @@ public:
     static QString  Firmware;
     // µØÃæÕ¾°æ±¾ºÅ
     static QString  QGCversion;
-
 
 //    static int list_length;
 

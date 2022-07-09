@@ -12,15 +12,17 @@ class TcpSocket : public QObject
 public:
     explicit TcpSocket(QObject *parent = nullptr);
     QTcpSocket * mClient=nullptr;
-    QString IP = Setting::getSetting()->getvalue("NetConfig/ip").toString();
-    int Port = Setting::getSetting()->getvalue("NetConfig/port").toInt();
+    QTimer *LinkTimer;
     bool SokcetisConnect = false;
 
-    QTimer *LinkTimer;
-    bool Connect();
     bool ReConnect ();
     void  WriteBytes(char *buffer,qint64 bufsize);
+
+    const QString IP = Setting::getSetting()->getvalue("NetConfig/ip").toString();
+    const int Port = Setting::getSetting()->getvalue("NetConfig/port").toInt();
+
 public slots:
+    bool Connect();
     void CheckLinkState();
 
 

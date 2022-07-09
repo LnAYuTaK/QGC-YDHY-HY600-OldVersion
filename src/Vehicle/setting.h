@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QSettings>
 #include <QDebug>
-#define CONFIGPATH  "C:/Users/Administrator/Desktop/Config.ini"
+#include <QThread>
+#include <QFile>
+#define CONFIGPATH  "C:/Users/Administrator/Desktop/Config/Config.ini"
 //??????Setting???????????????ini???
 class Setting
 {

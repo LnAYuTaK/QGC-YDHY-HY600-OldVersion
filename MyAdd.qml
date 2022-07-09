@@ -29,6 +29,8 @@ import QGroundControl.Controllers       1.0
 import QGroundControl.ShapeFileHelper   1.0
 import QGroundControl.Airspace          1.0
 import QGroundControl.Airmap            1.0
+//自己添加模块
+import MyNetManage 1.0
 
 Rectangle {
     id:     myAddBackground
@@ -137,7 +139,34 @@ Rectangle {
 //            }
 //        }
 
-        Rectangle {
+        Rectangle{
+            id: sendbinlog
+            color:"#663399"
+            radius: 5
+            x: myAddBackground.width  * 0.13
+            y: myAddBackground.height  * 0.02
+            width: myAddBackground.width  * 0.1
+            height: user_id.height
+            anchors.verticalCenter: user_id.verticalCenter
+                Text {
+                    text: "发送日志"
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.bold: true
+                    font.pointSize: 14
+                }
+                MouseArea{
+                anchors.fill: parent
+                z: parent.z
+                onClicked: {
+
+                    }
+
+                }
+
+        }
+
+        Rectangle{
             id: exituser
             color:"#663399"
             radius: 5
@@ -215,7 +244,6 @@ Rectangle {
 //                    DATA.readtxttosend()
 ////                        progressBar1.onStart();
 //                }
-
                 onClicked: {
                     // DATA.readtxttosend()
                     if (cProgress.isRunning()){

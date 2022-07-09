@@ -14,7 +14,25 @@ import QtQuick.Controls 1.2
 import QGroundControl.Controls 1.0
 import QGroundControl.ScreenTools 1.0
 import QGroundControl.Palette 1.0
-
+//界面显示QML
 ParameterEditor {
+    Text {
+        text: "Hello World!"
+        font.family: "Helvetica"
+        font.pointSize: 24
+        color: "red"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

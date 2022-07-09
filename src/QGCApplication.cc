@@ -480,6 +480,9 @@ void QGCApplication::_initCommon()
     qmlRegisterType<QGCPalette>     ("QGroundControl.Palette", 1, 0, "QGCPalette");
     qmlRegisterType<QGCMapPalette>  ("QGroundControl.Palette", 1, 0, "QGCMapPalette");
 
+    //2022 7/11增加qml注册对象注释
+    //qmlRegisterType<NetManage>       ("MyNetManage", 1, 0, "NetManage");
+
     qmlRegisterUncreatableType<Vehicle>                 (kQGCVehicle,                       1, 0, "Vehicle",                    kRefOnly);
     qmlRegisterUncreatableType<MissionManager>          (kQGCVehicle,                       1, 0, "MissionManager",             kRefOnly);
     qmlRegisterUncreatableType<ParameterManager>        (kQGCVehicle,                       1, 0, "ParameterManager",           kRefOnly);
@@ -690,7 +693,6 @@ bool QGCApplication::_checkTelemetrySavePath(bool /*useMessageBox*/)
         showMessage(error);
         return false;
     }
-
     return true;
 }
 

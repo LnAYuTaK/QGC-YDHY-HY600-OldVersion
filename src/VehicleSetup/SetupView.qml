@@ -144,7 +144,7 @@ Rectangle {
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.largeFontPointSize
                 text:                   qsTr("Vehicle settings and info will display after connecting your vehicle.") +
-                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " Click Firmware on the left to upgrade your vehicle.")
+                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : "单击左侧的固件升级您的车辆.")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -288,16 +288,16 @@ Rectangle {
                 }
             }
 
-//            SubMenuButton {
-//                setupIndicator:     false
-//                exclusiveGroup:     setupButtonGroup
-//                visible:            QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
-//                                    !QGroundControl.multiVehicleManager.activeVehicle.highLatencyLink &&
-//                                    _corePlugin.showAdvancedUI
-//                text:               qsTr("Parameters")
-//                Layout.fillWidth:   true
-//                onClicked:          showPanel(this, "SetupParameterEditor.qml")
-//            }
+            SubMenuButton {
+                setupIndicator:     false
+                exclusiveGroup:     setupButtonGroup
+                visible:            QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
+                                    !QGroundControl.multiVehicleManager.activeVehicle.highLatencyLink &&
+                                    _corePlugin.showAdvancedUI
+                text:               qsTr("参数")
+                Layout.fillWidth:   true
+                onClicked:          showPanel(this, "SetupParameterEditor.qml")
+            }
 
         }
     }

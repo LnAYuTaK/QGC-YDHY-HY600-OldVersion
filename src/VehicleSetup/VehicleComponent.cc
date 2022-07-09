@@ -50,7 +50,6 @@ void VehicleComponent::addSummaryQmlComponent(QQmlContext* context, QQuickItem* 
         qWarning() << "Internal error";
     }
 }
-
 void VehicleComponent::setupTriggerSignals(void)
 {
     // Watch for changed on trigger list params
@@ -60,6 +59,7 @@ void VehicleComponent::setupTriggerSignals(void)
             connect(fact, &Fact::valueChanged, this, &VehicleComponent::_triggerUpdated);
         }
     }
+
 }
 
 void VehicleComponent::_triggerUpdated(QVariant /*value*/)

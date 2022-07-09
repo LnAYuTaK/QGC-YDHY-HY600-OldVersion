@@ -606,7 +606,6 @@ Fact* ParameterManager::getParameter(int componentId, const QString& paramName)
         qgcApp()->reportMissingParameter(componentId, mappedParamName);
         return &_defaultFact;
     }
-
     return _mapParameterName2Variant[componentId][mappedParamName].value<Fact*>();
 }
 
@@ -1418,6 +1417,8 @@ QString ParameterManager::parameterMetaDataFile(Vehicle* vehicle, MAV_AUTOPILOT 
     }
     qCDebug(ParameterManagerLog) << "ParameterManager::parameterMetaDataFile file:major:minor" << metaDataFile << majorVersion << minorVersion;
 
+
+    qDebug() << metaDataFile;
     return metaDataFile;
 }
 
