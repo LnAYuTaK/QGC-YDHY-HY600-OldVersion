@@ -19,7 +19,7 @@ private:
     static NetManage *s_instance;
     static NetLayer *m_layer;
     static QThread WorkThread;
-    // 与信号SendLogFile相同功能方便测试
+    // ?????SendLogFile??????????????
 signals:
     void SendLogFile();
 

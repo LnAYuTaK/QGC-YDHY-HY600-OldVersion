@@ -34,6 +34,7 @@
 #include "mysqlhelper.h"
 #include <QQuickWidget>
 #include "NetManage.h"
+#include "paramanage.h"
 
 #ifndef __mobile__
     #include "QGCSerialPortInfo.h"
@@ -374,8 +375,9 @@ int main(int argc, char *argv[])
         app->exec();
         return -1;
     }
+    //qmlRegisterType<ParaManage>("Personal.ParaManage", 1, 0, "ParaManage");
 
-# if 1    // 2022 7/9 Test SendBinLog
+# if 0    // 2022 7/9 Test SendBinLog
      NetManage::getManage()->SendLogFileEmit();
 #endif
 

@@ -392,9 +392,9 @@ void Data::Set_userID_value(){
 #else
     dir_save =  "/storage/emulated/0/UIDdate";  //???
 #endif
-
     QDir dir;
-    if(!dir.exists(dir_save)){
+    if(!dir.exists(dir_save))
+    {
         dir.mkdir(dir_save);//????????????
     }
     QString fileName = dir_save + "/clientmanmage";  //????

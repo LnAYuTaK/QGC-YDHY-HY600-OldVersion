@@ -98,6 +98,7 @@
 #include "LogReplayLink.h"
 #include "VehicleObjectAvoidance.h"
 #include "TrajectoryPoints.h"
+#include "paramanage.h"
 
 #if defined(QGC_ENABLE_PAIRING)
 #include "PairingManager.h"
@@ -479,9 +480,9 @@ void QGCApplication::_initCommon()
 
     qmlRegisterType<QGCPalette>     ("QGroundControl.Palette", 1, 0, "QGCPalette");
     qmlRegisterType<QGCMapPalette>  ("QGroundControl.Palette", 1, 0, "QGCMapPalette");
-
-    //2022 7/11增加qml注册对象注释
+    //2022 7/12 增加参数管理注册qml里边
     //qmlRegisterType<NetManage>       ("MyNetManage", 1, 0, "NetManage");
+    qmlRegisterType<ParaManage>("Personal.ParaManage", 1, 0, "ParaManage");
 
     qmlRegisterUncreatableType<Vehicle>                 (kQGCVehicle,                       1, 0, "Vehicle",                    kRefOnly);
     qmlRegisterUncreatableType<MissionManager>          (kQGCVehicle,                       1, 0, "MissionManager",             kRefOnly);

@@ -144,146 +144,146 @@ Item {
         }
     }
 
-    /// Group buttons
-    QGCFlickable {
-        id :                groupScroll
-        width:              ScreenTools.defaultFontPixelWidth * 25
-        anchors.top:        header.bottom
-        anchors.bottom:     parent.bottom
-        clip:               true
-        pixelAligned:       true
-        contentHeight:      groupedViewCategoryColumn.height
-        flickableDirection: Flickable.VerticalFlick
-        visible:            !_searchFilter && !controller.showModifiedOnly
+//    /// Group buttons
+//    QGCFlickable {
+//        id :                groupScroll
+//        width:              ScreenTools.defaultFontPixelWidth * 25
+//        anchors.top:        header.bottom
+//        anchors.bottom:     parent.bottom
+//        clip:               true
+//        pixelAligned:       true
+//        contentHeight:      groupedViewCategoryColumn.height
+//        flickableDirection: Flickable.VerticalFlick
+//        visible:            !_searchFilter && !controller.showModifiedOnly
 
-        ColumnLayout {
-            id:             groupedViewCategoryColumn
-            anchors.left:   parent.left
-            anchors.right:  parent.right
-            spacing:        Math.ceil(ScreenTools.defaultFontPixelHeight * 0.25)
+//        ColumnLayout {
+//            id:             groupedViewCategoryColumn
+//            anchors.left:   parent.left
+//            anchors.right:  parent.right
+//            spacing:        Math.ceil(ScreenTools.defaultFontPixelHeight * 0.25)
 
-            Repeater {
-                model: controller.categories
+//            Repeater {
+//                model: controller.categories
 
-                Column {
-                    Layout.fillWidth:   true
-                    spacing:            Math.ceil(ScreenTools.defaultFontPixelHeight * 0.25)
+//                Column {
+//                    Layout.fillWidth:   true
+//                    spacing:            Math.ceil(ScreenTools.defaultFontPixelHeight * 0.25)
 
-                    readonly property string category: modelData
+//                    readonly property string category: modelData
 
-                    SectionHeader {
-                        id:             categoryHeader
-                        anchors.left:   parent.left
-                        anchors.right:  parent.right
-                        text:           category
-                        checked:        controller.currentCategory === text
-                        exclusiveGroup: sectionGroup
+//                    SectionHeader {
+//                        id:             categoryHeader
+//                        anchors.left:   parent.left
+//                        anchors.right:  parent.right
+//                        text:           category
+//                        checked:        controller.currentCategory === text
+//                        exclusiveGroup: sectionGroup
 
-                        onCheckedChanged: {
-                            if (checked) {
-                                controller.currentCategory  = category
-                                controller.currentGroup     = controller.getGroupsForCategory(category)[0]
-                            }
-                        }
-                    }
+//                        onCheckedChanged: {
+//                            if (checked) {
+//                                controller.currentCategory  = category
+//                                controller.currentGroup     = controller.getGroupsForCategory(category)[0]
+//                            }
+//                        }
+//                    }
 
-                    ExclusiveGroup { id: buttonGroup }
+//                    ExclusiveGroup { id: buttonGroup }
 
-                    Repeater {
-                        model: categoryHeader.checked ? controller.getGroupsForCategory(category) : 0
+//                    Repeater {
+//                        model: categoryHeader.checked ? controller.getGroupsForCategory(category) : 0
 
-                        QGCButton {
-                            width:          ScreenTools.defaultFontPixelWidth * 25
-                            text:           groupName
-                            height:         _rowHeight
-                            checked:        controller.currentGroup === text
-                            exclusiveGroup: buttonGroup
+//                        QGCButton {
+//                            width:          ScreenTools.defaultFontPixelWidth * 25
+//                            text:           groupName
+//                            height:         _rowHeight
+//                            checked:        controller.currentGroup === text
+//                            exclusiveGroup: buttonGroup
 
-                            readonly property string groupName: modelData
+//                            readonly property string groupName: modelData
 
-                            onClicked: {
-                                if (!checked) _rowWidth = 10
-                                checked = true
-                                controller.currentCategory  = category
-                                controller.currentGroup     = groupName
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+//                            onClicked: {
+//                                if (!checked) _rowWidth = 10
+//                                checked = true
+//                                controller.currentCategory  = category
+//                                controller.currentGroup     = groupName
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
-    /// Parameter list
-    QGCListView {
-        id:                 editorListView
-        anchors.leftMargin: ScreenTools.defaultFontPixelWidth
-        anchors.left:       (_searchFilter || controller.showModifiedOnly) ? parent.left : groupScroll.right
-        anchors.right:      parent.right
-        anchors.top:        header.bottom
-        anchors.bottom:     parent.bottom
-        orientation:        ListView.Vertical
-        model:              controller.parameters
-        cacheBuffer:        height > 0 ? height * 2 : 0
-        clip:               true
+//    /// Parameter list
+//    QGCListView {
+//        id:                 editorListView
+//        anchors.leftMargin: ScreenTools.defaultFontPixelWidth
+//        anchors.left:       (_searchFilter || controller.showModifiedOnly) ? parent.left : groupScroll.right
+//        anchors.right:      parent.right
+//        anchors.top:        header.bottom
+//        anchors.bottom:     parent.bottom
+//        orientation:        ListView.Vertical
+//        model:              controller.parameters
+//        cacheBuffer:        height > 0 ? height * 2 : 0
+//        clip:               true
 
-        delegate: Rectangle {
-            height: _rowHeight
-            width:  _rowWidth
-            color:  Qt.rgba(0,0,0,0)
+//        delegate: Rectangle {
+//            height: _rowHeight
+//            width:  _rowWidth
+//            color:  Qt.rgba(0,0,0,0)
 
-            Row {
-                id:     factRow
-                spacing: Math.ceil(ScreenTools.defaultFontPixelWidth * 0.5)
-                anchors.verticalCenter: parent.verticalCenter
+//            Row {
+//                id:     factRow
+//                spacing: Math.ceil(ScreenTools.defaultFontPixelWidth * 0.5)
+//                anchors.verticalCenter: parent.verticalCenter
 
-                property Fact modelFact: object
+//                property Fact modelFact: object
 
-                QGCLabel {
-                    id:     nameLabel
-                    width:  ScreenTools.defaultFontPixelWidth  * 20
-                    text:   factRow.modelFact.name
-                    clip:   true
-                }
+//                QGCLabel {
+//                    id:     nameLabel
+//                    width:  ScreenTools.defaultFontPixelWidth  * 20
+//                    text:   factRow.modelFact.name
+//                    clip:   true
+//                }
 
-                QGCLabel {
-                    id:     valueLabel
-                    width:  ScreenTools.defaultFontPixelWidth  * 20
-                    color:  factRow.modelFact.defaultValueAvailable ? (factRow.modelFact.valueEqualsDefault ? qgcPal.text : qgcPal.warningText) : qgcPal.text
-                    text:   factRow.modelFact.enumStrings.length === 0 ? factRow.modelFact.valueString + " " + factRow.modelFact.units : factRow.modelFact.enumStringValue
-                    clip:   true
-                }
+//                QGCLabel {
+//                    id:     valueLabel
+//                    width:  ScreenTools.defaultFontPixelWidth  * 20
+//                    color:  factRow.modelFact.defaultValueAvailable ? (factRow.modelFact.valueEqualsDefault ? qgcPal.text : qgcPal.warningText) : qgcPal.text
+//                    text:   factRow.modelFact.enumStrings.length === 0 ? factRow.modelFact.valueString + " " + factRow.modelFact.units : factRow.modelFact.enumStringValue
+//                    clip:   true
+//                }
 
-                QGCLabel {
-                    text:   factRow.modelFact.shortDescription
-                }
+//                QGCLabel {
+//                    text:   factRow.modelFact.shortDescription
+//                }
 
-                Component.onCompleted: {
-                    if(_rowWidth < factRow.width + ScreenTools.defaultFontPixelWidth) {
-                        _rowWidth = factRow.width + ScreenTools.defaultFontPixelWidth
-                    }
-                }
-            }
+//                Component.onCompleted: {
+//                    if(_rowWidth < factRow.width + ScreenTools.defaultFontPixelWidth) {
+//                        _rowWidth = factRow.width + ScreenTools.defaultFontPixelWidth
+//                    }
+//                }
+//            }
 
-            Rectangle {
-                width:  _rowWidth
-                height: 1
-                color:  qgcPal.text
-                opacity: 0.15
-                anchors.bottom: parent.bottom
-                anchors.left:   parent.left
-            }
+//            Rectangle {
+//                width:  _rowWidth
+//                height: 1
+//                color:  qgcPal.text
+//                opacity: 0.15
+//                anchors.bottom: parent.bottom
+//                anchors.left:   parent.left
+//            }
 
-            MouseArea {
-                anchors.fill:       parent
-                acceptedButtons:    Qt.LeftButton
-                onClicked: {
-                    _editorDialogFact = factRow.modelFact
-                    mainWindow.showComponentDialog(editorDialogComponent, qsTr("Parameter Editor"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Save)
-                }
-            }
-        }
-    }
+//            MouseArea {
+//                anchors.fill:       parent
+//                acceptedButtons:    Qt.LeftButton
+//                onClicked: {
+//                    _editorDialogFact = factRow.modelFact
+//                    mainWindow.showComponentDialog(editorDialogComponent, qsTr("Parameter Editor"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Save)
+//                }
+//            }
+//        }
+//    }
 
     QGCFileDialog {
         id:             fileDialog

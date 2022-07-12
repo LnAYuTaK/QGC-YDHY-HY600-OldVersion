@@ -287,7 +287,7 @@ Rectangle {
                     onClicked:          showVehicleComponentPanel(modelData)
                 }
             }
-
+            //参数的显示
             SubMenuButton {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup

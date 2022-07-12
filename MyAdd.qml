@@ -30,7 +30,6 @@ import QGroundControl.ShapeFileHelper   1.0
 import QGroundControl.Airspace          1.0
 import QGroundControl.Airmap            1.0
 //自己添加模块
-import MyNetManage 1.0
 
 Rectangle {
     id:     myAddBackground

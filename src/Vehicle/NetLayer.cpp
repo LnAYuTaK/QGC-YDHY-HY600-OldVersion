@@ -5,18 +5,35 @@ NetLayer::NetLayer(QObject *parent)
 {
 
 }
+//==================================================================
+//函 数 名：  SendBinLogFile
+//功能描述：  TCP发送BIN文件到后台服务器
+//输入参数：
+//返 回 值：  void
+//作    者：  刘宽
+//日    期：  2022 7/12 增加注释
+//修改记录：
+//==================================================================
 
-void NetLayer::SendBinLogFile()
+void NetLayer::SendBinLogFile(/*QString filename*/)
 {
     QTcpSocket *NetSocket = new QTcpSocket;
 //    connect(NetSocket, SIGNAL(disconnected()), NetSocket, SLOT(deleteLater()));
 
     NetSocket->connectToHost(IP,Port);
     NetSocket->waitForConnected(3000);
-    qDebug()<< IP ;
-    qDebug() << Port;
-    QFile m_file;
-    m_file.setFileName("/storage/emulated/0/DATALOG");
+    //先发送 请求包格式
+    //      |FFFF|
+
+
+
+
+
+
+
+
+    QFile m_file; 
+    m_file.setFileName("../Config/Config.ini");
     //QFileInfo fileInfo(m_file);
     if ((NetSocket->state() != QAbstractSocket::ConnectedState) || (!m_file.open(QIODevice::ReadOnly)) ) {
          NetSocket->deleteLater();

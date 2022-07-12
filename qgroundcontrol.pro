@@ -438,6 +438,7 @@ HEADERS += \
     src/Vehicle/NetLayer.h \
     src/Vehicle/data.h \
     src/Vehicle/mysqlhelper.h \
+    src/Vehicle/paramanage.h \
     src/Vehicle/senddata.h \
     src/Vehicle/setting.h \
     src/Vehicle/TcpSocket.h \
@@ -462,6 +463,7 @@ SOURCES += \
     src/Vehicle/NetLayer.cpp \
     src/Vehicle/data.cpp \
     src/Vehicle/mysqlhelper.cpp \
+    src/Vehicle/paramanage.cpp \
     src/Vehicle/senddata.cpp \
     src/Vehicle/worker.cpp \
     src/Vehicle/setting.cpp \
