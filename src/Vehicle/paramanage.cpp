@@ -1,6 +1,8 @@
 #include "paramanage.h"
 #include "MultiVehicleManager.h"
 #include "QGCApplication.h"
+
+
 ParaManage::ParaManage(QObject *parent)
     : QObject{parent}
 {
@@ -11,14 +13,28 @@ ParaManage::ParaManage(QObject *parent)
     paramMgr = activeVehicle->parameterManager();
 }
 
-//设置参数
 bool ParaManage::setParameterValue(int componentId, QString& paramName, QVariant &value)
 {
-  paramMgr->getParameter(componentId,paramName)->setRawValue(value);
-  return true;
+  if(paramMgr->parameterExists(componentId,paramName)){
+      paramMgr->getParameter(componentId,paramName)->setRawValue(value);
+      return true;
+  }
+  return false;
 }
-//获取参数
+
 QVariant ParaManage::getParameterValue(int componentId, QString& paramName)
 {
    return paramMgr->getParameter(componentId,paramName)->rawValue();
 }
+
+bool  ParaManage::refreshThisParameter(int componentId,QString &paramName)
+{
+    if(paramMgr->parameterExists(componentId,paramName)){
+        paramMgr->refreshParameter(componentId,paramName);
+        return true;
+    }
+    return false;
+}
+
+
+

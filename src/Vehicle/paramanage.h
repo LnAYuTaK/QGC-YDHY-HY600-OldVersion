@@ -6,16 +6,18 @@
 #include "Vehicle.h"
 class ParaManage : public QObject
 {
-
     Q_OBJECT
     //Test
     //Q_PROPERTY(QVariant value READ Parameter WRITE SetParameter NOTIFY ParameterChanged)
 public:
     explicit ParaManage(QObject *parent = nullptr);
     //
+   //修改参数
     Q_INVOKABLE bool setParameterValue(int, QString &,QVariant &);
-
+   // 获得参数
     Q_INVOKABLE QVariant getParameterValue(int ,QString &);
+    //刷新单独的参数
+    Q_INVOKABLE bool  refreshThisParameter(int ,QString &);
 
 signals:
     void ParameterChanged();

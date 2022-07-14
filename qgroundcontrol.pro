@@ -43,6 +43,9 @@ QML_IMPORT_PATH += $$PWD/src/QmlControls
 # OS Specific settings
 #
 
+include($$PWD/src/src/TaoQuick.pri)
+
+
 MacBuild {
     QMAKE_INFO_PLIST    = Custom-Info.plist
     ICON                = $${BASEDIR}/resources/icons/macx.icns

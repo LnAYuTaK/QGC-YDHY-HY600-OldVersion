@@ -8,7 +8,7 @@
  ****************************************************************************/
 
 import QtQuick                      2.3
-import QtQuick.Controls             1.2
+import QtQuick.Controls             2.0
 import QtQuick.Dialogs              1.2
 import QtQuick.Layouts              1.2
 
@@ -19,6 +19,10 @@ import QGroundControl.ScreenTools   1.0
 import QGroundControl.Controllers   1.0
 import QGroundControl.FactSystem    1.0
 import QGroundControl.FactControls  1.0
+//2022 7.14tianjia
+import TaoQuick 1.0
+import QtQml.Models 2.0
+import Personal.ParaManage  1.0
 
 Item {
     id:         _root
@@ -36,113 +40,248 @@ Item {
         onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
     }
 
-    ExclusiveGroup { id: sectionGroup }
-
-    //---------------------------------------------
-    //-- Header
-    Row {
-        id:             header
-        anchors.left:   parent.left
-        anchors.right:  parent.right
-        spacing:        ScreenTools.defaultFontPixelWidth
-
-        Timer {
-            id:         clearTimer
-            interval:   100;
-            running:    false;
-            repeat:     false
-            onTriggered: {
-                searchText.text = ""
-                controller.searchText = ""
+    //ExclusiveGroup { id: sectionGroup }
+//       ParaManage{
+//         id:parame
+//       }
+        Rectangle {
+            border.width: 1
+            border.color: "white"
+            anchors{
+                centerIn: parent
             }
-        }
-
-        QGCLabel {
-            anchors.verticalCenter: parent.verticalCenter
-            text: qsTr("Search:")
-        }
-
-        QGCTextField {
-            id:                 searchText
-            text:               controller.searchText
-            onDisplayTextChanged: controller.searchText = displayText
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-        QGCButton {
-            text: qsTr("Clear")
-            onClicked: {
-                if(ScreenTools.isMobile) {
-                    Qt.inputMethod.hide();
+            width: parent.width
+            height: parent.height
+            clip: true
+            Column {
+                anchors.fill: parent
+                anchors.margins: 2
+                spacing: 0
+                Item {
+                    id: titleItem
+                    width: parent.width
+                    height: 60
+                    Label {
+                        font.pixelSize: 18
+                        text: qsTr("参数设置")
+                        anchors {
+                            left: parent.left
+                            leftMargin: 10
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
                 }
-                clearTimer.start()
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#ededed"
+                }
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "#ededed"
+                }
+                Item {
+                    id: listItem
+                    width: parent.width
+                    height: 638
+                    Item {
+                        id: leftItem
+                        width: 160
+                        height: parent.height
+                        ListView {
+                            id: leftListView
+                            anchors.fill: parent
+                            model: ["流速开度","参数2","参数3","参数4"]
+                            delegate: Button {
+                                id: btn
+                                width: 160
+                                height: 50
+                                property bool isSelected: leftListView.currentIndex === index
+                                text: modelData
+                                background: Rectangle {
+                                    width: btn.width
+                                    height: btn.height
+                                    color: {
+                                        if (btn.isSelected || btn.pressed) {
+                                            return "#ffffff"
+                                        } else if (btn.hovered) {
+                                            return "#e1e6eb"
+                                        } else {
+                                            return "#f0f0f1"
+                                        }
+                                    }
+                                }
+                                onClicked: {
+                                    leftListView.currentIndex = index
+
+                                    //互斥锁 锁上,别让右边再把信号搞回来
+                                    rightListView.notifyLeft = false
+
+                                    rightListView.positionViewAtIndex(
+                                                index, ListView.Beginning)
+                                    //解锁
+                                    rightListView.notifyLeft = true
+                                }
+                            }
+                        }
+                    }
+                    Item {
+                        id: rightItem
+                        width: parent.width - leftItem.width
+                        x: leftItem.width
+                        height: parent.height
+                        ListView {
+                            id: rightListView
+                            anchors.fill: parent
+                            clip: true
+
+                            //互斥flag
+                            property bool notifyLeft: true
+
+                            delegate: Item {
+                                width: 400
+                                height: 160
+                                Row {
+                                    x: 100
+                                    spacing: 30
+                                    height: parent.height
+                                    CusLabel {
+                                        text: modelData
+                                        wrapMode: Label.WordWrap
+                                        width: 100
+                                        font.pixelSize: 20
+                                    }
+                                    Rectangle {
+                                        width: 150
+                                        height: 30
+                                        color: "#ededed"
+                                    }
+                                    CusTextField {
+                                        placeholderText: "0~100"
+                                        width: 100
+                                        height: 30
+                                    }
+                                }
+                            }
+                            model: leftListView.model
+                            onContentYChanged: {
+                                if (notifyLeft) {
+                                    var i = rightListView.indexAt(0, contentY)
+                                    leftListView.currentIndex = i
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            anchors.verticalCenter: parent.verticalCenter
         }
 
-        QGCCheckBox {
-            text:       qsTr("Show modified only")
-            checked:    controller.showModifiedOnly
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                controller.showModifiedOnly = !controller.showModifiedOnly
-            }
-        }
-    } // Row - Header
+   // ---------------------------------------------
+    //-- Header
+//    Row {
+//        id:             header
+//        anchors.left:   parent.left
+//        anchors.right:  parent.right
+//        spacing:        ScreenTools.defaultFontPixelWidth
 
-    QGCButton {
-        anchors.top:    header.top
-        anchors.bottom: header.bottom
-        anchors.right:  parent.right
-        text:           qsTr("Tools")
-        visible:        !_searchFilter
-        onClicked:      toolsMenu.popup()
-    }
+//        Timer {
+//            id:         clearTimer
+//            interval:   100;
+//            running:    false;
+//            repeat:     false
+//            onTriggered: {
+//                searchText.text = ""
+//                controller.searchText = ""
+//            }
+//        }
 
-    QGCMenu {
-        id:                 toolsMenu
-        QGCMenuItem {
-            text:           qsTr("Refresh")
-            onTriggered:	controller.refresh()
-        }
-        QGCMenuItem {
-            text:           qsTr("Reset all to firmware's defaults")
-            onTriggered:    mainWindow.showComponentDialog(resetToDefaultConfirmComponent, qsTr("Reset All"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
-        }
-        QGCMenuItem {
-            text:           qsTr("Reset to vehicle's configuration defaults")
-            visible:        !activeVehicle.apmFirmware
-            onTriggered:    mainWindow.showComponentDialog(resetToVehicleConfigurationConfirmComponent, qsTr("Reset All"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
-        }
-        QGCMenuSeparator { }
-        QGCMenuItem {
-            text:           qsTr("Load from file...")
-            onTriggered: {
-                fileDialog.title =          qsTr("Load Parameters")
-                fileDialog.selectExisting = true
-                fileDialog.openForLoad()
-            }
-        }
-        QGCMenuItem {
-            text:           qsTr("Save to file...")
-            onTriggered: {
-                fileDialog.title =          qsTr("Save Parameters")
-                fileDialog.selectExisting = false
-                fileDialog.openForSave()
-            }
-        }
-        QGCMenuSeparator { visible: _showRCToParam }
-        QGCMenuItem {
-            text:           qsTr("Clear RC to Param")
-            onTriggered:	controller.clearRCToParam()
-            visible:        _showRCToParam
-        }
-        QGCMenuSeparator { }
-        QGCMenuItem {
-            text:           qsTr("Reboot Vehicle")
-            onTriggered:    mainWindow.showComponentDialog(rebootVehicleConfirmComponent, qsTr("Reboot Vehicle"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Ok)
-        }
-    }
+//        QGCLabel {
+//            anchors.verticalCenter: parent.verticalCenter
+//            text: qsTr("Search:")
+//        }
+
+//        QGCTextField {
+//            id:                 searchText
+//            text:               controller.searchText
+//            onDisplayTextChanged: controller.searchText = displayText
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+
+//        QGCButton {
+//            text: qsTr("Clear")
+//            onClicked: {
+//                if(ScreenTools.isMobile) {
+//                    Qt.inputMethod.hide();
+//                }
+//                clearTimer.start()
+//            }
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+
+//        QGCCheckBox {
+//            text:       qsTr("Show modified only")
+//            checked:    controller.showModifiedOnly
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                controller.showModifiedOnly = !controller.showModifiedOnly
+//            }
+//        }
+//    } // Row - Header
+
+//    QGCButton {
+//        anchors.top:    header.top
+//        anchors.bottom: header.bottom
+//        anchors.right:  parent.right
+//        text:           qsTr("Tools")
+//        visible:        !_searchFilter
+//        onClicked:      toolsMenu.popup()
+//    }
+
+//    QGCMenu {
+//        id:                 toolsMenu
+//        QGCMenuItem {
+//            text:           qsTr("Refresh")
+//            onTriggered:	controller.refresh()
+//        }
+//        QGCMenuItem {
+//            text:           qsTr("Reset all to firmware's defaults")
+//            onTriggered:    mainWindow.showComponentDialog(resetToDefaultConfirmComponent, qsTr("Reset All"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
+//        }
+//        QGCMenuItem {
+//            text:           qsTr("Reset to vehicle's configuration defaults")
+//            visible:        !activeVehicle.apmFirmware
+//            onTriggered:    mainWindow.showComponentDialog(resetToVehicleConfigurationConfirmComponent, qsTr("Reset All"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
+//        }
+//        QGCMenuSeparator { }
+//        QGCMenuItem {
+//            text:           qsTr("Load from file...")
+//            onTriggered: {
+//                fileDialog.title =          qsTr("Load Parameters")
+//                fileDialog.selectExisting = true
+//                fileDialog.openForLoad()
+//            }
+//        }
+//        QGCMenuItem {
+//            text:           qsTr("Save to file...")
+//            onTriggered: {
+//                fileDialog.title =          qsTr("Save Parameters")
+//                fileDialog.selectExisting = false
+//                fileDialog.openForSave()
+//            }
+//        }
+//        QGCMenuSeparator { visible: _showRCToParam }
+//        QGCMenuItem {
+//            text:           qsTr("Clear RC to Param")
+//            onTriggered:	controller.clearRCToParam()
+//            visible:        _showRCToParam
+//        }
+//        QGCMenuSeparator { }
+//        QGCMenuItem {
+//            text:           qsTr("Reboot Vehicle")
+//            onTriggered:    mainWindow.showComponentDialog(rebootVehicleConfirmComponent, qsTr("Reboot Vehicle"), mainWindow.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Ok)
+//        }
+//    }
 
 //    /// Group buttons
 //    QGCFlickable {
@@ -285,31 +424,31 @@ Item {
 //        }
 //    }
 
-    QGCFileDialog {
-        id:             fileDialog
-        folder:         _appSettings.parameterSavePath
-        fileExtension:  _appSettings.parameterFileExtension
-        nameFilters:    [ qsTr("Parameter Files (*.%1)").arg(_appSettings.parameterFileExtension) , qsTr("All Files (*.*)") ]
+//    QGCFileDialog {
+//        id:             fileDialog
+//        folder:         _appSettings.parameterSavePath
+//        fileExtension:  _appSettings.parameterFileExtension
+//        nameFilters:    [ qsTr("Parameter Files (*.%1)").arg(_appSettings.parameterFileExtension) , qsTr("All Files (*.*)") ]
 
-        onAcceptedForSave: {
-            controller.saveToFile(file)
-            close()
-        }
+//        onAcceptedForSave: {
+//            controller.saveToFile(file)
+//            close()
+//        }
 
-        onAcceptedForLoad: {
-            controller.loadFromFile(file)
-            close()
-        }
-    }
+//        onAcceptedForLoad: {
+//            controller.loadFromFile(file)
+//            close()
+//        }
+//    }
 
-    Component {
-        id: editorDialogComponent
+//    Component {
+//        id: editorDialogComponent
 
-        ParameterEditorDialog {
-            fact:           _editorDialogFact
-            showRCToParam:  _showRCToParam
-        }
-    }
+//        ParameterEditorDialog {
+//            fact:           _editorDialogFact
+//            showRCToParam:  _showRCToParam
+//        }
+//    }
 
     Component {
         id: resetToDefaultConfirmComponent

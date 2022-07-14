@@ -433,6 +433,11 @@ QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
 
     //QUserLogin *user_login = new QUserLogin();
     //pEngine->rootContext()->setContextProperty("QUSERLOGIN",user_login);
+    //2022 7/14增加一個第三方qmlmodule
+     pEngine->addImportPath(TaoQuickImportPath);
+     pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
+
+
     SendData *send_data = new SendData();
     pEngine->rootContext()->setContextProperty("SENDDATA",send_data);
     Data *data = new Data();
