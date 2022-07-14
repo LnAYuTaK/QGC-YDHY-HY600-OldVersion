@@ -22,7 +22,7 @@ import QGroundControl.FactControls  1.0
 //2022 7.14tianjia
 import TaoQuick 1.0
 import QtQml.Models 2.0
-import Personal.ParaManage  1.0
+
 
 Item {
     id:         _root
@@ -41,9 +41,6 @@ Item {
     }
 
     //ExclusiveGroup { id: sectionGroup }
-//       ParaManage{
-//         id:parame
-//       }
         Rectangle {
             border.width: 1
             border.color: "white"
@@ -92,7 +89,7 @@ Item {
                         ListView {
                             id: leftListView
                             anchors.fill: parent
-                            model: ["流速开度","参数2","参数3","参数4"]
+                            model: ["流速开度"]
                             delegate: Button {
                                 id: btn
                                 width: 160
@@ -151,17 +148,34 @@ Item {
                                         wrapMode: Label.WordWrap
                                         width: 100
                                         font.pixelSize: 20
+
                                     }
                                     Rectangle {
                                         width: 150
                                         height: 30
                                         color: "#ededed"
+                                        Text {
+                                            id: name
+                                            width: parent.width
+                                            height: parent.height
+                                            text: ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
+                                        }
                                     }
                                     CusTextField {
+                                        id :spray_pump_rate
                                         placeholderText: "0~100"
                                         width: 100
                                         height: 30
                                     }
+                                    CusButton {
+                                        width: 100
+                                        height: 30
+                                        text: "上传参数"
+                                        onClicked:{
+                                               ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text.toString().toFloat())
+                                            }
+                                    }
+
                                 }
                             }
                             model: leftListView.model

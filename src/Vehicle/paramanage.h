@@ -13,11 +13,11 @@ public:
     explicit ParaManage(QObject *parent = nullptr);
     //
    //修改参数
-    Q_INVOKABLE bool setParameterValue(int, QString &,QVariant &);
+    Q_INVOKABLE bool setParameterValue(int, QString ,QVariant &);
    // 获得参数
-    Q_INVOKABLE QVariant getParameterValue(int ,QString &);
+    Q_INVOKABLE QVariant getParameterValue(int ,QString );
     //刷新单独的参数
-    Q_INVOKABLE bool  refreshThisParameter(int ,QString &);
+    Q_INVOKABLE bool  refreshThisParameter(int ,QString );
 
 signals:
     void ParameterChanged();

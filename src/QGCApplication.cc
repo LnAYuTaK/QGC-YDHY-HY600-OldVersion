@@ -482,7 +482,7 @@ void QGCApplication::_initCommon()
     qmlRegisterType<QGCMapPalette>  ("QGroundControl.Palette", 1, 0, "QGCMapPalette");
     //2022 7/12 增加参数管理注册qml里边
     //qmlRegisterType<NetManage>       ("MyNetManage", 1, 0, "NetManage");
-    qmlRegisterType<ParaManage>("Personal.ParaManage", 1, 0, "ParaManage");
+   // qmlRegisterType<ParaManage>("Personal.ParaManage", 1, 0, "ParaManage");
 
     qmlRegisterUncreatableType<Vehicle>                 (kQGCVehicle,                       1, 0, "Vehicle",                    kRefOnly);
     qmlRegisterUncreatableType<MissionManager>          (kQGCVehicle,                       1, 0, "MissionManager",             kRefOnly);

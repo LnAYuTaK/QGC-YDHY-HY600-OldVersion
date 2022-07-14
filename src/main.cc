@@ -375,7 +375,6 @@ int main(int argc, char *argv[])
         app->exec();
         return -1;
     }
-    //qmlRegisterType<ParaManage>("Personal.ParaManage", 1, 0, "ParaManage");
 
 # if 0    // 2022 7/9 Test SendBinLog
      NetManage::getManage()->SendLogFileEmit();

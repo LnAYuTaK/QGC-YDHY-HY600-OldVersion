@@ -292,10 +292,10 @@ Rectangle {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup
                 // 2022 7.14Test
-                visible:      true
-                    /*QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
+                visible:
+                    QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
                                     !QGroundControl.multiVehicleManager.activeVehicle.highLatencyLink &&
-                                    _corePlugin.showAdvancedUI*/
+                                    _corePlugin.showAdvancedUI
                 text:               qsTr("参数")
                 Layout.fillWidth:   true
                 onClicked:          showPanel(this, "SetupParameterEditor.qml")

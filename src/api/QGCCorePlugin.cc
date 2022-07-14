@@ -27,6 +27,8 @@
 #include "worker.h"
 #include <QtQml>
 #include <QQmlEngine>
+#include  "paramanage.h"
+#include <QQmlContext>
 
 #include<QMessageBox>
 
@@ -434,22 +436,23 @@ QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
     //QUserLogin *user_login = new QUserLogin();
     //pEngine->rootContext()->setContextProperty("QUSERLOGIN",user_login);
     //2022 7/14增加一個第三方qmlmodule
-     pEngine->addImportPath(TaoQuickImportPath);
-     pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
-
+    pEngine->addImportPath(TaoQuickImportPath);
+    pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
 
     SendData *send_data = new SendData();
     pEngine->rootContext()->setContextProperty("SENDDATA",send_data);
+
     Data *data = new Data();
     pEngine->rootContext()->setContextProperty("DATA",data);
     Worker *worker = new Worker();
     pEngine->rootContext()->setContextProperty("theworker",worker);
+
+    //2022 7/14这里要注意实例化顺序！
+    ParaManage *paramanger =new ParaManage();
+    pEngine->rootContext()->setContextProperty("ParaMange", paramanger);
+
     pEngine->load(QUrl(QStringLiteral("qrc:/qml/MainRootWindow.qml")));
-//    QThread *myThread = new QThread();
-//    pEngine->rootContext()->setContextProperty("MYTHREAD",myThread);
-//    pEngine->rootContext()->setContextProperty("DATA",Data::get_playback());
-//    pEngine->rootContext()->setContextProperty("DATA_LENGTH",Data::get_playback_length());
-//    pEngine->load(QUrl(QStringLiteral("qrc:/qml/UsersLogin.qml")));
+
     return pEngine;
 }
 
