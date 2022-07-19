@@ -40,7 +40,6 @@ Item {
         onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
     }
 
-    //ExclusiveGroup { id: sectionGroup }
         Rectangle {
             border.width: 1
             border.color: "white"
@@ -158,7 +157,10 @@ Item {
                                             id: name
                                             width: parent.width
                                             height: parent.height
+                                            font.pixelSize: 30
+                                            clip :true
                                             text: ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
+
                                         }
                                     }
                                     CusTextField {
@@ -172,10 +174,10 @@ Item {
                                         height: 30
                                         text: "上传参数"
                                         onClicked:{
-                                               ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text.toString().toFloat())
-                                            }
+                                               ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text)
+                                               name.text = ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
+                                        }
                                     }
-
                                 }
                             }
                             model: leftListView.model

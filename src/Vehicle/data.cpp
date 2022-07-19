@@ -8,6 +8,7 @@ Data::Data()
 
 QString Data::make_mavlink_pakage(){
 
+
     QDateTime datetime;
     time = datetime.currentDateTime().toTime_t() - starttime;
 
@@ -40,23 +41,28 @@ QString Data::make_mavlink_pakage(){
     //qDebug() << "spraystate_hex" << spraystate_hex;
 
     qint64* lon_int = split_double(lon,7);
+
     QString lon_hex_1 =  QString("%1").arg(lon_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lon_hex_1" << lon_hex_1;
     QString lon_hex_2 = QString("%1").arg(lon_int[1],6,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lon_hex_2" << lon_hex_2;
 
     qint64* lat_int = split_double(lat,7);
+
     QString lat_hex_1 =  QString("%1").arg(lat_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lat_hex_1" << lat_hex_1;
     QString lat_hex_2 = QString("%1").arg(lat_int[1],6,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lat_hex_2" << lat_hex_2;
     //alt = -10.125;
+
     QString alt_symbol_hex;
-    if(alt < 0){
+    if(alt < 0)
+    {
         alt_symbol_hex =  QString("%1").arg(1,1,16,QLatin1Char('0'));//value?int???char?????
         alt = qAbs(alt);
     }
-    else{
+    else
+    {
         alt_symbol_hex =  QString("%1").arg(0,1,16,QLatin1Char('0'));//value?int???char?????
     }
     qint64* alt_int = split_double(alt,2);
@@ -64,8 +70,6 @@ QString Data::make_mavlink_pakage(){
     //qDebug() << "alt_hex_1" << alt_hex_1;
     QString alt_hex_2 = QString("%1").arg(alt_int[1],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "alt_hex_2" << alt_hex_2;
-
-
     qint64* groundspeedvalue_int = split_double(groundspeedvalue,2);
     QString groundspeedvalue_hex_1 =  QString("%1").arg(groundspeedvalue_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "groundspeedvalue_hex_1" << groundspeedvalue_hex_1;
@@ -99,10 +103,11 @@ QString Data::make_mavlink_pakage(){
         checksum+=pack_array[i];
     }
     QString checksum_hex =  QString("%1").arg(checksum,4,16,QLatin1Char('0'));//value?int???char?????
-    QString FirmwareVersion=Firmware;
-    QString SoftwareVersion=Setting::getSetting()->getvalue("APP/version").toString();
+    //版本固件和app版本
+   // QString FirmwareVersion=Firmware;
+    //QString SoftwareVersion=Setting::getSetting()->getvalue("APP/version").toString();
 
-    return "EB90"+pack+FirmwareVersion+ SoftwareVersion+checksum_hex;
+    return "EB90"+pack+/*FirmwareVersion+ SoftwareVersion+*/checksum_hex;
 }
 
 QString Data::make_mavlink_pakagetest(){
@@ -184,8 +189,10 @@ void Data::data_save(QString sendmsg){
     mSocket->connectToHost(IP,Port);
     QByteArray sendMessage = sendmsg.toLocal8Bit();
     qint16 SendBufSize = mSocket->write(sendMessage);
-    qDebug() <<"writenum" << SendBufSize;
+    Q_UNUSED(SendBufSize)
+    qDebug()<<sendMessage;
     mSocket->close();
+    mSocket->deleteLater();
 }
 
 //?????????????????

@@ -22,15 +22,6 @@ void NetLayer::SendBinLogFile(/*QString filename*/)
 
     NetSocket->connectToHost(IP,Port);
     NetSocket->waitForConnected(3000);
-    //先发送 请求包格式
-    //      |FFFF|
-
-
-
-
-
-
-
 
     QFile m_file; 
     m_file.setFileName("../Config/Config.ini");

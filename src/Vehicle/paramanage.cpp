@@ -7,37 +7,40 @@ ParaManage::ParaManage(QObject *parent)
     : QObject{parent}
 {
 
-    // 获取当前飞机pointer
+    // ?????????pointer
 
 }
 
-bool ParaManage::setParameterValue(int componentId, QString paramName, QVariant &value)
+
+//2022 7/19单独适配的流度 后期需要修改成通用接口
+bool ParaManage::setParameterValue(int componentId, QString paramName,float value)
 {
-
-    qDebug()<<value;
+     qDebug()<<value;
     activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
-    //当前的参数管理pointer
+    //????????????pointer
     paramMgr = activeVehicle->parameterManager();
-  if(paramMgr->parameterExists(componentId,paramName)){
-      paramMgr->getParameter(componentId,paramName)->setRawValue(value);
-      return true;
-  }
-  return false;
+     if(paramMgr->parameterExists(componentId,paramName)&&(value<=100)&&(value>0)){
+     paramMgr->getParameter(componentId,paramName)->setRawValue(value);
+     return true;
+     }
+     qDebug()<<"error";
+     return false;
 }
 
-QVariant ParaManage::getParameterValue(int componentId, QString paramName)
+QString ParaManage::getParameterValue(int componentId, QString paramName)
 {
     activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
     qDebug() << "PARAGETSUCCESSFULE";
-    //当前的参数管理pointer
+    //????????????pointer
     paramMgr = activeVehicle->parameterManager();
-   return paramMgr->getParameter(componentId,paramName)->rawValue();
+    //QString str = QString::number(paramMgr->getParameter(componentId,paramName)->rawValue().toFloat(), 'f', 2);
+    return QString::number(paramMgr->getParameter(componentId,paramName)->rawValue().toFloat(), 'f', 2);
 }
 
 bool  ParaManage::refreshThisParameter(int componentId,QString paramName)
 {
     activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
-    //当前的参数管理pointer
+    //????????????pointer
     paramMgr = activeVehicle->parameterManager();
     if(paramMgr->parameterExists(componentId,paramName)){
         paramMgr->refreshParameter(componentId,paramName);
