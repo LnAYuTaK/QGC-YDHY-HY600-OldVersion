@@ -376,10 +376,6 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-# if 0    // 2022 7/9 Test SendBinLog
-     NetManage::getManage()->SendLogFileEmit();
-#endif
-
 #if 0
     QQuickWidget *view = new QQuickWidget;
     view->setSource(QUrl::fromLocalFile("qrc£º/UserLogin.qml"));

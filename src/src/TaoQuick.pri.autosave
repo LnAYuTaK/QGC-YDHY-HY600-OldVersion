@@ -1,11 +1,11 @@
 CONFIG(debug,debug|release){
     # debug mode use local file
-#    win32{
-#        path=$$system("cd")
-#        path ~=s,\\\\,/,g
-#    } else {
-#        path=$$system("pwd")
-#    }
+    win32{
+        path=$$system("cd")
+        path ~=s,\\\\,/,g
+    } else {
+        path=$$system("pwd")
+    }
     TaoQuickImport=\"file:///$$path\"
     TaoQuickImage=\"file:///$$path/TaoQuick/Images/\"
     DEFINES += TaoQuickImportPath=\\\"file:///$${path}\\\"

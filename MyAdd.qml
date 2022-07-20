@@ -154,17 +154,25 @@ Rectangle {
                     font.bold: true
                     font.pointSize: 14
                 }
+                QGCFileDialog {
+                    id: dialogupdata
+                    onAcceptedForLoad: {
+                        DATA.sendBinLog(file)
+                        close()
+                    }
+                }
                 MouseArea{
                 anchors.fill: parent
                 z: parent.z
                 onClicked: {
-
+                    dialogupdata.title =          qsTr("发送BIN LOG文件")
+                    dialogupdata.selectExisting = true
+                    dialogupdata._mobileDlg =true
+                    dialogupdata.openForLoad()
                     }
 
                 }
-
         }
-
         Rectangle{
             id: exituser
             color:"#663399"
@@ -181,10 +189,8 @@ Rectangle {
                     font.bold: true
                     font.pointSize: 14
                 }
-
                 MouseArea{
                 anchors.fill: parent
-
                 z: parent.z
                 onClicked: {
                     Qt.quit()

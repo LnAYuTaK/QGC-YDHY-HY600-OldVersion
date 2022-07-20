@@ -24,7 +24,6 @@ Column {
     id:         _largeColumn
     width:      pageWidth
     spacing:    _margins
-
     property bool showSettingsIcon: true
 
     property var    _activeVehicle: QGroundControl.multiVehicleManager.activeVehicle ? QGroundControl.multiVehicleManager.activeVehicle : QGroundControl.multiVehicleManager.offlineEditingVehicle

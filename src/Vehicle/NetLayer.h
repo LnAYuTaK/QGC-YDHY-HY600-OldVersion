@@ -14,11 +14,11 @@ public:
     explicit NetLayer(QObject *parent = nullptr);
 private:
     const QString IP = Setting::getSetting()->getvalue("NetConfig/IP").toString();
-    const int Port   = Setting:: getSetting()->getvalue("NetConfig/Port").toInt();
+    const int Port   = Setting:: getSetting()->getvalue("NetConfig/LogPort").toInt();
 public slots:
     //Task
     //???????????????
-    void SendBinLogFile();
+    void SendBinLogFile(QString);
     //Task
     //void SendData();
 signals:

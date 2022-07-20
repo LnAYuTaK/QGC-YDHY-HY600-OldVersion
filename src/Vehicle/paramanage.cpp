@@ -30,7 +30,6 @@ bool ParaManage::setParameterValue(int componentId, QString paramName,float valu
 QString ParaManage::getParameterValue(int componentId, QString paramName)
 {
     activeVehicle = qgcApp()->toolbox()->multiVehicleManager()->activeVehicle();
-    qDebug() << "PARAGETSUCCESSFULE";
     //????????????pointer
     paramMgr = activeVehicle->parameterManager();
     //QString str = QString::number(paramMgr->getParameter(componentId,paramName)->rawValue().toFloat(), 'f', 2);

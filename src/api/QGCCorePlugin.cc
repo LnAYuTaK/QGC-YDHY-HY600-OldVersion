@@ -286,6 +286,8 @@ QVariantList &QGCCorePlugin::settingsPages()
 
 QVariantList& QGCCorePlugin::instrumentPages()
 {
+
+    //右侧仪表类初始化
     if (!_p->valuesPageWidgetInfo) {
         _p->valuesPageWidgetInfo    = new QmlComponentInfo(tr("Values"),    QUrl::fromUserInput("qrc:/qml/ValuePageWidget.qml"));
         _p->cameraPageWidgetInfo    = new QmlComponentInfo(tr("Camera"),    QUrl::fromUserInput("qrc:/qml/CameraPageWidget.qml"));
@@ -461,7 +463,6 @@ bool QGCCorePlugin::mavlinkMessage(Vehicle* vehicle, LinkInterface* link, mavlin
     Q_UNUSED(vehicle);
     Q_UNUSED(link);
     Q_UNUSED(message);
-
     return true;
 }
 

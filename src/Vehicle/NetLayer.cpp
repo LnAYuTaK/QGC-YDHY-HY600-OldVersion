@@ -15,24 +15,23 @@ NetLayer::NetLayer(QObject *parent)
 //ÐÞ¸Ä¼ÇÂ¼£º
 //==================================================================
 
-void NetLayer::SendBinLogFile(/*QString filename*/)
+void NetLayer::SendBinLogFile(QString filename)
 {
     QTcpSocket *NetSocket = new QTcpSocket;
-//    connect(NetSocket, SIGNAL(disconnected()), NetSocket, SLOT(deleteLater()));
+//  connect(NetSocket, SIGNAL(disconnected()), NetSocket, SLOT(deleteLater()));
 
     NetSocket->connectToHost(IP,Port);
-    NetSocket->waitForConnected(3000);
-
+    NetSocket->waitForConnected(2000);
     QFile m_file; 
-    m_file.setFileName("../Config/Config.ini");
-    //QFileInfo fileInfo(m_file);
+    m_file.setFileName(filename);
+
     if ((NetSocket->state() != QAbstractSocket::ConnectedState) || (!m_file.open(QIODevice::ReadOnly)) ) {
          NetSocket->deleteLater();
         return;
     }
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
-    out.setVersion(QDataStream::Qt_5_15);
+    out.setVersion(QDataStream::Qt_5_12);
     qDebug() << m_file.fileName();
     QByteArray filemsg = m_file.readAll();
     block.append(filemsg);

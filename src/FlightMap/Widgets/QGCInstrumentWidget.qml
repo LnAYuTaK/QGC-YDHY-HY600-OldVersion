@@ -44,6 +44,7 @@ Rectangle {
 
     QGCPalette { id: qgcPal }
 
+    //方向
     QGCAttitudeWidget {
         id:                 attitude
         anchors.leftMargin: _topBottomMargin
@@ -52,7 +53,7 @@ Rectangle {
         vehicle:            activeVehicle
         anchors.verticalCenter: parent.verticalCenter
     }
-
+    //罗盘
     QGCCompassWidget {
         id:                 compass
         anchors.leftMargin: _spacing
@@ -62,14 +63,15 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
     }
 
+
+//2022 7/20调整控件右侧参数显示位置
     Item {
         id:                 _valuesItem
-        anchors.topMargin:  ScreenTools.defaultFontPixelHeight / 4
+        anchors.topMargin:  ScreenTools.defaultFontPixelHeight
         anchors.top:        parent.bottom
         width:              parent.width
         height:             _valuesWidget.height
         visible:            widgetRoot.showValues
-
         // Prevent all clicks from going through to lower layers
         DeadMouseArea {
             anchors.fill: parent
@@ -80,6 +82,7 @@ Rectangle {
             color:          qgcPal.window
         }
 
+        //这个是参数列表
         PageView {
             id:                 _valuesWidget
             anchors.margins:    1

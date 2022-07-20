@@ -15,6 +15,7 @@
 #include <QTcpSocket>
 //202276Add   本地配置属性统一放到Config/Config.ini  方便测试或者配置
 #include "setting.h"
+#include "NetManage.h"
 class Data : public QObject
 {
     Q_OBJECT
@@ -93,6 +94,8 @@ public:
     Q_INVOKABLE static void readtxttosend();    //Q_INVOKABLE传递给qml使用
     Q_INVOKABLE static double progressBar_value();
     Q_INVOKABLE static int msg_value();
+
+    Q_INVOKABLE static void sendBinLog(QString);
 
 
     static void Set_userID_value();

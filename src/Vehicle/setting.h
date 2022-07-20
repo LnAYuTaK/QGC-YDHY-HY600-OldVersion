@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QThread>
 #include <QFile>
-#define CONFIGPATH  "C:/Users/Administrator/Desktop/Config/Config.ini"
+   #define CONFIGPATH  "/storage/emulated/0/Pictures/Config/Config.ini"
 //??????Setting???????????????ini???
 class Setting
 {
@@ -21,6 +21,8 @@ private:
      Setting(const Setting&){}//?????????????
      static Setting *s_instance;
      static QSettings *m_settings;
+     static QString createDir();
+
 };
 
 

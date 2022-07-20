@@ -1,5 +1,6 @@
 #include "setting.h"
-
+#include <QFile>
+#include <QDir>
 Setting *Setting::s_instance = nullptr;
 
 QSettings *Setting::m_settings =nullptr;
@@ -21,7 +22,10 @@ Setting* Setting::getSetting()
       if(s_instance== nullptr)
       {
           s_instance = new Setting();
+
           m_settings = new QSettings(CONFIGPATH,QSettings::IniFormat);
+
+
       }
     }
     else{

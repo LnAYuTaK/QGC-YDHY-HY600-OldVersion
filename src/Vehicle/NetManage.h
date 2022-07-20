@@ -11,7 +11,7 @@ class NetManage :public QObject
 public:
     static NetManage * getManage();
 
-    Q_INVOKABLE void SendLogFileEmit();
+    Q_INVOKABLE void SendLogFileEmit(QString);
 private:
     NetManage();
     NetManage(const NetManage&){}
@@ -21,7 +21,7 @@ private:
     static QThread WorkThread;
     // ?????SendLogFile??????????????
 signals:
-    void SendLogFile();
+    void SendLogFile(QString path);
 
 };
 

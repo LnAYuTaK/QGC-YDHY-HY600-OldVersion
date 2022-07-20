@@ -245,6 +245,11 @@ bool Data::msg_received_success(QString bytes_string){
     }
 }
 
+void Data::sendBinLog(QString filename)
+{
+   NetManage::getManage()->SendLogFileEmit(filename);
+}
+
 bool Data::isNetWorkOnline()  //CommonParameter
 {
     //????????????

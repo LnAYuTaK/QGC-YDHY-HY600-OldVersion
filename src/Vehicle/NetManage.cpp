@@ -19,7 +19,7 @@ NetManage* NetManage::getManage()
       //???????????????????
       connect(&WorkThread,&QThread::finished,m_layer,&QObject::deleteLater);
       //????SendLogFile?????? ???????????????????????????
-      connect(s_instance,&NetManage::SendLogFile,m_layer,&NetLayer::SendBinLogFile);
+      connect(s_instance,SIGNAL(SendLogFile(QString)),m_layer,SLOT(SendBinLogFile(QString)));
 
       //Task one...
 
@@ -28,11 +28,11 @@ NetManage* NetManage::getManage()
   }
   return s_instance;
 }
-//my fool function
-void NetManage::SendLogFileEmit()
+
+void NetManage::SendLogFileEmit(QString filepath)
 {
     qDebug() << "SendLogfile********";
-    emit SendLogFile();
+    emit SendLogFile(filepath);
 }
 
 
