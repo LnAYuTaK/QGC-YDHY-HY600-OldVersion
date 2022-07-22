@@ -3,17 +3,20 @@
 
 SendData::SendData()
 {
+
 //    //判断是否成功连接数据库
 //    bool flag = Data::db3.open();
 //    if(!flag)
 //    {
 //        qDebug()<<"connect to mysql error"<<Data::db3.lastError().text();
+
 //    }
 //    else
 //    {
 //        sql_connect_flag = true;
 //        qDebug()<<"connect to mysql OK";
 //    }
+
 }
 
 QStringList SendData::get_playback(){
@@ -53,6 +56,8 @@ QStringList SendData::get_playback(){
 //              << " flightcontrolnumber is : " << FlightControlNumber
 //              << " flightdisance is : " << FlightDisance
 //              << " cropspecies is : " << CropSpecies;
+
+
     }
     list_length=List.count();
     return List;
@@ -85,6 +90,7 @@ QStringList SendData::get_playbackroute(){
 //    id_list.push_back(_startTime_index.toDouble());
 //    latitude_list.push_back(one_lat);
 //    longitude_list.push_back(one_long);
+
 //    qDebug() << List2;
     list2_length=List2.count();
     return List2;

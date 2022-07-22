@@ -8,7 +8,7 @@
  ****************************************************************************/
 
 import QtQuick                      2.3
-import QtQuick.Controls             2.0
+import QtQuick.Controls             1.2
 import QtQuick.Dialogs              1.2
 import QtQuick.Layouts              1.2
 
@@ -19,10 +19,7 @@ import QGroundControl.ScreenTools   1.0
 import QGroundControl.Controllers   1.0
 import QGroundControl.FactSystem    1.0
 import QGroundControl.FactControls  1.0
-//2022 7.14tianjia
 import TaoQuick 1.0
-import QtQml.Models 2.0
-
 
 Item {
     id:         _root
@@ -35,166 +32,170 @@ Item {
     property bool   _showRCToParam:     !ScreenTools.isMobile && QGroundControl.multiVehicleManager.activeVehicle.px4Firmware
     property var    _appSettings:       QGroundControl.settingsManager.appSettings
 
-    ParameterEditorController {
-        id:                 controller
-        onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
-    }
-
-        Rectangle {
-            border.width: 1
-            border.color: "white"
-            anchors{
-                centerIn: parent
+//这里重新绘制一下  参数界面
+    Rectangle {
+        border.width: 1
+        border.color: "white"
+        anchors{
+            centerIn: parent
+        }
+        width: parent.width
+        height: parent.height
+        clip: true
+        Column {
+            anchors.fill: parent
+            anchors.margins: 2
+            spacing: 0
+            Item {
+                id: titleItem
+                width: parent.width
+                height: 60
+                Label {
+                    font.pixelSize: 18
+                    text: qsTr("参数设置")
+                    anchors {
+                        left: parent.left
+                        leftMargin: 10
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
             }
-            width: parent.width
-            height: parent.height
-            clip: true
-            Column {
-                anchors.fill: parent
-                anchors.margins: 2
-                spacing: 0
+            Rectangle {
+                width: parent.width
+                height: 1
+                color: "#ededed"
+            }
+            Rectangle {
+                width: parent.width
+                height: 1
+                color: "#ededed"
+            }
+            Item {
+                id: listItem
+                width: parent.width
+                height: 638
                 Item {
-                    id: titleItem
-                    width: parent.width
-                    height: 60
-                    Label {
-                        font.pixelSize: 18
-                        text: qsTr("参数设置")
-                        anchors {
-                            left: parent.left
-                            leftMargin: 10
-                            verticalCenter: parent.verticalCenter
-                        }
-                    }
-                }
-                Rectangle {
-                    width: parent.width
-                    height: 1
-                    color: "#ededed"
-                }
-                Rectangle {
-                    width: parent.width
-                    height: 1
-                    color: "#ededed"
-                }
-                Item {
-                    id: listItem
-                    width: parent.width
-                    height: 638
-                    Item {
-                        id: leftItem
-                        width: 160
-                        height: parent.height
-                        ListView {
-                            id: leftListView
-                            anchors.fill: parent
-                            model: ["流速开度"]
-                            delegate: Button {
-                                id: btn
-                                width: 160
-                                height: 50
-                                property bool isSelected: leftListView.currentIndex === index
-                                text: modelData
-                                background: Rectangle {
-                                    width: btn.width
-                                    height: btn.height
-                                    color: {
-                                        if (btn.isSelected || btn.pressed) {
-                                            return "#ffffff"
-                                        } else if (btn.hovered) {
-                                            return "#e1e6eb"
-                                        } else {
-                                            return "#f0f0f1"
-                                        }
-                                    }
-                                }
-                                onClicked: {
-                                    leftListView.currentIndex = index
-
-                                    //互斥锁 锁上,别让右边再把信号搞回来
-                                    rightListView.notifyLeft = false
-
-                                    rightListView.positionViewAtIndex(
-                                                index, ListView.Beginning)
-                                    //解锁
-                                    rightListView.notifyLeft = true
-                                }
-                            }
-                        }
-                    }
-                    Item {
-                        id: rightItem
-                        width: parent.width - leftItem.width
-                        x: leftItem.width
-                        height: parent.height
-                        ListView {
-                            id: rightListView
-                            anchors.fill: parent
-                            clip: true
-
-                            //互斥flag
-                            property bool notifyLeft: true
-
-                            delegate: Item {
-                                width: 400
-                                height: 160
-                                Row {
-                                    x: 100
-                                    spacing: 30
-                                    height: parent.height
-                                    CusLabel {
-                                        text: modelData
-                                        wrapMode: Label.WordWrap
-                                        width: 100
-                                        font.pixelSize: 20
-
-                                    }
-                                    Rectangle {
-                                        width: 150
-                                        height: 30
-                                        color: "#ededed"
-                                        Text {
-                                            id: name
-                                            width: parent.width
-                                            height: parent.height
-                                            font.pixelSize: 30
-                                            clip :true
-                                            text: ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
-
-                                        }
-                                    }
-                                    CusTextField {
-                                        id :spray_pump_rate
-                                        placeholderText: "0~100"
-                                        width: 100
-                                        height: 30
-                                    }
-                                    CusButton {
-                                        width: 100
-                                        height: 30
-                                        text: "上传参数"
-                                        onClicked:{
-                                               ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text)
-                                               name.text = ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
-                                        }
+                    id: leftItem
+                    width: 160
+                    height: parent.height
+                    ListView {
+                        id: leftListView
+                        anchors.fill: parent
+                        model: ["流速开度"]
+                        delegate: Button {
+                            id: btn
+                            width: 160
+                            height: 50
+                            property bool isSelected: leftListView.currentIndex === index
+                            text: modelData
+                            background: Rectangle {
+                                width: btn.width
+                                height: btn.height
+                                color: {
+                                    if (btn.isSelected || btn.pressed) {
+                                        return "#ffffff"
+                                    } else if (btn.hovered) {
+                                        return "#e1e6eb"
+                                    } else {
+                                        return "#f0f0f1"
                                     }
                                 }
                             }
-                            model: leftListView.model
-                            onContentYChanged: {
-                                if (notifyLeft) {
-                                    var i = rightListView.indexAt(0, contentY)
-                                    leftListView.currentIndex = i
+                            onClicked: {
+                                leftListView.currentIndex = index
+
+                                //互斥锁 锁上,别让右边再把信号搞回来
+                                rightListView.notifyLeft = false
+
+                                rightListView.positionViewAtIndex(
+                                            index, ListView.Beginning)
+                                //解锁
+                                rightListView.notifyLeft = true
+                            }
+                        }
+                    }
+                }
+                Item {
+                    id: rightItem
+                    width: parent.width - leftItem.width
+                    x: leftItem.width
+                    height: parent.height
+                    ListView {
+                        id: rightListView
+                        anchors.fill: parent
+                        clip: true
+
+                        //互斥flag
+                        property bool notifyLeft: true
+
+                        delegate: Item {
+                            width: 400
+                            height: 160
+                            Row {
+                                x: 100
+                                spacing: 30
+                                height: parent.height
+                                CusLabel {
+                                    text: modelData
+                                    wrapMode: Label.WordWrap
+                                    width: 100
+                                    font.pixelSize: 20
+
                                 }
+                                Rectangle {
+                                    width: 150
+                                    height: 30
+                                    color: "#ededed"
+                                    Text {
+                                        id: name
+                                        width: parent.width
+                                        height: parent.height
+                                        font.pixelSize: 30
+                                        clip :true
+                                        text: ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
+
+                                    }
+                                }
+                                CusTextField {
+                                    id :spray_pump_rate
+                                    placeholderText: "0~100"
+                                    width: 100
+                                    height: 30
+                                }
+                                CusButton {
+                                    width: 100
+                                    height: 30
+                                    text: "上传参数"
+                                    onClicked:{
+                                           ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text)
+                                           name.text = ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
+                                    }
+                                }
+                            }
+                        }
+                        model: leftListView.model
+                        onContentYChanged: {
+                            if (notifyLeft) {
+                                var i = rightListView.indexAt(0, contentY)
+                                leftListView.currentIndex = i
                             }
                         }
                     }
                 }
             }
         }
+    }
 
-   // ---------------------------------------------
-    //-- Header
+
+//    ParameterEditorController {
+//        id:                 controller
+//        onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
+//    }
+
+//    ExclusiveGroup { id: sectionGroup }
+
+//    //---------------------------------------------
+//    //-- Header
 //    Row {
 //        id:             header
 //        anchors.left:   parent.left
@@ -457,14 +458,14 @@ Item {
 //        }
 //    }
 
-//    Component {
-//        id: editorDialogComponent
+    Component {
+        id: editorDialogComponent
 
-//        ParameterEditorDialog {
-//            fact:           _editorDialogFact
-//            showRCToParam:  _showRCToParam
-//        }
-//    }
+        ParameterEditorDialog {
+            fact:           _editorDialogFact
+            showRCToParam:  _showRCToParam
+        }
+    }
 
     Component {
         id: resetToDefaultConfirmComponent
@@ -498,7 +499,6 @@ Item {
 
     Component {
         id: rebootVehicleConfirmComponent
-
         QGCViewDialog {
             function accept() {
                 activeVehicle.rebootVehicle()

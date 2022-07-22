@@ -452,7 +452,6 @@ Item {
             }
 
             // Direction arrows in waypoint lines
-            //方向箭头
             MapItemView {
                 model: _editingLayer == _layerMission ? _missionController.directionArrows : undefined
 
@@ -601,9 +600,7 @@ Item {
                     showAlternateIcon:  _planMasterController.dirty,
                     alternateIconSource:"/qmlimages/MapSyncChanged.svg",
                     dropPanelComponent: syncDropPanel
-                }
-                //这里吧画航线功能屏蔽了
-                /*,
+                }/*,
                 {
                     name:               qsTr("Takeoff"),
                     iconSource:         "/res/takeoff.svg",

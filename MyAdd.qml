@@ -29,7 +29,6 @@ import QGroundControl.Controllers       1.0
 import QGroundControl.ShapeFileHelper   1.0
 import QGroundControl.Airspace          1.0
 import QGroundControl.Airmap            1.0
-//自己添加模块
 
 Rectangle {
     id:     myAddBackground
@@ -137,7 +136,6 @@ Rectangle {
 
 //            }
 //        }
-
         Rectangle{
             id: sendbinlog
             color:"#663399"
@@ -148,6 +146,7 @@ Rectangle {
             height: user_id.height
             anchors.verticalCenter: user_id.verticalCenter
                 Text {
+                    id :sendlog
                     text: "发送日志"
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -157,7 +156,7 @@ Rectangle {
                 QGCFileDialog {
                     id: dialogupdata
                     onAcceptedForLoad: {
-                        DATA.sendBinLog(file)
+                        NetManage.SendLogFileEmit(file)
                         close()
                     }
                 }
@@ -170,10 +169,43 @@ Rectangle {
                     dialogupdata._mobileDlg =true
                     dialogupdata.openForLoad()
                     }
-
+                }
+                //2022 7/22
+                //提示窗口提示文件发送是否成功
+                Dialog {
+                    id : logSendMsg
+                    visible: false
+                    title: "Tips"
+                    contentItem: Rectangle {
+                        id: windowcolor
+                        color: "lightskyblue"
+                        implicitWidth: 400
+                        implicitHeight: 100
+                        Text {
+                            id:logsendtxt
+                            text: ""
+                            color: "navy"
+                            anchors.centerIn: parent
+                        }
+                    }
+                }
+                //如果服务器校验文件失败则//显示错误内容//后端需要显示错误类型等
+                function sendlogSuccessMsg(){
+                  logsendtxt.text = "发送成功!"
+                  logSendMsg.visible= true
+                }
+                function sendlogErrorMsg(){
+                    logsendtxt.text = "发送失败!"
+                    windowcolor.color= "red"
+                    logSendMsg.visible= true
+                }
+                //接收NetManage来的信号绑定C++ 信号与QML函数
+                Component.onCompleted:{
+                   NetManage.QSendLogSuccess.connect(sendlogSuccessMsg)
+                   NetManage.QSendLogFail.connect(sendlogErrorMsg)
                 }
         }
-        Rectangle{
+        Rectangle {
             id: exituser
             color:"#663399"
             radius: 5
@@ -191,13 +223,13 @@ Rectangle {
                 }
                 MouseArea{
                 anchors.fill: parent
+
                 z: parent.z
                 onClicked: {
                     Qt.quit()
 //                    myAddBackground.visible = false
 //                    loginPage.source = "UsersLogin.qml";
                     }
-
                 }
 
         }

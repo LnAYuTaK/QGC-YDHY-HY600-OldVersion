@@ -19,18 +19,18 @@
 #include "VideoReceiver.h"
 #include "QGCLoggingCategory.h"
 #include "QGCCameraManager.h"
+#include <QtQml>
+#include <QQmlEngine>
 
 //#include "quserlogin.h"
 #include "senddata.h"
 #include "data.h"
 //#include "mythread.h"
 #include "worker.h"
-#include <QtQml>
-#include <QQmlEngine>
-#include  "paramanage.h"
-#include <QQmlContext>
+#include "NetLayer/NetLayer.h"
+#include "NetLayer/NetManage.h"
+#include "NetLayer/ParaEditor.h"
 
-#include<QMessageBox>
 
 /// @file
 ///     @brief Core Plugin Interface for QGroundControl - Default Implementation
@@ -286,8 +286,6 @@ QVariantList &QGCCorePlugin::settingsPages()
 
 QVariantList& QGCCorePlugin::instrumentPages()
 {
-
-    //右侧仪表类初始化
     if (!_p->valuesPageWidgetInfo) {
         _p->valuesPageWidgetInfo    = new QmlComponentInfo(tr("Values"),    QUrl::fromUserInput("qrc:/qml/ValuePageWidget.qml"));
         _p->cameraPageWidgetInfo    = new QmlComponentInfo(tr("Camera"),    QUrl::fromUserInput("qrc:/qml/CameraPageWidget.qml"));
@@ -437,23 +435,29 @@ QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
 
     //QUserLogin *user_login = new QUserLogin();
     //pEngine->rootContext()->setContextProperty("QUSERLOGIN",user_login);
-    //2022 7/14增加一個第三方qmlmodule
-    pEngine->addImportPath(TaoQuickImportPath);
-    pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
 
     SendData *send_data = new SendData();
     pEngine->rootContext()->setContextProperty("SENDDATA",send_data);
-
     Data *data = new Data();
     pEngine->rootContext()->setContextProperty("DATA",data);
     Worker *worker = new Worker();
     pEngine->rootContext()->setContextProperty("theworker",worker);
 
-    //2022 7/14这里要注意实例化顺序！
-    ParaManage *paramanger =new ParaManage();
-    pEngine->rootContext()->setContextProperty("ParaMange", paramanger);
+    //Third QML Lib
+    pEngine->addImportPath(TaoQuickImportPath);
+    pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
+
+    //ParaManage
+    ParaManage * ParaManager =  new ParaManage();
+    pEngine->rootContext()->setContextProperty("ParaManage",ParaManager);
+
+    //NetManage
+    pEngine->rootContext()->setContextProperty("NetManage",NetManage::getManage());
 
     pEngine->load(QUrl(QStringLiteral("qrc:/qml/MainRootWindow.qml")));
+
+
+
 
     return pEngine;
 }
@@ -463,6 +467,7 @@ bool QGCCorePlugin::mavlinkMessage(Vehicle* vehicle, LinkInterface* link, mavlin
     Q_UNUSED(vehicle);
     Q_UNUSED(link);
     Q_UNUSED(message);
+
     return true;
 }
 

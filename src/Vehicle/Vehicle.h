@@ -209,7 +209,6 @@ class VehicleWindFactGroup : public FactGroup
 
 public:
     VehicleWindFactGroup(QObject* parent = nullptr);
-
     Q_PROPERTY(Fact* direction      READ direction      CONSTANT)
     Q_PROPERTY(Fact* speed          READ speed          CONSTANT)
     Q_PROPERTY(Fact* verticalSpeed  READ verticalSpeed  CONSTANT)
@@ -231,6 +230,7 @@ private:
 class VehicleGPSFactGroup : public FactGroup
 {
     Q_OBJECT
+
 public:
     VehicleGPSFactGroup(QObject* parent = nullptr);
 
@@ -1325,7 +1325,7 @@ private:
     void _handleProtocolVersion         (LinkInterface* link, mavlink_message_t& message);
     void _handleHilActuatorControls     (mavlink_message_t& message);
     void _handleGpsRawInt               (mavlink_message_t& message);
-    void _handleFlowRateMeterRawInt               (mavlink_message_t& message);    //自己添加
+//    void _handleFlowRateMeterRawInt               (mavlink_message_t& message);    //自己添加
     void _handleGlobalPositionInt       (mavlink_message_t& message);
     void _handleAltitude                (mavlink_message_t& message);
     void _handleVfrHud                  (mavlink_message_t& message);
@@ -1400,8 +1400,6 @@ private:
 
     QTimer mytimer;
 
-
-
     QList<LinkInterface*> _links;
 
     JoystickMode_t  _joystickMode;
@@ -1434,7 +1432,7 @@ private:
     uint32_t        _onboardControlSensorsHealth;
     uint32_t        _onboardControlSensorsUnhealthy;
     bool            _gpsRawIntMessageAvailable;
-    bool            _flowrateRawIntMessageAvailable;   //自己添加
+//    bool            _flowrateRawIntMessageAvailable;   //自己添加
     bool            _globalPositionIntMessageAvailable;
     double          _defaultCruiseSpeed;
     double          _defaultHoverSpeed;
@@ -1614,8 +1612,6 @@ private:
     VehicleDistanceSensorFactGroup  _distanceSensorFactGroup;
     VehicleEstimatorStatusFactGroup _estimatorStatusFactGroup;
 
-
-
     static const char* _rollFactName;
     static const char* _pitchFactName;
     static const char* _headingFactName;
@@ -1646,12 +1642,16 @@ private:
     static const char* _clockFactGroupName;
     static const char* _distanceSensorFactGroupName;
     static const char* _estimatorStatusFactGroupName;
+
     static const int _vehicleUIUpdateRateMSecs = 100;
+
     // Settings keys
     static const char* _settingsGroup;
     static const char* _joystickModeSettingsKey;
     static const char* _joystickEnabledSettingsKey;
 
+
+    //Data vehicle_date;
     //LinkDataPack datapack;
 
 

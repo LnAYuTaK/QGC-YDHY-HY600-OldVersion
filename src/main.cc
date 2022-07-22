@@ -33,8 +33,6 @@
 #include "sqlitehelper.h"
 #include "mysqlhelper.h"
 #include <QQuickWidget>
-#include "NetManage.h"
-#include "paramanage.h"
 
 #ifndef __mobile__
     #include "QGCSerialPortInfo.h"
@@ -371,36 +369,19 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QGCApplication* app = new QGCApplication(argc, argv, runUnitTests);
     Q_CHECK_PTR(app);
-    if(app->isErrorState()){
+    if(app->isErrorState()) {
         app->exec();
         return -1;
     }
 
-#if 0
-    QQuickWidget *view = new QQuickWidget;
-    view->setSource(QUrl::fromLocalFile("qrc：/UserLogin.qml"));
-    view->show();
-
+//    QQuickWidget *view = new QQuickWidget;
+//    view->setSource(QUrl::fromLocalFile("qrc：/UserLogin.qml"));
+//    view->show();
 //    SqliteHelper();//连接sqlite数据库
     //202203注释
     mySqlhelper::sqlconnect();//连接mysql数据库
     Data::Set_userID_value();
-    if (!Data::sql_connect_flag) {
-        Data::db3.close();
-        QSqlDatabase::removeDatabase("third");
-        Sleep(3000);
-        Data::sqlconnect();
-        Sleep(3000);
-        qDebug()<< "SLEEP";
-    }
 
-    Data::readtxttosend();//补发数据
-    SendData::get_playback();//界面调用，此处无需调用飞行记录显示
-
-    MyTimer mytimer;
-    mytimer.startTimer(1000);
-    mytimer = new MyTimer();
-#endif
 // linux系统中app图标设置
 #ifdef Q_OS_LINUX
     QApplication::setWindowIcon(QIcon(":/res/resources/icons/qgroundcontrol.ico"));

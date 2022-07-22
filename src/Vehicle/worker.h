@@ -26,6 +26,7 @@ protected:
         //        timer->start(20);  // 开始计时，超时则发出timeout()信号
 
         Data::readtxttosend();
+
     }
 
     Q_INVOKABLE double getData() const { return data_; }

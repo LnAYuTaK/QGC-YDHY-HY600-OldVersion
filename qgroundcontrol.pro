@@ -15,8 +15,6 @@ QMAKE_PROJECT_DEPTH = 0 # undocumented qmake flag to force absolute paths in mak
 DEFINES += QGC_GST_TAISYNC_DISABLED
 DEFINES += QGC_GST_MICROHARD_DISABLED
 
-
-
 exists($${OUT_PWD}/qgroundcontrol.pro) {
     error("You must use shadow build (e.g. mkdir build; cd build; qmake ../qgroundcontrol.pro).")
 }
@@ -27,7 +25,11 @@ message(Qt version $$[QT_VERSION])
     error("Unsupported Qt version, 5.11+ is required")
 }
 
+
+
 include(QGCCommon.pri)
+
+include($$PWD/src/QmlLib/TaoQuick.pri)
 
 TARGET   = QGroundControl
 TEMPLATE = app
@@ -44,9 +46,6 @@ QML_IMPORT_PATH += $$PWD/src/QmlControls
 #
 # OS Specific settings
 #
-
-include($$PWD/src/src/TaoQuick.pri)
-
 
 MacBuild {
     QMAKE_INFO_PLIST    = Custom-Info.plist
@@ -440,14 +439,12 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 #
 
 HEADERS += \
-    src/Vehicle/NetLayer.h \
+    src/NetLayer/NetManage.h \
+    src/NetLayer/NetLayer.h \
+    src/NetLayer/ParaEditor.h \
     src/Vehicle/data.h \
     src/Vehicle/mysqlhelper.h \
-    src/Vehicle/paramanage.h \
     src/Vehicle/senddata.h \
-    src/Vehicle/setting.h \
-    src/Vehicle/TcpSocket.h \
-    src/Vehicle/NetManage.h \
     src/Vehicle/worker.h \
     src/api/QGCCorePlugin.h \
     src/api/QGCOptions.h \
@@ -465,15 +462,13 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 }
 
 SOURCES += \
-    src/Vehicle/NetLayer.cpp \
+    src/NetLayer/NetLayer.cpp \
+    src/NetLayer/NetManage.cpp \
+    src/NetLayer/ParaEditor.cpp \
     src/Vehicle/data.cpp \
     src/Vehicle/mysqlhelper.cpp \
-    src/Vehicle/paramanage.cpp \
     src/Vehicle/senddata.cpp \
     src/Vehicle/worker.cpp \
-    src/Vehicle/setting.cpp \
-    src/Vehicle/TcpSocket.cpp \
-    src/Vehicle/NetManage.cpp \
     src/api/QGCCorePlugin.cc \
     src/api/QGCOptions.cc \
     src/api/QGCSettings.cc \
@@ -1448,7 +1443,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 #DISTFILES += \
 #    src/UsersLogin.qml
 
-#????qlite?��?��?�???#MOBILITY =
+#????qlite?��?��?��???#MOBILITY =
 
 #android {
 #    data.files += aaa/zc.db
@@ -1478,7 +1473,7 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
 
 
 
-#    #?�己添�??满足?��?��?��?�?�?
+#    #?�己添�??满足?��?��?��?��?��?
 #    QT += androidextras
 #2.0.0.4  �������й������ڲ���
 VERSION = 2.0.0.4_Full_20220525

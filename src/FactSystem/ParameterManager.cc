@@ -188,7 +188,6 @@ void ParameterManager::_updateProgressBar(void)
     }
 }
 
-// 参数全部更新获取  每当更新或第一次看到参数时调用。
 /// Called whenever a parameter is updated or first seen.
 void ParameterManager::_parameterUpdate(int vehicleId, int componentId, QString parameterName, int parameterCount, int parameterId, int mavType, QVariant value)
 {
@@ -196,17 +195,15 @@ void ParameterManager::_parameterUpdate(int vehicleId, int componentId, QString 
     if (vehicleId != _vehicle->id()) {
         return;
     }
-  // qDebug() << vehicleId<< " " << componentId<<" " <<parameterName << " "<< parameterCount << " "<<  parameterId<<" "<< mavType <<" "<< value;
 
-
-//    qCDebug(ParameterManagerVerbose1Log) << _logVehiclePrefix(componentId) <<
-//                                            "_parameterUpdate" <<
-//                                            "name:" << parameterName <<
-//                                            "count:" << parameterCount <<
-//                                            "index:" << parameterId <<
-//                                            "mavType:" << mavType <<
-//                                            "value:" << value <<
-//                                            ")";
+    qCDebug(ParameterManagerVerbose1Log) << _logVehiclePrefix(componentId) <<
+                                            "_parameterUpdate" <<
+                                            "name:" << parameterName <<
+                                            "count:" << parameterCount <<
+                                            "index:" << parameterId <<
+                                            "mavType:" << mavType <<
+                                            "value:" << value <<
+                                            ")";
 
     // ArduPilot has this strange behavior of streaming parameters that we didn't ask for. This even happens before it responds to the
     // PARAM_REQUEST_LIST. We disregard any of this until the initial request is responded to.
@@ -609,6 +606,7 @@ Fact* ParameterManager::getParameter(int componentId, const QString& paramName)
         qgcApp()->reportMissingParameter(componentId, mappedParamName);
         return &_defaultFact;
     }
+
     return _mapParameterName2Variant[componentId][mappedParamName].value<Fact*>();
 }
 
@@ -893,9 +891,6 @@ void ParameterManager::_writeParameterRaw(int componentId, const QString& paramN
                                       &msg,
                                       &p);
     _vehicle->sendMessageOnLink(_vehicle->priorityLink(), msg);
-    //Test
-    qDebug()<<componentId <<" " << paramName << " " << value ;
-
 }
 
 void ParameterManager::_writeLocalParamCache(int vehicleId, int componentId)
@@ -1306,6 +1301,7 @@ void ParameterManager::_checkInitialLoadComplete(void)
             qCWarning(ParameterManagerLog) << _logVehiclePrefix(-1) << "The following parameter indices could not be loaded after the maximum number of retries: " << indexList;
         }
     }
+
     // Signal load complete
     _parametersReady = true;
     _vehicle->autopilotPlugin()->parametersReadyPreChecks();
@@ -1422,8 +1418,6 @@ QString ParameterManager::parameterMetaDataFile(Vehicle* vehicle, MAV_AUTOPILOT 
     }
     qCDebug(ParameterManagerLog) << "ParameterManager::parameterMetaDataFile file:major:minor" << metaDataFile << majorVersion << minorVersion;
 
-
-    qDebug() << metaDataFile;
     return metaDataFile;
 }
 

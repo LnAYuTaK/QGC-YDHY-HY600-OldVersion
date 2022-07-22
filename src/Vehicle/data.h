@@ -2,27 +2,27 @@
 #define DATA_H
 
 #include "Vehicle.h"
-//#include "mythread.h"
 
 #include <QtSql>
 #include "mysqlhelper.h"
 #include <QSqlDatabase>
 #include "QGCMAVLink.h"
 #include <QObject>
-#include <QMessageBox>
+#include<QMessageBox>
 #include <QApplication>
 //202203Add  增加tcp支持
 #include <QTcpSocket>
-//202276Add   本地配置属性统一放到Config/Config.ini  方便测试或者配置
-#include "setting.h"
-#include "NetManage.h"
+#include "NetLayer/NetManage.h"
+
+#define DEBUGGING
+
 class Data : public QObject
 {
     Q_OBJECT
+
     Q_PROPERTY(double _progressBar READ ProgressBar WRITE progressBar NOTIFY progresschanged)
     Q_PROPERTY(int _Msg READ Msg WRITE msg NOTIFY msgchanged)
     Q_PROPERTY(QString _usertxt READ usertxt WRITE setuser NOTIFY txtchanged)
-
 
     double ProgressBar() const{
         qDebug() << __FILE__ << __func__ << _progressBar;
@@ -30,12 +30,14 @@ class Data : public QObject
     void progressBar(double pb){_progressBar = pb; emit progresschanged();
         qDebug() << __FILE__ << __func__ << _progressBar;
                                }
+
     double Msg() const{
         qDebug() << __FILE__ << __func__ << _msg_value;
         return _msg_value;}
     void msg(int mv){_msg_value = mv; emit msgchanged();
         qDebug() << __FILE__ << __func__ << _msg_value;
                                }
+
     QString usertxt() const{
         return userID;}
     void setuser(QString mv){userID = mv; emit txtchanged();
@@ -76,10 +78,6 @@ public:
     static double pitchRate;
     static double yawRate;
 
-    //固件信息
-    static QString  Firmware;
-    // 地面站版本号
-    static QString  QGCversion;
 
 //    static int list_length;
 
@@ -94,16 +92,13 @@ public:
     Q_INVOKABLE static void readtxttosend();    //Q_INVOKABLE传递给qml使用
     Q_INVOKABLE static double progressBar_value();
     Q_INVOKABLE static int msg_value();
-
-    Q_INVOKABLE static void sendBinLog(QString);
-
-
     static void Set_userID_value();
+    Q_INVOKABLE static void sendBinLog(QString);
 //    static Q_INVOKABLE QStringList get_playback();
 //    static Q_INVOKABLE int get_playback_length();
 
 public slots:
-    static void data_save_local(QString,QString);
+    static void data_save_local(QString);
     static void data_save(QString);
     static void data_save_plan();
 
@@ -114,6 +109,7 @@ public:
 //    void timerEvent(QTimerEvent *event) override;
 //    //void timerEvent(QTimerEvent *event);
 //    int id1, id2, id3;
+
 };
 
 #endif // DATA_H

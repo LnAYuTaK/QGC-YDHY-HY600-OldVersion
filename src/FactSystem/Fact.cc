@@ -127,7 +127,7 @@ void Fact::setRawValue(const QVariant& value)
     if (_metaData) {
         QVariant    typedValue;
         QString     errorString;
-
+        
         if (_metaData->convertAndValidateRaw(value, true /* convertOnly */, typedValue, errorString)) {
             if (typedValue != _rawValue) {
                 _rawValue.setValue(typedValue);
@@ -137,9 +137,7 @@ void Fact::setRawValue(const QVariant& value)
                 emit rawValueChanged(_rawValue);
             }
         }
-    }
-    else
-    {
+    } else {
         qWarning() << kMissingMetadata << name();
     }
 }

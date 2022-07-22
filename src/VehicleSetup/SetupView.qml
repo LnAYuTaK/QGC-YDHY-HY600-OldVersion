@@ -144,7 +144,7 @@ Rectangle {
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.largeFontPointSize
                 text:                   qsTr("Vehicle settings and info will display after connecting your vehicle.") +
-                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : "单击左侧的固件升级您的车辆.")
+                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " Click Firmware on the left to upgrade your vehicle.")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -287,16 +287,14 @@ Rectangle {
                     onClicked:          showVehicleComponentPanel(modelData)
                 }
             }
-            //参数的显示
+//2022 7/22打开参数
             SubMenuButton {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup
-                // 2022 7.14Test
-                visible:
-                    QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
+                visible:           /* QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
                                     !QGroundControl.multiVehicleManager.activeVehicle.highLatencyLink &&
-                                    _corePlugin.showAdvancedUI
-                text:               qsTr("参数")
+                                    _corePlugin.showAdvancedUI*/
+                text:               qsTr("Parameters")
                 Layout.fillWidth:   true
                 onClicked:          showPanel(this, "SetupParameterEditor.qml")
             }
