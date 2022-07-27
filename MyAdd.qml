@@ -34,7 +34,45 @@ Rectangle {
     id:     myAddBackground
     color:  qgcPal.window
     z:      QGroundControl.zOrderTopMost
+    //2022 7/22
+    //提示窗口提示文件发送是否成功
+        Rectangle {
+            id:logSendMsg
+            anchors.centerIn: myAddBackground
+            //myAddBackground
+            color: "lightskyblue"
+            implicitWidth: 400
+            implicitHeight: 100
+            visible:  false
 
+            Text {
+                id:logsendtxt
+                text: ""
+                color: "navy"
+                anchors.centerIn: parent
+            }
+            MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                 logSendMsg.visible =false
+                }
+            }
+        }
+
+    //如果服务器校验文件失败则//显示错误内容//后端需要显示错误类型等
+    function sendlogSuccessMsg(){
+      logsendtxt.text = "发送成功!"
+      logSendMsg.visible= true
+    }
+    function sendlogErrorMsg(){
+        logsendtxt.text = "发送失败!"
+        logSendMsg.visible= true
+    }
+    //接收NetManage来的信号绑定C++ 信号与QML函数
+    Component.onCompleted:{
+       NetManage.QSendLogSuccess.connect(sendlogSuccessMsg)
+       NetManage.QSendLogFail.connect(sendlogErrorMsg)
+    }
 //        Sender {
 //            id: sender
 //            target: receiver
@@ -140,7 +178,7 @@ Rectangle {
             id: sendbinlog
             color:"#663399"
             radius: 5
-            x: myAddBackground.width  * 0.13
+            x: myAddBackground.width  * 0.17
             y: myAddBackground.height  * 0.02
             width: myAddBackground.width  * 0.1
             height: user_id.height
@@ -155,6 +193,9 @@ Rectangle {
                 }
                 QGCFileDialog {
                     id: dialogupdata
+                    folder:QGroundControl.settingsManager.appSettings.logSavePath
+                    _mobileDlg : false
+                    fileExtension  : "bin"
                     onAcceptedForLoad: {
                         NetManage.SendLogFileEmit(file)
                         close()
@@ -164,52 +205,16 @@ Rectangle {
                 anchors.fill: parent
                 z: parent.z
                 onClicked: {
-                    dialogupdata.title =          qsTr("发送BIN LOG文件")
-                    dialogupdata.selectExisting = true
-                    dialogupdata._mobileDlg =true
+                    dialogupdata.title =       qsTr(QGroundControl.settingsManager.appSettings.logSavePath)
                     dialogupdata.openForLoad()
                     }
-                }
-                //2022 7/22
-                //提示窗口提示文件发送是否成功
-                Dialog {
-                    id : logSendMsg
-                    visible: false
-                    title: "Tips"
-                    contentItem: Rectangle {
-                        id: windowcolor
-                        color: "lightskyblue"
-                        implicitWidth: 400
-                        implicitHeight: 100
-                        Text {
-                            id:logsendtxt
-                            text: ""
-                            color: "navy"
-                            anchors.centerIn: parent
-                        }
-                    }
-                }
-                //如果服务器校验文件失败则//显示错误内容//后端需要显示错误类型等
-                function sendlogSuccessMsg(){
-                  logsendtxt.text = "发送成功!"
-                  logSendMsg.visible= true
-                }
-                function sendlogErrorMsg(){
-                    logsendtxt.text = "发送失败!"
-                    windowcolor.color= "red"
-                    logSendMsg.visible= true
-                }
-                //接收NetManage来的信号绑定C++ 信号与QML函数
-                Component.onCompleted:{
-                   NetManage.QSendLogSuccess.connect(sendlogSuccessMsg)
-                   NetManage.QSendLogFail.connect(sendlogErrorMsg)
                 }
         }
         Rectangle {
             id: exituser
             color:"#663399"
             radius: 5
-            x: myAddBackground.width  * 0.28
+            x: myAddBackground.width  * 0.30
             y: myAddBackground.height  * 0.01
             width: myAddBackground.width  * 0.1
             height: user_id.height
@@ -259,7 +264,7 @@ Rectangle {
             id: readtxttosend
             color: cProgress.isRunning() ? "#FF0099" : "#663399"
             radius: 5
-            x: myAddBackground.width  * 0.43
+            x: myAddBackground.width  * 0.46
             y: myAddBackground.height  * 0.01
             width: myAddBackground.width  * 0.1
             height: user_id.height
@@ -326,7 +331,7 @@ Rectangle {
             }
 
             id: cProgress
-            x: myAddBackground.width  * 0.55
+            x: myAddBackground.width  * 0.6
             y: myAddBackground.height  * 0.01
             width: myAddBackground.width  * 0.35
             height: user_id.height
@@ -468,8 +473,6 @@ Rectangle {
                 anchors.left: workrecord.left
                 color: "white"
                 border.color: "Purple"
-
-
                 Column {
                     id:                 totalcolumn
                     anchors.fill: parent
@@ -483,7 +486,6 @@ Rectangle {
                         id:     totalrepeater
                         model:  3  //为重复器提供的数据模型，类型是any
                         //类型是数字的话，代表要重复器要创建的数量
-
 
                         property real totalArea: 0
                         property var totalFlights: 0
@@ -954,7 +956,6 @@ Rectangle {
            height: myAddBackground.height  * 0.7
 
 //           property int hoverIndex: -1
-
            FlightMap {
                id:                         editorMap
                anchors.fill:               parent

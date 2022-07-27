@@ -1,84 +1,83 @@
 #include "data.h"
 
-
 Data::Data()
 {
 
-
 }
+
 
 QString Data::make_mavlink_pakage(){
 
     QDateTime datetime;
     time = datetime.currentDateTime().toTime_t() - starttime;
 
-    QString save_plan_num_hex =  QString("%1").arg(save_plan_num,4,16,QLatin1Char('0'));//value为int型或char型都可
+    QString save_plan_num_hex =  QString("%1").arg(save_plan_num,4,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "save_plan_num_hex" << save_plan_num_hex;
 
-    QString starttime_hex =  QString("%1").arg(starttime,8,16,QLatin1Char('0'));//value为int型或char型都可
+    QString starttime_hex =  QString("%1").arg(starttime,8,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "starttime_hex" << starttime_hex;
 
-    QString eppodroneID_hex =  QString("%1").arg(eppodroneID,3,16,QLatin1Char('0'));//value为int型或char型都可
+    QString eppodroneID_hex =  QString("%1").arg(eppodroneID,3,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "eppodroneID_hex" << eppodroneID_hex;
 
     QString userID_hex =  QString("%1").arg(userID.toInt(),3,16,QLatin1Char('0'));
     //qDebug() << "userID_hex" << userID_hex;
 
+    //流速
     qint64* flowrate_int = split_double(flowrate,2);
-    QString flowrate_hex_1 =  QString("%1").arg(flowrate_int[0],1,16,QLatin1Char('0'));//value为int型或char型都可
+    QString flowrate_hex_1 =  QString("%1").arg(flowrate_int[0],1,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "flowrate_hex_1" << flowrate_hex_1;
-    QString flowrate_hex_2 = QString("%1").arg(flowrate_int[1],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString flowrate_hex_2 = QString("%1").arg(flowrate_int[1],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "flowrate_hex_2" << flowrate_hex_2;
 
     qint64* workingarea_int = split_double(workingarea,2);
-    QString workingarea_hex_1 =  QString("%1").arg(workingarea_int[0],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString workingarea_hex_1 =  QString("%1").arg(workingarea_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "workingarea_hex_1" << workingarea_hex_1;
-    QString workingarea_hex_2 = QString("%1").arg(workingarea_int[1],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString workingarea_hex_2 = QString("%1").arg(workingarea_int[1],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "workingarea_hex_2" << workingarea_hex_2;
 
-    QString spraystate_hex =  QString("%1").arg(spraystate,1,16,QLatin1Char('0'));//value为int型或char型都可
+    QString spraystate_hex =  QString("%1").arg(spraystate,1,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "spraystate_hex" << spraystate_hex;
 
     qint64* lon_int = split_double(lon,7);
-    QString lon_hex_1 =  QString("%1").arg(lon_int[0],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString lon_hex_1 =  QString("%1").arg(lon_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lon_hex_1" << lon_hex_1;
-    QString lon_hex_2 = QString("%1").arg(lon_int[1],6,16,QLatin1Char('0'));//value为int型或char型都可
+    QString lon_hex_2 = QString("%1").arg(lon_int[1],6,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lon_hex_2" << lon_hex_2;
 
     qint64* lat_int = split_double(lat,7);
-    QString lat_hex_1 =  QString("%1").arg(lat_int[0],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString lat_hex_1 =  QString("%1").arg(lat_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lat_hex_1" << lat_hex_1;
-    QString lat_hex_2 = QString("%1").arg(lat_int[1],6,16,QLatin1Char('0'));//value为int型或char型都可
+    QString lat_hex_2 = QString("%1").arg(lat_int[1],6,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "lat_hex_2" << lat_hex_2;
-
-
     //alt = -10.125;
     QString alt_symbol_hex;
     if(alt < 0){
-        alt_symbol_hex =  QString("%1").arg(1,1,16,QLatin1Char('0'));//value为int型或char型都可
+        alt_symbol_hex =  QString("%1").arg(1,1,16,QLatin1Char('0'));//value?int???char?????
         alt = qAbs(alt);
     }
     else{
-        alt_symbol_hex =  QString("%1").arg(0,1,16,QLatin1Char('0'));//value为int型或char型都可
+        alt_symbol_hex =  QString("%1").arg(0,1,16,QLatin1Char('0'));//value?int???char?????
     }
     qint64* alt_int = split_double(alt,2);
-    QString alt_hex_1 =  QString("%1").arg(alt_int[0],3,16,QLatin1Char('0'));//value为int型或char型都可
+    QString alt_hex_1 =  QString("%1").arg(alt_int[0],3,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "alt_hex_1" << alt_hex_1;
-    QString alt_hex_2 = QString("%1").arg(alt_int[1],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString alt_hex_2 = QString("%1").arg(alt_int[1],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "alt_hex_2" << alt_hex_2;
 
 
     qint64* groundspeedvalue_int = split_double(groundspeedvalue,2);
-    QString groundspeedvalue_hex_1 =  QString("%1").arg(groundspeedvalue_int[0],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString groundspeedvalue_hex_1 =  QString("%1").arg(groundspeedvalue_int[0],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "groundspeedvalue_hex_1" << groundspeedvalue_hex_1;
-    QString groundspeedvalue_hex_2 = QString("%1").arg(groundspeedvalue_int[1],2,16,QLatin1Char('0'));//value为int型或char型都可
+    QString groundspeedvalue_hex_2 = QString("%1").arg(groundspeedvalue_int[1],2,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "groundspeedvalue_hex_2" << groundspeedvalue_hex_2;
 
-    QString time_hex =  QString("%1").arg(time,4,16,QLatin1Char('0'));//value为int型或char型都可
+    QString time_hex =  QString("%1").arg(time,4,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "time_hex" << time_hex;
 
-    QString liquidlevel_hex =  QString("%1").arg(liquidlevel,1,16,QLatin1Char('0'));//value为int型或char型都可
+    QString liquidlevel_hex =  QString("%1").arg(liquidlevel,1,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "liquidlevel_hex" << liquidlevel_hex;
+
     qint16 flightmode_value;
 
     QStringList stringList;
@@ -89,7 +88,7 @@ QString Data::make_mavlink_pakage(){
 
     if(flightmode_value < 0 || flightmode_value > 7) flightmode_value = 0;
 
-    QString flightmode_hex =  QString("%1").arg(flightmode_value,1,16,QLatin1Char('0'));//value为int型或char型都可
+    QString flightmode_hex =  QString("%1").arg(flightmode_value,1,16,QLatin1Char('0'));//value?int???char?????
     //qDebug() << "flightmode_hex" << flightmode_hex;
 
     QString pack = save_plan_num_hex+starttime_hex+eppodroneID_hex+userID_hex+flowrate_hex_1+flowrate_hex_2+workingarea_hex_1+workingarea_hex_2+spraystate_hex+lon_hex_1+lon_hex_2+lat_hex_1+lat_hex_2+alt_symbol_hex+alt_hex_1+alt_hex_2+groundspeedvalue_hex_1+groundspeedvalue_hex_2+time_hex+liquidlevel_hex+flightmode_hex;
@@ -97,24 +96,18 @@ QString Data::make_mavlink_pakage(){
     QByteArray pack_array = pack.toLatin1();
     long checksum = 0;
     for(int i = 0; i < pack_array.size(); i++){
-
         checksum+=pack_array[i];
-
     }
+    QString checksum_hex =  QString("%1").arg(checksum,4,16,QLatin1Char('0'));//value?int???char?????
 
-    QString checksum_hex =  QString("%1").arg(checksum,4,16,QLatin1Char('0'));//value为int型或char型都可
 
-    return "EB90"+pack+checksum_hex;
-
+    return "EB90"+pack+/*FirmwareVersion+ SoftwareVersion*/checksum_hex;
 }
 
-
 QString Data::make_mavlink_pakagetest(){
-
     QString pack = QString::number(spraystate, 10) + ";" + flightmode;
     return pack;
 }
-
 
 qint64* Data::split_double(double data,qint16 digit){
 
@@ -126,56 +119,47 @@ qint64* Data::split_double(double data,qint16 digit){
     for ( int i =0; i < 2; i++)
 
         temp[i] = list[i].toInt();
-
     return temp;
-
 }
 
 void Data::data_save_plan(){
 
-    //202203Add 暂时将实时传输关掉，所有数值仅保存当地
+    //202203Add ???????????????????????????????
     //qDebug() << "save_plan_num" << save_plan_num << save_plan_num % 3;
     QString savestr = make_mavlink_pakage();
-    data_save_local(savestr);//本地保存
+    //data_save_local(savestr,"C:/Users/Administrator/Desktop");//???????
     data_save(savestr);
     save_plan_num++;
-
     /*if(save_plan_num % 3 == 0){
         qDebug() << "save_plan_num" << save_plan_num << save_plan_num % 3;
-        data_save();//实时传输
+        data_save();//??????
         save_plan_num++;
     }else{
         qDebug() << "save_plan_num" << save_plan_num << save_plan_num % 3;
-        data_save_local();//本地保存
+        data_save_local();//???????
         save_plan_num++;
     }*/
 }
-
-void Data::data_save_local(QString savestr){
-    //获得系统时间并输出
+void Data::data_save_local(QString savestr,QString path){
+    //?????????????
     QString min = QDateTime::currentDateTime().toString("yyyyMMdd");
     QString timestr = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
 #if !defined(__android__)
-    dir_path =  "../DATA_SAVE";  //电脑
+    dir_path =  path;  //????
 #else
-    dir_path =  "/storage/emulated/0/DATA_SAVE";  //手机
+    dir_path =  "/storage/emulated/0/DATA_SAVE";  //???
 #endif
     if(save_num == 1){
-
         QDir dir;
         if(!dir.exists(dir_path)){
-            dir.mkdir(dir_path);//创造一个文件夹
+            dir.mkdir(dir_path);//????????????
             //                    qDebug() << "make dir fail";
         }
-
-        //打开文本 以时间命名文件名字
+        //??????? ????????????????
         save_filename = dir_path + "/" + min + ".txt";
-
-
     }
 
     qDebug() << save_filename;
-
     QFile f(save_filename);
     QTextStream in(&f);
     if(!f.open( QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)){
@@ -185,38 +169,32 @@ void Data::data_save_local(QString savestr){
     //in << timestr;
     in << savestr;
     //in <<endl;
-
     f.flush();
     f.close();
-
     save_num++;
 }
 
-//将上传数据改为使用tcp直接发数据
-void Data::data_save(QString savestr){
-
-    //202203Add 新增使用tcp发送
-    QTcpSocket *mSocket = new QTcpSocket();
+//??????????????tcp????????
+void Data::data_save(QString sendmsg){
+	QTcpSocket *mSocket = new QTcpSocket();
     QString IP;
 #if !defined(DEBUGGING)
      IP="81.70.247.217"; //
 #else
      IP ="192.168.3.113";
 #endif
-    mSocket->connectToHost(IP,8900);
-    QByteArray sendMessage = savestr.toLocal8Bit();
+    mSocket->connectToHost(IP,8905);
+    QByteArray sendMessage = sendmsg.toLocal8Bit();
     qint16 aa = mSocket->write(sendMessage);
     qDebug() <<"writenum" << aa;
     mSocket->close();
 }
 
-//?ж??????????????
+//?????????????????
 bool Data::msg_received_success(QString bytes_string){
 
     QDateTime startTime3=  QDateTime::currentDateTime();
-
     QSqlQuery query(mySqlhelper::db3);
-
     QDateTime endTime3=  QDateTime::currentDateTime();
     qint64 intervalTime3 = startTime3.secsTo(endTime3); //???????
     qint64 intervalTimeMS3 = startTime3.msecsTo(endTime3);
@@ -261,9 +239,10 @@ bool Data::msg_received_success(QString bytes_string){
         return false;
     }
 }
+
 bool Data::isNetWorkOnline()  //CommonParameter
 {
-    //网络连接配置
+    //????????????
     QNetworkConfigurationManager mgr;
     //    return mgr.isOnline();
     if(mgr.isOnline()){
@@ -273,8 +252,6 @@ bool Data::isNetWorkOnline()  //CommonParameter
             return true;
         }
         return true;
-
-
     }
     else{
         QApplication::setQuitOnLastWindowClosed(false);//??????????????
@@ -295,9 +272,9 @@ void Data::readtxttosend(){
     _msg_value=0;
     QString min = QDateTime::currentDateTime().toString("yyyyMMdd");
 #if !defined(__android__)
-    dir_path =  "../DATA_SAVE";  //电脑
+    dir_path =  "../DATA_SAVE";  //????
 #else
-    dir_path =  "/storage/emulated/0/DATA_SAVE";  //手机
+    dir_path =  "/storage/emulated/0/DATA_SAVE";  //???
 #endif
     QDir dir(dir_path);
     if(!dir.exists())
@@ -306,38 +283,33 @@ void Data::readtxttosend(){
         qDebug()<< dir_path + "no exists!";
         _msg_value = 1;
     }else{
-        //打开文本 以时间命名文件名字
+        //??????? ????????????????
         m_fileName = dir_path + "/" + min + ".txt";
         m_localFile=new QFile(m_fileName);
         if (m_localFile->exists()){
             m_bytesWritten=0;
-            QString IP;
-            #if !defined(DEBUGGING)
-             IP="81.70.247.217"; //
-            #else
-             IP ="192.168.3.113";
-            #endif
-            mSocket->connectToHost(IP,8900);
+            mSocket->connectToHost("81.70.247.217",8900);
             if(!m_localFile->open(QFile::ReadOnly)){
+                qDebug()<<"client??open file error!";
                 return;
             }
             m_totalBytes=m_localFile->size();
             qint64 len_date=0;
             do
             {
-                //每次发送数据的大小
+                //??η?????????С
                 char buf[3960]={0};
                 len_date=0;
 
-                //往文件中读数据,返回实际读到的字节数
-                len_date=m_localFile->read(buf,sizeof(buf));              //3 读只有这一种,写有单参数和双参数两种
-                //发送数据，读多少，发多少
-                len_date=mSocket->write(buf,len_date);               //4 与发送头部信息的单参数有区别,其实上面也可用两个参数的
+                //??????ж?????,?????????????????
+                len_date=m_localFile->read(buf,sizeof(buf));              //3 ??????????,д?е????????????????
+                //??????????????????????
+                len_date=mSocket->write(buf,len_date);               //4 ???????????????????????,??????????????????????
                 mSocket->waitForBytesWritten(-1);
 
                 mSocket->flush();
 
-                //发送的数据需要累积
+                //???????????????
                 m_bytesWritten+=len_date;
                 _progressBar = m_bytesWritten * 100.0 /m_totalBytes;
                 QTime dieTime = QTime::currentTime().addMSecs(500);
@@ -348,12 +320,12 @@ void Data::readtxttosend(){
                 }
 
 
-            }while(len_date>0);                                   //5 如果写过去的数据为0,则表示文件写完,do while()结束
+            }while(len_date>0);                                   //5 ????д??????????0,????????д??,do while()????
 
             m_localFile->close();
 
-            //把客户端断开
-            //m_tcpClient->disconnectFromHost();             //7 这次要全部断开了
+            //????????
+            //m_tcpClient->disconnectFromHost();             //7 ?????????????
             mSocket->close();
             qDebug()<<"insert data success!";
             _progressBar = 100.0;
@@ -409,15 +381,6 @@ double Data::progressBar_value(){
     return _progressBar;
 }
 
-void Data::sendBinLog(QString filepath)
-{
-    NetManage::getManage()->SendLogFileEmit(filepath);
-}
-
-
-
-
-
 int Data::msg_value(){
     //       qDebug()<<"_msg_value: "<<_msg_value;
     return _msg_value;
@@ -427,16 +390,17 @@ void Data::Set_userID_value(){
 
     QString dir_save;
 #if !defined(__android__)
-    dir_save =  "../USER_SAVE";  //电脑
+    dir_save =  "../USER_SAVE";  //????
 #else
-    dir_save =  "/storage/emulated/0/UIDdate";  //手机
+    dir_save =  "/storage/emulated/0/UIDdate";  //???
 #endif
 
     QDir dir;
     if(!dir.exists(dir_save)){
-        dir.mkdir(dir_save);//创造一个文件夹
+        dir.mkdir(dir_save);//????????????
     }
-    QString fileName = dir_save + "/clientmanmage";  //电脑
+    QString fileName = dir_save + "/clientmanmage";  //????
+
     //
     QFile file(fileName);
     if (file.exists()){
@@ -463,7 +427,7 @@ bool Data::update_starttime=false;
 qint64 Data::starttime=QDateTime::currentDateTime().toTime_t();
 int Data::eppodroneID=0;
 QString Data::userID="001";
-uint8_t Data::spraystate=0;//喷洒状态
+uint8_t Data::spraystate=0;//??????
 double Data::flowrate=0;
 double Data::lat=0;
 double Data::lon=0;
@@ -481,8 +445,13 @@ double Data::rollRate=0;
 double Data::pitchRate=0;
 double Data::yawRate=0;
 
-int Data::save_num=1;//发送数据的次数
-int Data::save_plan_num=0;//存储数据的次数
+QString Data::Firmware="";
+
+QString Data::QGCversion="40";
+
+
+int Data::save_num=1;//????????????
+int Data::save_plan_num=0;//??????????
 
 QString Data::save_filename="";
 QString Data::dir_path="";

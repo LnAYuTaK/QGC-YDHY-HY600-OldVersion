@@ -20,7 +20,7 @@ QStringList QGCFileDialogController::getFiles(const QString& directoryPath, cons
 {
     qCDebug(QGCFileDialogControllerLog) << "getFiles" << directoryPath << fileExtensions;
     QStringList files;
-
+    qDebug()  << "GetFiles"<< files;
     QDir fileDir(directoryPath);
 
     QStringList infoListExtensions;

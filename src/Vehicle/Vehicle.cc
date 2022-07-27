@@ -49,7 +49,7 @@
 #include "QGCGeo.h"
 #include "linkdatapack.h"
 #include "fstream"
-
+#include <QMap>
 #if defined(QGC_AIRMAP_ENABLED)
 #include "AirspaceVehicleManager.h"
 #endif
@@ -266,25 +266,21 @@ Vehicle::Vehicle(LinkInterface*             link,
 
 //    Data::readtxttosend();//补发数据
     //mytimer.setSingleShot(true);//设置使能/禁用单次触发
-//    mytimer.setInterval(1000);
-//    connect(&mytimer, &QTimer::timeout, this, &Data::data_save);
-//    mytimer.start();
+    mytimer.setInterval(1000);
+    //connect(&mytimer,&QTimer::timeout,this,&Data::data_save);
     //自己添加，设置定时器，每1s保存一次数据，此处定时器没开始运行
     //压力测试 10ms发送一次
-    mytimer.setInterval(1000);
+    //mytimer.setInterval(1000);
     connect(&mytimer, &QTimer::timeout, this, &Data::data_save_plan);
     //202203Add 在未连接状态下发数据，仅为测试数据传输
 #if !defined(__android__)
-    //mytimer.start();  //电脑  启动定时器，数据开始保存
+    mytimer.start(2000);  //电脑  启动定时器，数据开始保存
 #endif
-
-
     _mav = uas();
 
     // Listen for system messages
     connect(_toolbox->uasMessageHandler(), &UASMessageHandler::textMessageCountChanged,  this, &Vehicle::_handleTextMessage);
     connect(_toolbox->uasMessageHandler(), &UASMessageHandler::textMessageReceived,      this, &Vehicle::_handletextMessageReceived);
-
 
     if (_highLatencyLink || link->isPX4Flow()) {
         // These links don't request information
@@ -445,15 +441,14 @@ Vehicle::Vehicle(MAV_AUTOPILOT              firmwareType,
     , _distanceSensorFactGroup(this)
 {
     _commonInit();
-
     // Offline editing vehicle tracks settings changes for offline editing settings
     connect(_settingsManager->appSettings()->offlineEditingFirmwareType(),  &Fact::rawValueChanged, this, &Vehicle::_offlineFirmwareTypeSettingChanged);
     connect(_settingsManager->appSettings()->offlineEditingVehicleType(),   &Fact::rawValueChanged, this, &Vehicle::_offlineVehicleTypeSettingChanged);
     connect(_settingsManager->appSettings()->offlineEditingCruiseSpeed(),   &Fact::rawValueChanged, this, &Vehicle::_offlineCruiseSpeedSettingChanged);
     connect(_settingsManager->appSettings()->offlineEditingHoverSpeed(),    &Fact::rawValueChanged, this, &Vehicle::_offlineHoverSpeedSettingChanged);
-
     _firmwarePlugin->initializeVehicle(this);
 }
+
 
 //公共初始化
 void Vehicle::_commonInit()
@@ -563,6 +558,9 @@ void Vehicle::_commonInit()
     }
 #endif
 
+
+
+
     _pidTuningMessages << MAVLINK_MSG_ID_ATTITUDE << MAVLINK_MSG_ID_ATTITUDE_TARGET;
 }
 
@@ -669,9 +667,7 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
         _maxProtoVersion = mavlinkVersion;
         qCDebug(VehicleLog) << "Vehicle::_mavlinkMessageReceived Link already running Mavlink v2. Setting _maxProtoVersion" << _maxProtoVersion;
     }
-
     Data::eppodroneID = _id; //自己添加
-
     if (message.sysid != _id && message.sysid != 0) {
         // We allow RADIO_STATUS messages which come from a link the vehicle is using to pass through and be handled
         if (!(message.msgid == MAVLINK_MSG_ID_RADIO_STATUS && _containsLink(link))) {
@@ -786,9 +782,9 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     case MAVLINK_MSG_ID_GPS_RAW_INT:
         _handleGpsRawInt(message);
         break;
-//    case MAVLINK_MSG_ID_FLOW_RATE_RAW_INT:        //自己添加流速计
-//        _handleFlowRateMeterRawInt(message);
-//        break;
+    case MAVLINK_MSG_ID_FLOW_RATE_RAW_INT:        //自己添加流速计
+        _handleFlowRateMeterRawInt(message);
+        break;
     case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
         _handleGlobalPositionInt(message);
         break;
@@ -995,7 +991,6 @@ void Vehicle::_handleStatusText(mavlink_message_t& message, bool longVersion)
         }
     }
 
-
     // If the message is NOTIFY or higher severity, or starts with a '#',
     // then read it aloud.
     if (messageText.startsWith("#") || severity <= MAV_SEVERITY_NOTICE) {
@@ -1004,7 +999,13 @@ void Vehicle::_handleStatusText(mavlink_message_t& message, bool longVersion)
             qgcApp()->toolbox()->audioOutput()->say(messageText);
         }
     }
-    qDebug() << messageText;
+    //2022 7.5 判断下固件信息版本号
+    qDebug()<< messageText;
+    QString devMsg = "Seahawk";
+    QString devMsgStrhead = messageText.mid(0,7);
+    if(devMsgStrhead == devMsg){
+            Data::Firmware = messageText.mid(9,3).replace(QString("."), QString(""));
+    }
     //自己添加  判断液位状态
     QString Liquidtext = "No Load RTL";
     QString StartSpraying = "Start Spraying";
@@ -1013,12 +1014,10 @@ void Vehicle::_handleStatusText(mavlink_message_t& message, bool longVersion)
         Data::liquidlevel  = 0;
 //        _flowratemeterFactGroup.spraystate()->setRawValue(Data::spraystate);
     }
-
     if(messageText == StartSpraying ){
         //Data::spraystate  = 1;
 //        _flowratemeterFactGroup.spraystate()->setRawValue(Data::spraystate);
     }
-
     if(messageText == StopSpraying ){
        // Data::spraystate  = 0;
 //        _flowratemeterFactGroup.spraystate()->setRawValue(Data::spraystate);
@@ -1198,7 +1197,6 @@ void Vehicle::_handleAttitude(mavlink_message_t& message)
     mavlink_msg_attitude_decode(&message, &attitude);
 
     _handleAttitudeWorker(attitude.roll, attitude.pitch, attitude.yaw);
-//    printf("rpy=%f,%f,%f\n",attitude.roll, attitude.pitch, attitude.yaw);
 }
 
 void Vehicle::_handleAttitudeQuaternion(mavlink_message_t& message)
@@ -1230,21 +1228,20 @@ void Vehicle::_handleAttitudeQuaternion(mavlink_message_t& message)
 }
 
 //add FlowRate
-//void Vehicle::_handleFlowRateMeterRawInt(mavlink_message_t& message)
-//{
-//    mavlink_flowratemeter_raw_int_t flowrateRawInt;
-//    mavlink_msg_flowratemeter_raw_int_decode(&message, &flowrateRawInt);
+void Vehicle::_handleFlowRateMeterRawInt(mavlink_message_t& message)
+{
+    mavlink_flowratemeter_raw_int_t flowrateRawInt;
+    mavlink_msg_flowratemeter_raw_int_decode(&message, &flowrateRawInt);
 
-//    _flowrateRawIntMessageAvailable = true;
+    _flowrateRawIntMessageAvailable = true;
 
-//    _flowratemeterFactGroup.flowrate()->setRawValue(flowrateRawInt.flowrate);
-//    _flowratemeterFactGroup.spraystate()->setRawValue(flowrateRawInt.spraystate);
+    _flowratemeterFactGroup.flowrate()->setRawValue(flowrateRawInt.flowrate);
+    _flowratemeterFactGroup.spraystate()->setRawValue(flowrateRawInt.spraystate);
 
-//    //添加流速和喷洒状态
-//    Data::spraystate=flowrateRawInt.spraystate;
-//    Data::flowrate=flowrateRawInt.flowrate;
-//}
-
+    //添加流速和喷洒状态
+    Data::spraystate=flowrateRawInt.spraystate;
+    Data::flowrate=flowrateRawInt.flowrate;
+}
 
 //????GPS??????
 void Vehicle::_handleGpsRawInt(mavlink_message_t& message)
@@ -1818,8 +1815,10 @@ void Vehicle::_updateArmed(bool armed)
                Data::starttime = timestrr;
                Data::update_starttime = true;
             }
+
 //            qDebug()<< QString::fromUtf8("Thread begins test:");
 //            task->start();//启动该线程
+
         } else {
             _trajectoryPoints->stop();
             _flightTimerStop();
@@ -1891,7 +1890,6 @@ void Vehicle::_handleHeartbeat(mavlink_message_t& message)
             // bad modes while unit testing.
             previousFlightMode = flightMode();
         }
-
         _base_mode   = heartbeat.base_mode;
         _custom_mode = heartbeat.custom_mode;
         if (previousFlightMode != flightMode()) {

@@ -251,50 +251,50 @@ Rectangle {
 //                onClicked: showPanel(this, "FirmwareUpgrade.qml")
 //            }
 
+//            SubMenuButton {
+//                id:                 px4FlowButton
+//                exclusiveGroup:     setupButtonGroup
+//                visible:            QGroundControl.multiVehicleManager.activeVehicle ? QGroundControl.multiVehicleManager.activeVehicle.priorityLink.isPX4Flow : false
+//                setupIndicator:     false
+//                text:               qsTr("PX4Flow")
+//                Layout.fillWidth:   true
+//                onClicked:          showPanel(this, "PX4FlowSensor.qml")
+//            }
+
+//            SubMenuButton {
+//                id:                 joystickButton
+//                setupIndicator:     true
+//                setupComplete:      joystickManager.activeJoystick ? joystickManager.activeJoystick.calibrated : false
+//                exclusiveGroup:     setupButtonGroup
+//                visible:            _fullParameterVehicleAvailable && joystickManager.joysticks.length !== 0
+//                text:               qsTr("Joystick")
+//                Layout.fillWidth:   true
+//                onClicked:          showPanel(this, "JoystickConfig.qml")
+//            }
+
+//            Repeater {
+//                id:     componentRepeater
+//                model:  _fullParameterVehicleAvailable ? QGroundControl.multiVehicleManager.activeVehicle.autopilot.vehicleComponents : 0
+
+//                SubMenuButton {
+//                    imageResource:      modelData.iconResource
+//                    setupIndicator:     modelData.requiresSetup
+//                    setupComplete:      modelData.setupComplete
+//                    exclusiveGroup:     setupButtonGroup
+//                    text:               modelData.name
+//                    visible:            modelData.setupSource.toString() !== ""
+//                    Layout.fillWidth:   true
+//                    onClicked:          showVehicleComponentPanel(modelData)
+//                }
+//            }
+
             SubMenuButton {
-                id:                 px4FlowButton
-                exclusiveGroup:     setupButtonGroup
-                visible:            QGroundControl.multiVehicleManager.activeVehicle ? QGroundControl.multiVehicleManager.activeVehicle.priorityLink.isPX4Flow : false
                 setupIndicator:     false
-                text:               qsTr("PX4Flow")
-                Layout.fillWidth:   true
-                onClicked:          showPanel(this, "PX4FlowSensor.qml")
-            }
-
-            SubMenuButton {
-                id:                 joystickButton
-                setupIndicator:     true
-                setupComplete:      joystickManager.activeJoystick ? joystickManager.activeJoystick.calibrated : false
                 exclusiveGroup:     setupButtonGroup
-                visible:            _fullParameterVehicleAvailable && joystickManager.joysticks.length !== 0
-                text:               qsTr("Joystick")
-                Layout.fillWidth:   true
-                onClicked:          showPanel(this, "JoystickConfig.qml")
-            }
-
-            Repeater {
-                id:     componentRepeater
-                model:  _fullParameterVehicleAvailable ? QGroundControl.multiVehicleManager.activeVehicle.autopilot.vehicleComponents : 0
-
-                SubMenuButton {
-                    imageResource:      modelData.iconResource
-                    setupIndicator:     modelData.requiresSetup
-                    setupComplete:      modelData.setupComplete
-                    exclusiveGroup:     setupButtonGroup
-                    text:               modelData.name
-                    visible:            modelData.setupSource.toString() !== ""
-                    Layout.fillWidth:   true
-                    onClicked:          showVehicleComponentPanel(modelData)
-                }
-            }
-//2022 7/22打开参数
-            SubMenuButton {
-                setupIndicator:     false
-                exclusiveGroup:     setupButtonGroup
-                visible:           /* QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
+                visible:            QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
                                     !QGroundControl.multiVehicleManager.activeVehicle.highLatencyLink &&
-                                    _corePlugin.showAdvancedUI*/
-                text:               qsTr("Parameters")
+                                    _corePlugin.showAdvancedUI
+                text:               qsTr("参数")
                 Layout.fillWidth:   true
                 onClicked:          showPanel(this, "SetupParameterEditor.qml")
             }

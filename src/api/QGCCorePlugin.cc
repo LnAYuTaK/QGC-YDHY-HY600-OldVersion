@@ -19,18 +19,22 @@
 #include "VideoReceiver.h"
 #include "QGCLoggingCategory.h"
 #include "QGCCameraManager.h"
-#include <QtQml>
-#include <QQmlEngine>
+
+#include  "AppSettings.h"
+
 
 //#include "quserlogin.h"
 #include "senddata.h"
 #include "data.h"
 //#include "mythread.h"
 #include "worker.h"
+#include <QtQml>
+#include <QQmlEngine>
+
+#include<QMessageBox>
 #include "NetLayer/NetLayer.h"
 #include "NetLayer/NetManage.h"
 #include "NetLayer/ParaEditor.h"
-
 
 /// @file
 ///     @brief Core Plugin Interface for QGroundControl - Default Implementation
@@ -435,7 +439,6 @@ QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
 
     //QUserLogin *user_login = new QUserLogin();
     //pEngine->rootContext()->setContextProperty("QUSERLOGIN",user_login);
-
     SendData *send_data = new SendData();
     pEngine->rootContext()->setContextProperty("SENDDATA",send_data);
     Data *data = new Data();
@@ -443,20 +446,20 @@ QQmlApplicationEngine* QGCCorePlugin::createRootWindow(QObject *parent)
     Worker *worker = new Worker();
     pEngine->rootContext()->setContextProperty("theworker",worker);
 
-    //Third QML Lib
+
+   // Third QML Lib
     pEngine->addImportPath(TaoQuickImportPath);
     pEngine->rootContext()->setContextProperty("taoQuickImagePath", TaoQuickImagePath);
 
-    //ParaManage
-    ParaManage * ParaManager =  new ParaManage();
-    pEngine->rootContext()->setContextProperty("ParaManage",ParaManager);
-
     //NetManage
     pEngine->rootContext()->setContextProperty("NetManage",NetManage::getManage());
-
     pEngine->load(QUrl(QStringLiteral("qrc:/qml/MainRootWindow.qml")));
 
+    //ParaManage
+    ParaManage * ParaManager =  new ParaManage();
+    pEngine->rootContext()->setContextProperty("ParaManager",ParaManager);
 
+    pEngine->load(QUrl(QStringLiteral("qrc:/qml/MainRootWindow.qml")));
 
 
     return pEngine;

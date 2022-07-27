@@ -34,6 +34,12 @@ const char* AppSettings::logDirectory =             "Logs";
 const char* AppSettings::videoDirectory =           "Video";
 const char* AppSettings::crashDirectory =           "CrashLogs";
 
+const char* AppSettings::userDirectory =            "User";
+const char* AppSettings::flightlogDirectory =       "FlightLog";
+const char* AppSettings::settingsDirectory =        "Settings";
+
+
+
 DECLARE_SETTINGGROUP(App, "")
 {
     qmlRegisterUncreatableType<AppSettings>("QGroundControl.SettingsManager", 1, 0, "AppSettings", "Reference only");
@@ -42,7 +48,7 @@ DECLARE_SETTINGGROUP(App, "")
     // Instantiate savePath so we can check for override and setup default path if needed
 
     SettingsFact* savePathFact = qobject_cast<SettingsFact*>(savePath());
-    QString appName = qgcApp()->applicationName();
+    QString appName = "YDHY";
     if (savePathFact->rawValue().toString().isEmpty() && _nameToMetaDataMap[savePathName]->rawDefaultValue().toString().isEmpty()) {
 #ifdef __mobile__
 #ifdef __ios__
@@ -127,6 +133,9 @@ void AppSettings::_checkSavePathDirectories(void)
         savePathDir.mkdir(logDirectory);
         savePathDir.mkdir(videoDirectory);
         savePathDir.mkdir(crashDirectory);
+        savePathDir.mkdir(flightlogDirectory);
+        savePathDir.mkdir(userDirectory);
+        savePathDir.mkdir(settingsDirectory);
     }
 }
 
@@ -154,6 +163,35 @@ QString AppSettings::parameterSavePath(void)
     }
     return QString();
 }
+QString AppSettings::flightlogSavePath()
+{
+    QString path = savePath()->rawValue().toString();
+    if (!path.isEmpty() && QDir(path).exists()) {
+        QDir dir(path);
+        return dir.filePath(flightlogDirectory);
+    }
+    return QString();
+}
+
+QString AppSettings::userSavePath()
+{
+    QString path = savePath()->rawValue().toString();
+    if (!path.isEmpty() && QDir(path).exists()) {
+        QDir dir(path);
+        return dir.filePath(userDirectory);
+    }
+    return QString();
+}
+
+QString AppSettings::settingsSavePath()
+{
+    QString path = savePath()->rawValue().toString();
+    if (!path.isEmpty() && QDir(path).exists()) {
+        QDir dir(path);
+        return dir.filePath(settingsDirectory);
+    }
+    return QString();
+}
 
 QString AppSettings::telemetrySavePath(void)
 {
@@ -167,10 +205,10 @@ QString AppSettings::telemetrySavePath(void)
 
 QString AppSettings::logSavePath(void)
 {
-    //QString path = savePath()->rawValue().toString();
-    QString path = "/storage/emulated/0/DATA_SAVE";
+    QString path = savePath()->rawValue().toString();
     if (!path.isEmpty() && QDir(path).exists()) {
         QDir dir(path);
+        qDebug()<<dir.filePath(logDirectory);
         return dir.filePath(logDirectory);
     }
     return QString();

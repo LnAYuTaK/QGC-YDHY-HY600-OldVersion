@@ -11,7 +11,6 @@
 #include "data.h"
 #include "mysqlhelper.h"
 
-
 class SendData : public QObject
 {
     Q_OBJECT

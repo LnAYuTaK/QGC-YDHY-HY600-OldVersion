@@ -6,19 +6,26 @@
 #include <QFile>
 #include <QThread>
 #include <QDataStream>
-#define SerIP  "192.168.3.113"
-
-#define SerPort  8900
+#include <QCryptographicHash>
+#include <QTime>
+#include "data.h"
+#include "Helper/HySettings.h"
 class NetLayer : public QObject
 {
     Q_OBJECT
 public:
     explicit NetLayer(QObject *parent = nullptr);
+    //任务定时器
+    QTimer*  TaskTimeOut ;
+    //回复给QML显示的错误类型枚举
 private:
+    //获取Setting指针
+    HySettings *Setting;
 public slots:
     //Task
     //???????????????
     void SendBinLogFile(QString);
+
     //Task
     //void SendData();
 signals:

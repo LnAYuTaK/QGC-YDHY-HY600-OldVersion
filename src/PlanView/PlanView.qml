@@ -222,7 +222,7 @@ Item {
             fileDialog.planFiles =      true
             fileDialog.selectExisting = true
             fileDialog.nameFilters =    _planMasterController.loadNameFilters
-//            fileDialog.fileExtension =  _appSettings.planFileExtension
+//          fileDialog.fileExtension =  _appSettings.planFileExtension
             fileDialog.fileExtension =  _appSettings.waypointsFileExtension
             fileDialog.fileExtension2 = _appSettings.missionFileExtension
             fileDialog.openForLoad()

@@ -814,16 +814,11 @@
     <message>
         <location filename="../src/AutoPilotPlugins/APM/APMHeliComponent.qml" line="401"/>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/AutoPilotPlugins/APM/APMHeliComponent.qml" line="415"/>
         <source>* Tail &amp; Gyros *</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/AutoPilotPlugins/APM/APMHeliComponent.qml" line="416"/>
-        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6720,11 +6715,6 @@ Please place your vehicle in water, click the button, and wait. Note that the th
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/FlightDisplay/GuidedActionsController.qml" line="299"/>
-        <source>Smart RTL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/FlightDisplay/GuidedActionsController.qml" line="59"/>
         <source>Takeoff from ground and hold position.</source>
         <translation type="unfinished"></translation>
@@ -7683,79 +7673,79 @@ Please place your vehicle in water, click the button, and wait. Note that the th
 <context>
     <name>MAVLinkInspectorController</name>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="747"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="735"/>
         <source>5 Sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="748"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="736"/>
         <source>10 Sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="749"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="737"/>
         <source>30 Sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="750"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="738"/>
         <source>60 Sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="752"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="740"/>
         <source>Auto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="753"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="741"/>
         <source>10,000</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="754"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="742"/>
         <source>1,000</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="755"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="743"/>
         <source>100</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="756"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="744"/>
         <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="757"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="745"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="758"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="746"/>
         <source>0.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="759"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="747"/>
         <source>0.01</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="760"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="748"/>
         <source>0.001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="761"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="749"/>
         <source>0.0001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="856"/>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="869"/>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="884"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="844"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="857"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="872"/>
         <source>Vehicle %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7848,39 +7838,39 @@ Please place your vehicle in water, click the button, and wait. Note that the th
 <context>
     <name>MainRootWindow</name>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="257"/>
-        <location filename="../src/ui/MainRootWindow.qml" line="274"/>
-        <location filename="../src/ui/MainRootWindow.qml" line="293"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="262"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="279"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="298"/>
         <source>%1 close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="258"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="263"/>
         <source>You have a mission edit in progress which has not been saved/sent. If you close you will lose changes. Are you sure you want to close?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="275"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="280"/>
         <source>You have pending parameter updates to a vehicle. If you close you will lose changes. Are you sure you want to close?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="294"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="299"/>
         <source>There are still active connections to vehicles. Are you sure you want to exit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="434"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="441"/>
         <source>No Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="541"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="548"/>
         <source>Parameters missing: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/MainRootWindow.qml" line="545"/>
+        <location filename="../src/ui/MainRootWindow.qml" line="552"/>
         <source>Fact error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8851,12 +8841,12 @@ Please place your vehicle in water, click the button, and wait. Note that the th
 <context>
     <name>MyAdd</name>
     <message>
-        <location filename="../MyAdd.qml" line="194"/>
+        <location filename="../MyAdd.qml" line="203"/>
         <source>正在补发</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MyAdd.qml" line="194"/>
+        <location filename="../MyAdd.qml" line="203"/>
         <source>补发数据</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10564,70 +10554,70 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="234"/>
+        <location filename="../src/PlanView/PlanView.qml" line="235"/>
         <source>Save Plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="251"/>
+        <location filename="../src/PlanView/PlanView.qml" line="252"/>
         <source>Save KML</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="361"/>
+        <location filename="../src/PlanView/PlanView.qml" line="362"/>
         <source>Move the selected mission item to the be after following mission item:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="573"/>
-        <location filename="../src/PlanView/PlanView.qml" line="758"/>
+        <location filename="../src/PlanView/PlanView.qml" line="574"/>
+        <location filename="../src/PlanView/PlanView.qml" line="759"/>
         <source>Plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="595"/>
+        <location filename="../src/PlanView/PlanView.qml" line="596"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="805"/>
+        <location filename="../src/PlanView/PlanView.qml" line="806"/>
         <source>Mission</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="808"/>
+        <location filename="../src/PlanView/PlanView.qml" line="809"/>
         <source>Fence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="812"/>
+        <location filename="../src/PlanView/PlanView.qml" line="813"/>
         <source>Rally</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="931"/>
+        <location filename="../src/PlanView/PlanView.qml" line="932"/>
         <source>You have unsaved/unsent changes. Loading from the Vehicle will lose these changes. Are you sure you want to load from the Vehicle?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="943"/>
+        <location filename="../src/PlanView/PlanView.qml" line="944"/>
         <source>You have unsaved/unsent changes. Loading from a file will lose these changes. Are you sure you want to load from a file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1026"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1027"/>
         <source>You have unsaved changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1125"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1126"/>
         <source>Open...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/PlanView/PlanView.qml" line="189"/>
         <location filename="../src/PlanView/PlanView.qml" line="194"/>
-        <location filename="../src/PlanView/PlanView.qml" line="1139"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1140"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10643,85 +10633,85 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="956"/>
+        <location filename="../src/PlanView/PlanView.qml" line="957"/>
         <source>Are you sure you want to remove current plan and create a new plan? </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1025"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1026"/>
         <source>You have unsaved changes. You should upload to your vehicle, or save to a file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1033"/>
-        <location filename="../src/PlanView/PlanView.qml" line="1085"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1034"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1086"/>
         <source>Create Plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1104"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1105"/>
         <source>Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1153"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1154"/>
         <source>Save As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1217"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1218"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="967"/>
+        <location filename="../src/PlanView/PlanView.qml" line="968"/>
         <source>Are you sure you want to remove all mission items and clear the mission from the vehicle?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="993"/>
+        <location filename="../src/PlanView/PlanView.qml" line="994"/>
         <source>Create complex pattern:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1018"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1019"/>
         <source>Mission overwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1018"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1019"/>
         <source>GeoFence overwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1018"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1019"/>
         <source>Rally Points overwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/PlanView/PlanView.qml" line="189"/>
         <location filename="../src/PlanView/PlanView.qml" line="194"/>
-        <location filename="../src/PlanView/PlanView.qml" line="1191"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1192"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1165"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1166"/>
         <source>Save Mission Waypoints As KML...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1182"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1183"/>
         <source>Vehicle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1202"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1203"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/PlanView/PlanView.qml" line="1170"/>
+        <location filename="../src/PlanView/PlanView.qml" line="1171"/>
         <source>KML</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11215,12 +11205,12 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
 <context>
     <name>QGCApplication</name>
     <message>
-        <location filename="../src/QGCApplication.cc" line="664"/>
+        <location filename="../src/QGCApplication.cc" line="665"/>
         <source>Unable to save telemetry log. Error copying telemetry to &apos;%1&apos;: &apos;%2&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/QGCApplication.cc" line="596"/>
+        <location filename="../src/QGCApplication.cc" line="597"/>
         <source>The Offline Map Cache database has been upgraded. Your old map cache sets have been reset.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11235,22 +11225,22 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/QGCApplication.cc" line="588"/>
+        <location filename="../src/QGCApplication.cc" line="589"/>
         <source>The format for %1 saved settings has been modified. Your saved settings have been reset to defaults.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/QGCApplication.cc" line="681"/>
+        <location filename="../src/QGCApplication.cc" line="682"/>
         <source>Unable to save telemetry log. Application save directory is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/QGCApplication.cc" line="688"/>
+        <location filename="../src/QGCApplication.cc" line="689"/>
         <source>Unable to save telemetry log. Telemetry save directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/QGCApplication.cc" line="722"/>
+        <location filename="../src/QGCApplication.cc" line="723"/>
         <source>Parameters are missing from firmware. You may be running a version of firmware QGC does not work correctly with or your firmware has a bug in it. Missing params: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11258,77 +11248,107 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
 <context>
     <name>QGCCorePlugin</name>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="222"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="221"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="226"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="225"/>
         <source>Comm Links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="235"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="234"/>
         <source>Taisync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="241"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="240"/>
         <source>Microhard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="247"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="246"/>
         <source>AirMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="281"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="253"/>
+        <source>MAVLink</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="257"/>
+        <source>Console</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="260"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="269"/>
+        <source>Mock Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="272"/>
+        <source>Debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="275"/>
+        <source>Palette Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/api/QGCCorePlugin.cc" line="288"/>
         <source>Values</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="282"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="289"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="286"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="293"/>
         <source>Video Stream</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="289"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="296"/>
         <source>Health</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="290"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="297"/>
         <source>Vibration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="306"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="313"/>
         <source>Log Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="308"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="315"/>
         <source>GeoTag Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="310"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="317"/>
         <source>MAVLink Console</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="312"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="319"/>
         <source>MAVLink Inspector</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/api/QGCCorePlugin.cc" line="408"/>
+        <location filename="../src/api/QGCCorePlugin.cc" line="415"/>
         <source>WARNING: You are about to enter Advanced Mode. If used incorrectly, this may cause your vehicle to malfunction thus voiding your warranty. You should do so only if instructed by customer support. Are you sure you want to enable Advanced Mode?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11450,7 +11470,7 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
 <context>
     <name>QGCMAVLinkVehicle</name>
     <message>
-        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="596"/>
+        <location filename="../src/AnalyzeView/MAVLinkInspectorController.cc" line="584"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11864,16 +11884,6 @@ Note that this will also completely reset everything, including UAVCAN nodes.</s
     <message>
         <location filename="../src/main.cc" line="246"/>
         <source>A second instance of %1 is already running. Please close the other instance and try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QUserLogin</name>
-    <message>
-        <location filename="../src/quserlogin.cpp" line="41"/>
-        <location filename="../src/quserlogin.cpp" line="52"/>
-        <location filename="../src/quserlogin.cpp" line="79"/>
-        <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -13184,12 +13194,12 @@ Click Ok to start calibration.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/VehicleSetup/SetupView.qml" line="258"/>
+        <location filename="../src/VehicleSetup/SetupView.qml" line="259"/>
         <source>PX4Flow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/VehicleSetup/SetupView.qml" line="269"/>
+        <location filename="../src/VehicleSetup/SetupView.qml" line="270"/>
         <source>Joystick</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14397,47 +14407,47 @@ Confirm change?</source>
 <context>
     <name>UsersLogin</name>
     <message>
-        <location filename="../UsersLogin.qml" line="110"/>
+        <location filename="../UsersLogin.qml" line="104"/>
         <source>用户名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="165"/>
+        <location filename="../UsersLogin.qml" line="159"/>
         <source>密码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="196"/>
+        <location filename="../UsersLogin.qml" line="190"/>
         <source>登    录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="243"/>
+        <location filename="../UsersLogin.qml" line="237"/>
         <source>        </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="264"/>
+        <location filename="../UsersLogin.qml" line="258"/>
         <source>记住密码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="290"/>
+        <location filename="../UsersLogin.qml" line="284"/>
         <source>         </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="309"/>
+        <location filename="../UsersLogin.qml" line="303"/>
         <source>自动登录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="355"/>
+        <location filename="../UsersLogin.qml" line="349"/>
         <source>立即注册&gt;&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersLogin.qml" line="381"/>
+        <location filename="../UsersLogin.qml" line="375"/>
         <source>忘记密码?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14445,65 +14455,65 @@ Confirm change?</source>
 <context>
     <name>UsersRegister</name>
     <message>
-        <location filename="../UsersRegister.qml" line="81"/>
+        <location filename="../UsersRegister.qml" line="79"/>
         <source>请输入用户名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersRegister.qml" line="118"/>
+        <location filename="../UsersRegister.qml" line="116"/>
         <source>请输入密码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersRegister.qml" line="157"/>
+        <location filename="../UsersRegister.qml" line="155"/>
         <source>请再次输入密码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersRegister.qml" line="185"/>
+        <location filename="../UsersRegister.qml" line="183"/>
         <source>注    册</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersRegister.qml" line="240"/>
+        <location filename="../UsersRegister.qml" line="238"/>
         <source>已经有一个账号 ?  点我 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersRegister.qml" line="266"/>
+        <location filename="../UsersRegister.qml" line="264"/>
         <source>登录</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>UsersVerify</name>
+    <name>UsersRegisterVerify</name>
     <message>
-        <location filename="../UsersVerify.qml" line="85"/>
+        <location filename="../UsersRegisterVerify.qml" line="82"/>
         <source>请输入手机号</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersVerify.qml" line="122"/>
+        <location filename="../UsersRegisterVerify.qml" line="119"/>
         <source>请输入验证码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersVerify.qml" line="152"/>
+        <location filename="../UsersRegisterVerify.qml" line="149"/>
         <source>获取验证码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersVerify.qml" line="205"/>
+        <location filename="../UsersRegisterVerify.qml" line="202"/>
         <source>已经有一个账号 ?  点我 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersVerify.qml" line="230"/>
+        <location filename="../UsersRegisterVerify.qml" line="227"/>
         <source>登录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UsersVerify.qml" line="247"/>
+        <location filename="../UsersRegisterVerify.qml" line="244"/>
         <source>下 一 步</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14635,301 +14645,301 @@ Confirm change?</source>
 <context>
     <name>Vehicle</name>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="627"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="632"/>
         <source>MAVLink Generic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="634"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="639"/>
         <source>Fixed Wing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="636"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="641"/>
         <source>Multi-Rotor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="638"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="643"/>
         <source>VTOL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="640"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="645"/>
         <source>Rover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="642"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="647"/>
         <source>Sub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="644"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="649"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="2428"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2229"/>
         <source>switch to %2 as priority link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3180"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2981"/>
         <source>%1 communication to auxiliary link %2 %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3187"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2988"/>
         <source>Communication regained</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3189"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2990"/>
         <source>Communication regained to vehicle %1 on %2 link %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3189"/>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3197"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2990"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2998"/>
         <source>priority</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3189"/>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3197"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2990"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2998"/>
         <source>auxiliary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3191"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2992"/>
         <source>Communication regained to vehicle %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3195"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2996"/>
         <source>Communication lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3197"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2998"/>
         <source>Communication lost to vehicle %1 on %2 link %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3199"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3000"/>
         <source>Communication lost to vehicle %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3203"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3004"/>
         <source> to vehicle %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3828"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3630"/>
         <source>Bootloader flash succeeded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3845"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3647"/>
         <source>%1 command temporarily rejected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3848"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3650"/>
         <source>%1 command denied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3851"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3653"/>
         <source>%1 command not supported</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3854"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3656"/>
         <source>%1 command failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="2968"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2769"/>
         <source>AutoLoad%1.%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="1883"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="1680"/>
         <source>%1 low battery: %2 percent remaining</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="2907"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2708"/>
         <source>Mission transfer failed. Retry transfer. Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="2913"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2714"/>
         <source>GeoFence transfer failed. Retry transfer. Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="2919"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="2720"/>
         <source>Rally Point transfer failed. Retry transfer. Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3272"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3073"/>
         <source>Generic micro air vehicle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3273"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3074"/>
         <source>Fixed wing aircraft</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3274"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3075"/>
         <source>Quadrotor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3275"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3076"/>
         <source>Coaxial helicopter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3276"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3077"/>
         <source>Normal helicopter with tail rotor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3277"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3078"/>
         <source>Ground installation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3278"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3079"/>
         <source>Operator control unit / ground control station</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3279"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3080"/>
         <source>Airship, controlled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3280"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3081"/>
         <source>Free balloon, uncontrolled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3281"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3082"/>
         <source>Rocket</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3282"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3083"/>
         <source>Ground rover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3283"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3084"/>
         <source>Surface vessel, boat, ship</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3284"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3085"/>
         <source>Submarine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3285"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3086"/>
         <source>Hexarotor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3286"/>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3287"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3087"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3088"/>
         <source>Octorotor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3288"/>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3289"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3089"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3090"/>
         <source>Flapping wing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3290"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3091"/>
         <source>Onboard companion controller</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3291"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3092"/>
         <source>Two-rotor VTOL using control surfaces in vertical operation in addition. Tailsitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3292"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3093"/>
         <source>Quad-rotor VTOL using a V-shaped quad config in vertical operation. Tailsitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3293"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3094"/>
         <source>Tiltrotor VTOL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3294"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3095"/>
         <source>VTOL reserved 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3295"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3096"/>
         <source>VTOL reserved 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3296"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3097"/>
         <source>VTOL reserved 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3297"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3098"/>
         <source>VTOL reserved 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3298"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3099"/>
         <source>Onboard gimbal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3299"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3100"/>
         <source>Onboard ADSB peripheral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3308"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3109"/>
         <source>vehicle %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3316"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3117"/>
         <source>%1 %2 flight mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3327"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3129"/>
         <source>armed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3327"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3129"/>
         <source>disarmed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Vehicle/Vehicle.cc" line="3671"/>
+        <location filename="../src/Vehicle/Vehicle.cc" line="3473"/>
         <source>Vehicle did not respond to command: %1</source>
         <translation type="unfinished"></translation>
     </message>

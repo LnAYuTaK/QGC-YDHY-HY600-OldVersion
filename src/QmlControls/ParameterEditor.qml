@@ -20,7 +20,7 @@ import QGroundControl.Controllers   1.0
 import QGroundControl.FactSystem    1.0
 import QGroundControl.FactControls  1.0
 import TaoQuick 1.0
-
+import QtQml.Models 2.0
 Item {
     id:         _root
 
@@ -32,7 +32,12 @@ Item {
     property bool   _showRCToParam:     !ScreenTools.isMobile && QGroundControl.multiVehicleManager.activeVehicle.px4Firmware
     property var    _appSettings:       QGroundControl.settingsManager.appSettings
 
-//这里重新绘制一下  参数界面
+//    ParameterEditorController {
+//        id:                 controller
+//        onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
+//    }
+
+    //ExclusiveGroup { id: sectionGroup }
     Rectangle {
         border.width: 1
         border.color: "white"
@@ -91,15 +96,15 @@ Item {
                             background: Rectangle {
                                 width: btn.width
                                 height: btn.height
-                                color: {
-                                    if (btn.isSelected || btn.pressed) {
-                                        return "#ffffff"
-                                    } else if (btn.hovered) {
-                                        return "#e1e6eb"
-                                    } else {
-                                        return "#f0f0f1"
+                                    color: {
+                                        if (btn.isSelected || btn.pressed) {
+                                            return "#ffffff"
+                                        } else if (btn.hovered) {
+                                            return "#e1e6eb"
+                                        } else {
+                                            return "#f0f0f1"
+                                        }
                                     }
-                                }
                             }
                             onClicked: {
                                 leftListView.currentIndex = index
@@ -150,10 +155,7 @@ Item {
                                         id: name
                                         width: parent.width
                                         height: parent.height
-                                        font.pixelSize: 30
-                                        clip :true
-                                        text: ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
-
+                                        text: ParaManager.getParameterValue(1,"SPRAY_PUMP_RATE")
                                     }
                                 }
                                 CusTextField {
@@ -167,9 +169,11 @@ Item {
                                     height: 30
                                     text: "上传参数"
                                     onClicked:{
-                                           ParaMange.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text)
-                                           name.text = ParaMange.getParameterValue(1,"SPRAY_PUMP_RATE")
-                                    }
+                                           ParaManager.setParameterValue(1,"SPRAY_PUMP_RATE",spray_pump_rate.text.toString())
+                                         //获取完后刷新一下
+                                           ParaManager.refreshThisParameter(1,"SPRAY_PUMP_RATE")
+                                           name.text = ParaManager.getParameterValue(1,"SPRAY_PUMP_RATE")
+                                        }
                                 }
                             }
                         }
@@ -186,16 +190,8 @@ Item {
         }
     }
 
-
-//    ParameterEditorController {
-//        id:                 controller
-//        onShowErrorMessage: mainWindow.showMessageDialog(qsTr("Parameter Load Errors"), errorMsg)
-//    }
-
-//    ExclusiveGroup { id: sectionGroup }
-
-//    //---------------------------------------------
-//    //-- Header
+// ---------------------------------------------
+//-- Header
 //    Row {
 //        id:             header
 //        anchors.left:   parent.left
@@ -458,58 +454,59 @@ Item {
 //        }
 //    }
 
-    Component {
-        id: editorDialogComponent
+//    Component {
+//        id: editorDialogComponent
 
-        ParameterEditorDialog {
-            fact:           _editorDialogFact
-            showRCToParam:  _showRCToParam
-        }
-    }
+//        ParameterEditorDialog {
+//            fact:           _editorDialogFact
+//            showRCToParam:  _showRCToParam
+//        }
+//    }
 
-    Component {
-        id: resetToDefaultConfirmComponent
-        QGCViewDialog {
-            function accept() {
-                controller.resetAllToDefaults()
-                hideDialog()
-            }
-            QGCLabel {
-                width:              parent.width
-                wrapMode:           Text.WordWrap
-                text:               qsTr("Select Reset to reset all parameters to their defaults.\n\nNote that this will also completely reset everything, including UAVCAN nodes.")
-            }
-        }
-    }
+//Component {
+//    id: resetToDefaultConfirmComponent
+//    QGCViewDialog {
+//        function accept() {
+//            controller.resetAllToDefaults()
+//            hideDialog()
+//        }
+//        QGCLabel {
+//            width:              parent.width
+//            wrapMode:           Text.WordWrap
+//            text:               qsTr("Select Reset to reset all parameters to their defaults.\n\nNote that this will also completely reset everything, including UAVCAN nodes.")
+//        }
+//    }
+//}
 
-    Component {
-        id: resetToVehicleConfigurationConfirmComponent
-        QGCViewDialog {
-            function accept() {
-                controller.resetAllToVehicleConfiguration()
-                hideDialog()
-            }
-            QGCLabel {
-                width:              parent.width
-                wrapMode:           Text.WordWrap
-                text:               qsTr("Select Reset to reset all parameters to the vehicle's configuration defaults.")
-            }
-        }
-    }
+//Component {
+//    id: resetToVehicleConfigurationConfirmComponent
+//    QGCViewDialog {
+//        function accept() {
+//            controller.resetAllToVehicleConfiguration()
+//            hideDialog()
+//        }
+//        QGCLabel {
+//            width:              parent.width
+//            wrapMode:           Text.WordWrap
+//            text:               qsTr("Select Reset to reset all parameters to the vehicle's configuration defaults.")
+//        }
+//    }
+//}
 
-    Component {
-        id: rebootVehicleConfirmComponent
-        QGCViewDialog {
-            function accept() {
-                activeVehicle.rebootVehicle()
-                hideDialog()
-            }
+//Component {
+//    id: rebootVehicleConfirmComponent
 
-            QGCLabel {
-                width:              parent.width
-                wrapMode:           Text.WordWrap
-                text:               qsTr("Select Ok to reboot vehicle.")
-            }
-        }
-    }
+//    QGCViewDialog {
+//        function accept() {
+//            activeVehicle.rebootVehicle()
+//            hideDialog()
+//        }
+
+//        QGCLabel {
+//            width:              parent.width
+//            wrapMode:           Text.WordWrap
+//            text:               qsTr("Select Ok to reboot vehicle.")
+//        }
+//    }
+//}
 }

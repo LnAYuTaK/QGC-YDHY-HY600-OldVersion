@@ -25,11 +25,10 @@ message(Qt version $$[QT_VERSION])
     error("Unsupported Qt version, 5.11+ is required")
 }
 
-
-
 include(QGCCommon.pri)
 
 include($$PWD/src/QmlLib/TaoQuick.pri)
+
 
 TARGET   = QGroundControl
 TEMPLATE = app
@@ -439,8 +438,9 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 #
 
 HEADERS += \
-    src/NetLayer/NetManage.h \
+    src/Helper/HySettings.h \
     src/NetLayer/NetLayer.h \
+    src/NetLayer/NetManage.h \
     src/NetLayer/ParaEditor.h \
     src/Vehicle/data.h \
     src/Vehicle/mysqlhelper.h \
@@ -462,6 +462,7 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 }
 
 SOURCES += \
+    src/Helper/HySettings.cpp \
     src/NetLayer/NetLayer.cpp \
     src/NetLayer/NetManage.cpp \
     src/NetLayer/ParaEditor.cpp \
@@ -1443,7 +1444,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 #DISTFILES += \
 #    src/UsersLogin.qml
 
-#????qlite?��?��?��???#MOBILITY =
+#????qlite?��?��?�???#MOBILITY =
 
 #android {
 #    data.files += aaa/zc.db
@@ -1473,7 +1474,7 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
 
 
 
-#    #?�己添�??满足?��?��?��?��?��?
+#    #?�己添�??满足?��?��?��?�?�?
 #    QT += androidextras
 #2.0.0.4  �������й������ڲ���
 VERSION = 2.0.0.4_Full_20220525

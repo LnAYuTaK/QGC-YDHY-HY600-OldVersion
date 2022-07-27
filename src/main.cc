@@ -382,6 +382,21 @@ int main(int argc, char *argv[])
     mySqlhelper::sqlconnect();//连接mysql数据库
     Data::Set_userID_value();
 
+//    if (!Data::sql_connect_flag) {
+//        Data::db3.close();
+//        QSqlDatabase::removeDatabase("third");
+//        Sleep(3000);
+//        Data::sqlconnect();
+//        Sleep(3000);
+//        qDebug()<< "SLEEP";
+//    }
+
+//    Data::readtxttosend();//补发数据
+//    SendData::get_playback();//界面调用，此处无需调用飞行记录显示
+
+//    MyTimer mytimer;
+//    mytimer.startTimer(1000);
+    //mytimer = new MyTimer();
 // linux系统中app图标设置
 #ifdef Q_OS_LINUX
     QApplication::setWindowIcon(QIcon(":/res/resources/icons/qgroundcontrol.ico"));

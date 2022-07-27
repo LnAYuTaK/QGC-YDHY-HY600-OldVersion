@@ -1,65 +1,81 @@
 #include "NetLayer.h"
+
 NetLayer::NetLayer(QObject *parent)
     : QObject{parent}
 {
 
 }
-//==================================================================
-//函 数 名：  SendBinLogFile
-//功能描述：  TCP发送BIN文件到后台服务器
-//输入参数：
-//返 回 值：  void
-//作    者：  刘宽
-//日    期：  2022 7/12 增加注释
-//修改记录：
-//==================================================================
 
+
+
+//==================================================================
+//?? ?? ????  SendBinLogFile
+//??????????  TCP????BIN??????????????
+//?? ?? ???  void
+//??    ???  2022 7/12 ???????
+//???????2022 7/23 ????md5????
+//==================================================================
 void NetLayer::SendBinLogFile(QString filename)
 {
-    qDebug()<< "sendbinlog";
     QTcpSocket *NetSocket = new QTcpSocket;
-    NetSocket->connectToHost(SerIP,SerPort);
+    QString IP =  HySettings::getSettings()->getNetValue("NET","IP").toString();
+    qint64 Port = HySettings::getSettings()->getNetValue("NET","Port").toInt();
+    qDebug()<< "Send" << filename << IP << Port;
+    NetSocket->connectToHost(IP,Port);
     NetSocket->waitForConnected(2000);
-    QFile m_file; 
+    QFile m_file;
     m_file.setFileName(filename);
-
     if ((NetSocket->state() != QAbstractSocket::ConnectedState) || (!m_file.open(QIODevice::ReadOnly)) ) {
+        qDebug() << "NerError";
          NetSocket->deleteLater();
-        return;
+         return;
     }
-    QByteArray block;
-    QDataStream out(&block, QIODevice::WriteOnly);
-    out.setVersion(QDataStream::Qt_5_12);
-    qDebug() << m_file.fileName();
-    QByteArray filemsg = m_file.readAll();
-    block.append(filemsg);
-    out.device()->seek(0);
-    out << (quint32)(block.size() - sizeof(quint32));
-    qint64 x = 0;
-    while (x < block.size()) {
-        qint64 y = NetSocket->write(block);
-        x += y;
-        qDebug() << "Sendsize"<< x;
-    }
-    m_file.close();
-    //堵塞记时等待 服务器回应
-    while (1)
+//    QByteArray block;
+//    QDataStream out(&block, QIODevice::WriteOnly);
+//    out.setVersion(QDataStream::Qt_5_12);
+    QFileInfo fileInfo(filename);
+    QString FileName = fileInfo.baseName();
+    QByteArray filedata = m_file.readAll();
+//    block.append(filedata);
+//    m_file.close();
+//    out.device()->seek(0);
+//    out << (quint32)(block.size() - sizeof(quint32));
+    //qint64 x = 0;
+    //????MD5????
+    QByteArray md5 = QCryptographicHash::hash(filedata, QCryptographicHash::Md5);
+    //?FFFF +Md5?????+ UserID + ???????   //Hex
+    QString ReqPack = "FFFF:"+md5.toHex()+':'+Data::userID+':'+FileName+"\n";
+    qDebug() << ReqPack;
+    qDebug() << md5.toHex();
+    //??????????
+    qint64 ReqPackSize = NetSocket->write(ReqPack.toLatin1());
+    Q_UNUSED(ReqPackSize)
+    qint64 sendsize = NetSocket->write(filedata);
+    qDebug()<< sendsize;
+//    while (x < block.size()){
+//        qint64 y = NetSocket->write(block);
+//        x += y;
+//        qDebug() << "Sendsize"<< x;
+//    }
+    //?????????? ????????? ????????????? ???5?????????????????????????
+    //????this??????
+      TaskTimeOut =new QTimer(this);
+      TaskTimeOut->setTimerType(Qt::PreciseTimer);
+      TaskTimeOut->start(5000);
+      while (TaskTimeOut->remainingTime()>0)
       {
           if (NetSocket->waitForReadyRead(10)){
-              QByteArray msg =NetSocket->readAll();
-              if(msg == "true\r\n"){
-                  qDebug() << "SuccessfuleSendLOG";
+              QByteArray replymsg =NetSocket->readAll();
+               qDebug() << replymsg;
+              if(replymsg == "OK"){
                 emit LogSendSuccess();
-                  break;
+                  return;
               }
               else{
                  emit LogSendFail();
-                  break;
+                  return;
               }
-          }
-      }
+           }
+       }
+     emit LogSendFail();
 }
-
-
-
-

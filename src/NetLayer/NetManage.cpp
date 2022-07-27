@@ -31,6 +31,7 @@ NetManage* NetManage::getManage()
 
 void NetManage::SendLogFileEmit(QString filepath)
 {
+    qDebug() << filepath;
     emit SendLogFile(filepath);
 }
 

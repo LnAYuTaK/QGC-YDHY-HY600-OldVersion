@@ -2,7 +2,7 @@
 #define NETMANAGE_H
 #include <QTcpSocket>
 #include <QObject>
-#include "NetLayer.h"
+#include "NetLayer/NetLayer.h"
 
 class NetManage :public QObject
 {
