@@ -149,7 +149,7 @@ AnalyzePage {
                         })
                         fileDialog.title =          qsTr("Select save directory")
                         fileDialog.selectExisting = true
-                        fileDialog._mobileDlg =flase
+                        fileDialog._mobileDlg =  false
                         fileDialog.folder  =     QGroundControl.settingsManager.appSettings.logSavePath
                         fileDialog.selectFolder =   true
                         fileDialog.openForLoad()

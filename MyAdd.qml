@@ -38,13 +38,12 @@ Rectangle {
     //提示窗口提示文件发送是否成功
         Rectangle {
             id:logSendMsg
-            anchors.centerIn: myAddBackground
+            anchors.left: myAddBackground
             //myAddBackground
             color: "lightskyblue"
             implicitWidth: 400
             implicitHeight: 100
             visible:  false
-
             Text {
                 id:logsendtxt
                 text: ""

@@ -215,18 +215,18 @@ Rectangle {
             Repeater {
                 model:                  _corePlugin ? _corePlugin.settingsPages : []
                 visible:                _corePlugin && _corePlugin.options.combineSettingsAndSetup
-                SubMenuButton {
-                    imageResource:      modelData.icon
-                    setupIndicator:     false
-                    exclusiveGroup:     setupButtonGroup
-                    text:               modelData.title
-                    visible:            _corePlugin && _corePlugin.options.combineSettingsAndSetup
-                    onClicked:          showPanel(this, modelData.url)
-                    Layout.fillWidth:   true
-                }
+//                SubMenuButton {
+//                    imageResource:      modelData.icon
+//                    setupIndicator:     false
+//                    exclusiveGroup:     setupButtonGroup
+//                    text:               modelData.title
+//                    visible:            _corePlugin && _corePlugin.options.combineSettingsAndSetup
+//                    onClicked:          showPanel(this, modelData.url)
+//                    Layout.fillWidth:   true
+//                }
             }
 
-            //202203取消注释，测试是否模拟飞行
+//            202203取消注释，测试是否模拟飞行
 //            SubMenuButton {
 //                id:                 summaryButton
 //                imageResource:      "/qmlimages/VehicleSummaryIcon.png"
@@ -272,9 +272,9 @@ Rectangle {
 //                onClicked:          showPanel(this, "JoystickConfig.qml")
 //            }
 
-//            Repeater {
-//                id:     componentRepeater
-//                model:  _fullParameterVehicleAvailable ? QGroundControl.multiVehicleManager.activeVehicle.autopilot.vehicleComponents : 0
+            Repeater {
+                id:     componentRepeater
+                model:  _fullParameterVehicleAvailable ? QGroundControl.multiVehicleManager.activeVehicle.autopilot.vehicleComponents : 0
 
 //                SubMenuButton {
 //                    imageResource:      modelData.iconResource
@@ -286,8 +286,7 @@ Rectangle {
 //                    Layout.fillWidth:   true
 //                    onClicked:          showVehicleComponentPanel(modelData)
 //                }
-//            }
-
+            }
             SubMenuButton {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup

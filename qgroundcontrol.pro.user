@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.10.2, 2022-07-27T14:51:02. -->
+<!-- Written by QtCreator 4.10.2, 2022-07-28T13:50:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -88,7 +88,7 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android for armeabi-v7a (Clang Qt 5.12.6 for Android ARMv7)</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android for armeabi-v7a (Clang Qt 5.12.6 for Android ARMv7)</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{a5e5be29-5943-4c13-881a-6c3a708916fd}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{083b1f81-3a70-4ddd-9c27-6a474bc93788}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -329,10 +329,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidDeployConfiguration2</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings">
-    <value type="QString" key="AndroidDeviceSerialNumber">JTK5T19913001401</value>
-    <value type="int" key="AndroidVersion.ApiLevel">29</value>
-   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
     <valuelist type="QVariantList" key="Analyzer.Perf.Events">
